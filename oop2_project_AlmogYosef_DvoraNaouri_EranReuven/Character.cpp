@@ -82,13 +82,19 @@ bool Character::checkCollision() const
 	int coeff = Settings::SCALE() * Settings::BASE();
 
 	Vector2f topLeft = m_sprite.getPosition();
-	Vector2f bottomRight = topLeft + Vector2f(float(Settings::BASE() * Settings::SCALE()), float(Settings::BASE() * Settings::SCALE()));
+	Vector2f topRight = topLeft + Vector2f(float(Settings::BASE() * Settings::SCALE()), 0);
+	Vector2f bottomLeft = topLeft + Vector2f(0, float(Settings::BASE() * Settings::SCALE()));
+	Vector2f bottomRight = bottomLeft + Vector2f(float(Settings::BASE() * Settings::SCALE()), 0);
 	unsigned int x1 = (unsigned int)(topLeft.x / coeff);
 	unsigned int y1 = (unsigned int)(topLeft.y / coeff);
-	unsigned int x2 = (unsigned int)(bottomRight.x / coeff);
-	unsigned int y2 = (unsigned int)(bottomRight.y / coeff);
+	unsigned int x2 = (unsigned int)(topRight.x / coeff);
+	unsigned int y2 = (unsigned int)(topRight.y / coeff);
+	unsigned int x3 = (unsigned int)(bottomLeft.x / coeff);
+	unsigned int y3 = (unsigned int)(bottomLeft.y / coeff);
+	unsigned int x4 = (unsigned int)(bottomRight.x / coeff);
+	unsigned int y4 = (unsigned int)(bottomRight.y / coeff);
 
-	return (m_mapData[y1][x1] == 1 || m_mapData[y2][x2] == 1);
+	return (m_mapData[y1][x1] == 1 || m_mapData[y2][x2] == 1 || m_mapData[y3][x3] == 1 || m_mapData[y4][x4] == 1);
 }
 
 int Character::getDirectionIndex(Direction dir)
