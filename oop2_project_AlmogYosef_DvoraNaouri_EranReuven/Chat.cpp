@@ -10,7 +10,7 @@ Chat::Chat(const Vector2f & pos, const Vector2f & size, string text)
 	m_chatWindow.setOrigin(m_chatWindow.getGlobalBounds().width / 2, m_chatWindow.getGlobalBounds().height / 2);
 }
 
-Chat ::ch
+Chat::ch;
 m_text.setString(text);							
 m_text.setFont(rm.getFont());						
 m_text.setCharacterSize(btnSize - TEXT_PADDING);	// text_size = button_size - padding (to make the text "inside" the button)
