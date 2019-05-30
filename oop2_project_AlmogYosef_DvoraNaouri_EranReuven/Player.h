@@ -1,5 +1,7 @@
 #pragma once
 #include "Character.h"
+#include "Animation.h"
+
 class Player : public Character
 {
 public:
@@ -13,5 +15,7 @@ public:
 	virtual void handleCollision(Player & player) override;
 	virtual void handleCollision(NPC & npc) override;
 	virtual void handleCollision(Map & map) override;*/
+private:
+	Animation m_animation;
 };
 

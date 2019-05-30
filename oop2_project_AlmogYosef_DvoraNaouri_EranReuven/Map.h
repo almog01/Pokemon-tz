@@ -19,6 +19,9 @@ public:
 	// Inherited via GameObject
 	virtual void draw(RenderWindow & window) override;
 
+	// Inherited via GameObject
+	virtual void setTextureRect(const IntRect & rect) override;
+
 	const vector<vector<unsigned short>> & getMapData() const { return m_mapData; }
 
 	// Inherited via GameObject
@@ -36,6 +39,5 @@ private:
 	//Sprite m_SpriteTop;
 	Sprite m_SpriteBottom;
 	vector<vector<unsigned short>> m_mapData;
-
 };
 

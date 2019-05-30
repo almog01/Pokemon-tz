@@ -16,7 +16,6 @@ void Map::loadMap(string name)
 {
 	// Init sprite
 	m_SpriteBottom.setTexture(Resource::texture("vermillion"));
-	m_SpriteBottom.setScale(Settings::SCALE(), Settings::SCALE());
 
 	loadMapData(name);
 }
@@ -32,10 +31,11 @@ void Map::loadMapData(string name)
 
 	//Create data map
 	sf::Vector2u size = image.getSize();
-	for (unsigned y = 0; y < size.y; y += 16)
+
+	for (unsigned y = 0; y < size.y; y++)
 	{
 		vector<unsigned short> row;
-		for (unsigned x = 0; x < size.x; x += 16)
+		for (unsigned x = 0; x < size.x; x++)
 		{
 			sf::Color pixel = image.getPixel(x, y);
 			row.push_back(getColorData(pixel.toInteger()));
@@ -53,6 +53,10 @@ unsigned short Map::getColorData(Uint32 color)
 	default:
 		return 0;		// no collision
 	}
+}
+
+void Map::setTextureRect(const IntRect & rect)
+{
 }
 
 //void Map::handleCollision(GameObject & obj)

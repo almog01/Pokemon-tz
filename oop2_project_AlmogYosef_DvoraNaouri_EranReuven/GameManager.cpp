@@ -43,16 +43,17 @@ void GameManager::play()
 
 void GameManager::createWindow()
 {
-	m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
-	m_view.setSize(float(VideoMode::getDesktopMode().width) / 1.5f, float(VideoMode::getDesktopMode().height) / 1.5f);
+	m_window.create(VideoMode(1366, 768), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
+	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
+	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_city.loadMap("vermillion");
 }
 
 void GameManager::iniCharacters()
 {
 	Vector2f centerWindow(float(VideoMode::getDesktopMode().width / 2), float(VideoMode::getDesktopMode().height / 2));
-	m_player.setPosition(centerWindow);
-	m_player.setMapData(m_city.getMapData());
+	m_player.setPosition(Vector2f(400.f, 300.f));
+	m_player.setMapData(&m_city.getMapData());
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);
 }

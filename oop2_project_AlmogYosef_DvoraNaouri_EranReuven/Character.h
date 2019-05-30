@@ -19,32 +19,23 @@ public:
 
 	virtual void update();
 
-	void setMapData(const vector<vector<unsigned short>> & mapData) { m_mapData = mapData; }
+	void setMapData(const vector<vector<unsigned short>> * mapData) { m_mapData = mapData; }
+
+	// Inherited via GameObject
+	virtual void setTextureRect(const IntRect & rect) override;
 
 protected:
 	void move();
 
 	void stop();
 
-	bool checkCollision() const;
-
-	int getDirectionIndex(Direction dir);
-
-	void startMove(Direction dir);
-
+	bool checkMapCollision() const;
 
 	Sprite m_sprite;		// sprite of the character
-	Vector2f m_lastPos;		// last position
-	Vector2f m_direction;	// current character direction
-	//Direction m_direction;	// current character direction
-	//int m_moveState;		// moving sprite select
-	//int m_counter;			// sprite counter
-	//float m_moveCounter;	// move sequence counter
-	//bool m_moving;			// movement flag
-	//bool m_turning;			// turning flag
 	float m_moveSpeed;		// move speed
-	vector<vector<unsigned short>> m_mapData;
-	static const int sizeX = 16;	// x size of a texture
+	Vector2f m_direction;	// direction of the character
+	const vector<vector<unsigned short>> * m_mapData;	// collision data of the map
+	static const int sizeX = 15;	// x size of a texture
 	static const int sizeY = 19;	// y size of a texture
 };
 
