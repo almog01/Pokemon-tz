@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Resource.h"
 #include "City.h"
+#include "Chat.h"
 #include "Player.h"
 
 using sf::RenderWindow;
@@ -29,8 +30,10 @@ private:
 	// Handles the events
 	void handleEvents();
 
-	// Handles the events of any keyboard button was released
 	void keyReleasedHandler(const Event & event);
+
+	// Handles the events of any keyboard button was released
+	void a(const sf::Event & event);
 
 	// Updates all objects
 	void update();
@@ -41,5 +44,6 @@ private:
 	View m_view;			// current view
 	City m_city;			// current map
 	Player m_player;		// the player
+	Chat m_chat;
 };
 

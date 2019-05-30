@@ -8,8 +8,8 @@ unordered_map<string, Image> Resource::m_images {};
 Resource::Resource()
 {
 	loadTexture("player", "res/img/characters/player.png");
-
 	loadTexture("vermillion", "res/img/maps/vermillion_bottom.png");
+	loadTexture("cw", "res/img/characters/cw.png");
 	loadImage("vermillion_data", "res/img/maps/vermillion_data.png");
 }
 

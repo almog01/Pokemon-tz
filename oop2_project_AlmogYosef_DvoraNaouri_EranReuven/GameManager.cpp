@@ -8,9 +8,10 @@ using sf::Clock;
 using sf::Time;
 
 GameManager::GameManager()
+	: m_chat (Vector2f(930,830) , Vector2f(700, 150), "dvora")
 {
 }
-
+//800+200
 
 GameManager::~GameManager()
 {
@@ -61,6 +62,7 @@ void GameManager::draw()
 {
 	m_city.draw(m_window);
 	m_player.draw(m_window);
+	m_chat.draw(m_window);
 }
 
 void GameManager::handleEvents()
@@ -86,6 +88,9 @@ void GameManager::keyReleasedHandler(const Event & event)
 	{
 	case Keyboard::Escape:	// escape button pressed
 		m_window.close();	// close the game
+		break;
+	case Keyboard::Enter:
+		//dsad
 		break;
 	}
 }
