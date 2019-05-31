@@ -28,5 +28,6 @@ private:
 	IntRect uvRect;
 	float m_totalTime;
 	float m_switchTime;
+	bool m_forward;
 };
 
