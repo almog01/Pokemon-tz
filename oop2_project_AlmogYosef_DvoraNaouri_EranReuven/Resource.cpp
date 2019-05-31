@@ -9,6 +9,9 @@ Resource::Resource()
 {
 	loadTexture("player", "res/img/characters/player.png");
 
+	loadTexture("pallet", "res/img/maps/pallet.png");
+	loadImage("pallet_data", "res/img/maps/pallet_data.png");
+
 	loadTexture("vermillion", "res/img/maps/vermillion_bottom.png");
 	loadImage("vermillion_data", "res/img/maps/vermillion_data.png");
 }

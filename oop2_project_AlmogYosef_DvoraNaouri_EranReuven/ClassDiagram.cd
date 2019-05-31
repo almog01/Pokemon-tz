@@ -10,7 +10,7 @@
   <Class Name="Character" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAEAAAADIAAIAAAAiAIIgAAAAEASAQAAGqAA=</HashCode>
+      <HashCode>AAAAIAAAAEAAAADAAAIAAAAiAQIgAAAAEACAQAAGKAA=</HashCode>
       <FileName>Character.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -129,16 +129,9 @@
   <Class Name="Settings" Collapsed="true">
     <Position X="27.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACQAAAgAAAACAAAAUAAAAAAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAACQAAAgAAAAAAAAAUAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Settings.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Direction" Collapsed="true">
-    <Position X="25.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
-      <FileName>Settings.h</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

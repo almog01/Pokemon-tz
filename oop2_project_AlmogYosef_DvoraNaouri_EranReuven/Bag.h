@@ -1,7 +1,6 @@
 #pragma once
-#include "Menu.h"
-class Bag :
-	public Menu
+#include "Screen.h"
+class Bag :	public Screen
 {
 public:
 	Bag();

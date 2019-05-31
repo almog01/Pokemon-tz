@@ -52,7 +52,7 @@ void GameManager::createWindow()
 void GameManager::iniCharacters()
 {
 	Vector2f centerWindow(float(VideoMode::getDesktopMode().width / 2), float(VideoMode::getDesktopMode().height / 2));
-	m_player.setPosition(Vector2f(400.f, 300.f));
+	m_player.setPosition(Vector2f(200.f, 300.f));
 	m_player.setMapData(&m_city.getMapData());
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);

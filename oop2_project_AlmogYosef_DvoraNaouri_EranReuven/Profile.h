@@ -1,7 +1,6 @@
 #pragma once
-#include "Menu.h"
-class Profile :
-	public Menu
+#include "Screen.h"
+class Profile :	public Screen
 {
 public:
 	Profile();

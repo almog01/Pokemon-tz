@@ -1,7 +1,6 @@
 #pragma once
-#include "Menu.h"
-class Chat :
-	public Menu
+#include "Screen.h"
+class Chat : public Screen
 {
 public:
 	Chat();

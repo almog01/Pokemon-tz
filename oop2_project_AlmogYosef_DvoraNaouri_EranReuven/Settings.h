@@ -1,12 +1,6 @@
 #pragma once
 #include <string>
 
-// Movement directions
-enum Direction
-{
-	Down, Up, Right, Left
-};
-
 class Settings
 {
 public:

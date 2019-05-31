@@ -2,7 +2,7 @@
 
 using sf::Keyboard;
 
-Player::Player() : m_animation(*this, Resource::texture("player"), Vector2u(3, 4), 4.f)
+Player::Player() : m_animation(*this, Resource::texture("player"), Vector2u(3, 4), 3.75f)
 {
 	m_sprite.setTexture(Resource::texture("player"), true);
 	m_sprite.setTextureRect(sf::IntRect(15, 0, 15, 19));

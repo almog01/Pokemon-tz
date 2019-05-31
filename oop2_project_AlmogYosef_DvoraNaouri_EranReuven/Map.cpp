@@ -15,7 +15,7 @@ Map::~Map()
 void Map::loadMap(string name)
 {
 	// Init sprite
-	m_SpriteBottom.setTexture(Resource::texture("vermillion"));
+	m_SpriteBottom.setTexture(Resource::texture("pallet"));
 
 	loadMapData(name);
 }
@@ -27,7 +27,7 @@ void Map::draw(RenderWindow & window)
 
 void Map::loadMapData(string name)
 {
-	Image image(Resource::image("vermillion_data"));
+	Image image(Resource::image("pallet_data"));
 
 	//Create data map
 	sf::Vector2u size = image.getSize();
