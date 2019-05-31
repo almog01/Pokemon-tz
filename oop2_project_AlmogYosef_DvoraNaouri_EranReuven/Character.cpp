@@ -36,12 +36,12 @@ void Character::stop()
 
 bool Character::checkMapCollision() const
 {
-	Vector2f topLeft = m_sprite.getPosition();
-	Vector2f topMiddle = m_sprite.getPosition() + Vector2f(sizeX / 2, 0);
+	Vector2f topLeft = m_sprite.getPosition() + Vector2f(0, sizeY / 2);
+	Vector2f topMiddle = topLeft + Vector2f(sizeX / 2, 0);
 	Vector2f topRight = topLeft + Vector2f(sizeX, 0);
-	Vector2f LeftMiddle = topLeft + Vector2f(0, sizeY / 2);
-	Vector2f RightMiddle = topRight + Vector2f(0, sizeY / 2);
-	Vector2f bottomLeft = topLeft + Vector2f(0, sizeY);
+	Vector2f LeftMiddle = topLeft + Vector2f(0, sizeY / 4);
+	Vector2f RightMiddle = topRight + Vector2f(0, sizeY / 4);
+	Vector2f bottomLeft = topLeft + Vector2f(0, sizeY / 2);
 	Vector2f bottomMiddle = bottomLeft + Vector2f(sizeX / 2, 0);
 	Vector2f bottomRight = bottomLeft + Vector2f(sizeX, 0);
 	unsigned int x1 = (unsigned int)(topLeft.x);

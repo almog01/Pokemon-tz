@@ -33,9 +33,9 @@ protected:
 
 	Sprite m_sprite;		// sprite of the character
 	float m_moveSpeed;		// move speed
-	Vector2f m_direction;	// direction of the character
+	Vector2f m_direction;	// direction of movement
 	const vector<vector<unsigned short>> * m_mapData;	// collision data of the map
-	static const int sizeX = 15;	// x size of a texture
+	static const int sizeX = 16;	// x size of a texture
 	static const int sizeY = 19;	// y size of a texture
 };
 
