@@ -3,7 +3,7 @@
 class Route : public Map
 {
 public:
-	Route();
+	using Map::Map;
 	~Route();
 };
 

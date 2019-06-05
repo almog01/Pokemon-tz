@@ -3,7 +3,7 @@
 class House : public Map
 {
 public:
-	House();
+	using Map::Map;
 	~House();
 };
 

@@ -1,11 +1,13 @@
 #pragma once
-#include "GameObject.h"
+#include "Collider.h"
+
+class Map;
 
 using sf::Sprite;
 using sf::Vector2f;
 using std::vector;
 
-class Character : public GameObject
+class Character : public Collider
 {
 public:
 	Character();
@@ -13,20 +15,22 @@ public:
 
 	// Inherited via GameObject
 	virtual void draw(RenderWindow & window) override;
-
 	virtual void setPosition(const Vector2f & pos) { m_sprite.setPosition(pos); }
+	virtual FloatRect getGlobalBounds() const override { return m_sprite.getGlobalBounds(); }
+
 	virtual Vector2f getPosition() const { return m_sprite.getPosition(); }
 
 	virtual void update();
 
-	void setMapData(const vector<vector<unsigned short>> * mapData) { m_mapData = mapData; }
+	virtual void setMap(const Map * map);
 
 	// Inherited via GameObject
 	virtual void setTextureRect(const IntRect & rect) override;
 
-protected:
-	void move();
 
+protected:
+	// Movement
+	void move();
 	void stop();
 
 	bool checkMapCollision() const;
@@ -35,7 +39,7 @@ protected:
 	float m_moveSpeed;		// move speed
 	Vector2f m_direction;	// direction of movement
 	const vector<vector<unsigned short>> * m_mapData;	// collision data of the map
-	static const int sizeX = 16;	// x size of a texture
-	static const int sizeY = 19;	// y size of a texture
+	const float sizeX = 16;	// x size of the texture
+	const float sizeY = 19;	// y size of the texture
 };
 

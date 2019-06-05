@@ -8,8 +8,5 @@ public:
 
 	// Inherited via GameObject
 	virtual void draw(RenderWindow & window) override;
-
-	// Inherited via GameObject
-	virtual void setTextureRect(const IntRect & rect) override;
 };
 

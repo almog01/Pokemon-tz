@@ -2,8 +2,8 @@
 
 
 
-Animation::Animation(GameObject & object, const Texture & texture, Vector2u imageCount, float speed)
-	: m_object(object), m_imageCount(imageCount), m_speed(speed), m_totalTime(0.f),
+Animation::Animation(Collider & collider, const Texture & texture, Vector2u imageCount, float speed)
+	: m_collider(collider), m_imageCount(imageCount), m_speed(speed), m_totalTime(0.f),
 	m_switchTime(50.f), m_currImage(Vector2u(0, 0)), m_forward(true)
 {
 	uvRect.width = texture.getSize().x / imageCount.x;
@@ -36,5 +36,5 @@ void Animation::play(const string & name)
 	}
 	uvRect.left = m_currImage.x * uvRect.width;
 	uvRect.top = m_currImage.y * uvRect.height;
-	m_object.setTextureRect(uvRect);
+	m_collider.setTextureRect(uvRect);
 }

@@ -2,11 +2,6 @@
 
 
 
-House::House()
-{
-}
-
-
 House::~House()
 {
 }

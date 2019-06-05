@@ -9,13 +9,22 @@ Resource::Resource()
 {
 	loadTexture("player", "res/img/characters/player.png");
 
-	loadTexture("pallet", "res/img/maps/pallet.png");
-	loadImage("pallet_data", "res/img/maps/pallet_data.png");
+	loadTexture("pallet", "res/img/maps/pallet/pallet.png");
+	loadImage("pallet_data", "res/img/maps/pallet/pallet_data.png");
 
-	loadTexture("vermillion", "res/img/maps/vermillion_bottom.png");
-	loadImage("vermillion_data", "res/img/maps/vermillion_data.png");
+	loadTexture("oaks_lab", "res/img/maps/oaks_lab/oaks_lab.png");
+	loadImage("oaks_lab_data", "res/img/maps/oaks_lab/oaks_lab.png");
+
+	loadTexture("vermillion", "res/img/maps/vermillion/vermillion.png");
+	loadImage("vermillion_data", "res/img/maps/vermillion/vermillion_data.png");
 }
 
+
+Resource & Resource::instance()
+{
+	static Resource inst;
+	return inst;
+}
 
 Resource::~Resource()
 {

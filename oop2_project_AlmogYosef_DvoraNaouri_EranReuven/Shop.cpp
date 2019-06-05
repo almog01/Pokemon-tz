@@ -2,11 +2,6 @@
 
 
 
-Shop::Shop()
-{
-}
-
-
 Shop::~Shop()
 {
 }

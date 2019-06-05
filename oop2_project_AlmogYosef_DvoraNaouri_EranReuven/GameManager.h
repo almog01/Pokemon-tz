@@ -1,9 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Resource.h"
-#include "City.h"
+#include "Factory.h"
+#include "Map.h"
 #include "Player.h"
+#include <unordered_map>
+#include <memory>
 
+using std::string;
 using sf::RenderWindow;
 using sf::View;
 using sf::Event;
@@ -14,32 +18,34 @@ public:
 	GameManager();
 	~GameManager();
 
+	// Starts the game
 	void play();
 
 private:
 	// Creates the main window
 	void createWindow();
 
-	// Initializes all the characters
-	void iniCharacters();
+	// Initializers
+	void initCharacters();
 
 	// Draws the whole game objects on the window, and than displays it
 	void draw();
 
-	// Handles the events
+	// Event Handlers
 	void handleEvents();
-
-	// Handles the events of any keyboard button was released
 	void keyReleasedHandler(const Event & event);
 
 	// Updates all objects
 	void update();
 
+	void updateMap(const string & name);
+
 	// Members:
-	Resource m_rm;			// resource manager to load the needed files
+	Resource & m_resource;	// resource occurrence to load the needed files
+	Factory & m_factory;	// factory occurrence to create the needed objects
 	RenderWindow m_window;	// main window
 	View m_view;			// current view
-	City m_city;			// current map
+	Map * m_map;			// current map
 	Player m_player;		// the player
 };
 

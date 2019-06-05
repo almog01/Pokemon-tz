@@ -2,6 +2,8 @@
 #include "Character.h"
 #include "Animation.h"
 
+class Map;
+
 class Player : public Character
 {
 public:
@@ -10,12 +12,18 @@ public:
 
 	virtual void update() override;
 
+	virtual void setMap(const Map * map) override;
+	string getMap() { return m_map; }
+
 	// Inherited via Character
-	/*virtual void handleCollision(GameObject & obj) override;
+	virtual void handleCollision(Collider & collider) override;
 	virtual void handleCollision(Player & player) override;
 	virtual void handleCollision(NPC & npc) override;
-	virtual void handleCollision(Map & map) override;*/
+	virtual void handleCollision(Pokemon & pokemon) override;
+	virtual void handleCollision(Door & door) override;
+
 private:
 	Animation m_animation;
+	string m_map;	// current map
 };
 

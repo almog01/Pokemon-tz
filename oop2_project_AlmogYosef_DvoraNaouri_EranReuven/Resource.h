@@ -10,20 +10,25 @@ using std::string;
 class Resource
 {
 public:
-	Resource();
+	// Singleton Resource
+	static Resource& instance();
 	~Resource();
+	Resource(const Resource&) = delete;
+	Resource& operator=(const Resource&) = delete;
 
 	static const Texture & texture(const string & key);
 	static const Image & image(const string & key);
 
 private:
+	Resource();
+
 	// Loads a texture. Prints error message if the loading failed
 	void loadTexture(const string & key, const string & path);
 
 	// Loads an image. Prints error message if the loading failed
 	void loadImage(const string & key, const string & path);
 
-	static unordered_map<string, Texture> m_textures;	// map of all textures
-	static unordered_map<string, Image> m_images;		// map of all images
+	static unordered_map<string, Texture> m_textures;	// map of textures
+	static unordered_map<string, Image> m_images;		// map of images
 };
 

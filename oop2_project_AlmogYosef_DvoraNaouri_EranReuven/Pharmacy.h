@@ -3,7 +3,7 @@
 class Pharmacy : public Map
 {
 public:
-	Pharmacy();
+	using Map::Map;
 	~Pharmacy();
 };
 

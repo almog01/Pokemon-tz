@@ -2,11 +2,6 @@
 
 
 
-Pharmacy::Pharmacy()
-{
-}
-
-
 Pharmacy::~Pharmacy()
 {
 }

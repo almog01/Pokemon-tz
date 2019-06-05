@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
-#include "GameObject.h"
+#include "Collider.h"
 
 using std::unordered_map;
 using std::string;
@@ -12,7 +12,7 @@ using sf::IntRect;
 class Animation
 {
 public:
-	Animation(GameObject & object, const Texture & texture, Vector2u imageCount, float speed);
+	Animation(Collider & collider, const Texture & texture, Vector2u imageCount, float speed);
 	~Animation();
 
 	void addAnimation(const string & name, unsigned row);
@@ -20,7 +20,7 @@ public:
 	void play(const string & name);
 
 private:
-	GameObject & m_object;
+	Collider & m_collider;
 	unordered_map<string, unsigned> m_animations;
 	Vector2u m_imageCount;
 	Vector2u m_currImage;

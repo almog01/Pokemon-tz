@@ -3,7 +3,7 @@
 class Shop : public Map
 {
 public:
-	Shop();
+	using Map::Map;
 	~Shop();
 };
 
