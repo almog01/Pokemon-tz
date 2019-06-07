@@ -8,10 +8,11 @@ using sf::Clock;
 using sf::Time;
 
 GameManager::GameManager()
-	: m_chat (Vector2f(930,830) , Vector2f(700, 150), "dvora")
+	: m_chat (Vector2f(930,830) , Vector2f(700, 150), "קרשמאדדדד")
 {
 }
 //800+200
+
 
 GameManager::~GameManager()
 {

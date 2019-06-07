@@ -2,19 +2,24 @@
 const unsigned TEXT_PADDING = 20;
 
 
-Chat::Chat(const Vector2f & pos, const Vector2f & size, string text)
+Chat::Chat( const Vector2f & pos, const Vector2f & size, string text)
 {
 	m_chatWindow.setTexture(&Resource::texture("cw"));
 	m_chatWindow.setSize(size);
 	m_chatWindow.setPosition(pos);
 	m_chatWindow.setOrigin(m_chatWindow.getGlobalBounds().width / 2, m_chatWindow.getGlobalBounds().height / 2);
+	m_text.setString(text);								
+
+
+	// Initialize button's text with:
+	m_text.setString(text);								// string
+	m_text.setFont(Resource::font());						// font
+	m_text.setCharacterSize(30);	// text_size = button_size - padding (to make the text "inside" the button)
+	m_text.setFillColor(sf::Color::Red);				// color = red
+	m_text.setPosition(m_chatWindow.getPosition());			// same position as the button
+	m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().width / 2);	// set origin to the middle
+
 }
-
-// Chat::ch;
-//m_text.setFont(rm.getFont());						
-//m_text.setFillColor(sf::Color::Red);				// color = red
-//m_text.setOrigin(m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().width / 2);	// set origin to the middle
-
 
 Chat::~Chat()
 {

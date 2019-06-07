@@ -4,13 +4,16 @@
 
 unordered_map<string, Texture> Resource::m_textures{};
 unordered_map<string, Image> Resource::m_images {};
+sf::Font Resource::m_font;
 
-Resource::Resource()
+Resource::Resource() 
 {
 	loadTexture("player", "res/img/characters/player.png");
 	loadTexture("vermillion", "res/img/maps/vermillion_bottom.png");
 	loadTexture("cw", "res/img/characters/cw.png");
 	loadImage("vermillion_data", "res/img/maps/vermillion_data.png");
+	m_font.loadFromFile("res/font/chary.ttf");
+
 }
 
 
@@ -26,6 +29,12 @@ const Texture & Resource::texture(const string & key)
 const Image & Resource::image(const string & key)
 {
 	return m_images.at(key);
+}
+
+const sf::Font & Resource::font()
+{
+	return m_font;
+
 }
 
 void Resource::loadTexture(const string & key, const string & path)

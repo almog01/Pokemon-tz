@@ -15,6 +15,7 @@ public:
 
 	static const Texture & texture(const string & key);
 	static const Image & image(const string & key);
+	static const sf::Font& font(); 
 
 private:
 	// Loads a texture. Prints error message if the loading failed
@@ -25,5 +26,6 @@ private:
 
 	static unordered_map<string, Texture> m_textures;	// map of all textures
 	static unordered_map<string, Image> m_images;		// map of all images
+    static sf::Font m_font;
 };
 
