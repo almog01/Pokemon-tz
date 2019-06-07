@@ -1,2 +1,2 @@
-pallet City 1
+pallet 1
 Door oaks_lab 16.f 17.f

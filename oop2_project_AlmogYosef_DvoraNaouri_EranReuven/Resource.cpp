@@ -8,12 +8,13 @@ unordered_map<string, Image> Resource::m_images {};
 Resource::Resource()
 {
 	loadTexture("player", "res/img/characters/player.png");
+	loadTexture("professor_oak", "res/img/characters/professor_oak.png");
 
 	loadTexture("pallet", "res/img/maps/pallet/pallet.png");
 	loadImage("pallet_data", "res/img/maps/pallet/pallet_data.png");
 
 	loadTexture("oaks_lab", "res/img/maps/oaks_lab/oaks_lab.png");
-	loadImage("oaks_lab_data", "res/img/maps/oaks_lab/oaks_lab.png");
+	loadImage("oaks_lab_data", "res/img/maps/oaks_lab/oaks_lab_data.png");
 
 	loadTexture("vermillion", "res/img/maps/vermillion/vermillion.png");
 	loadImage("vermillion_data", "res/img/maps/vermillion/vermillion_data.png");

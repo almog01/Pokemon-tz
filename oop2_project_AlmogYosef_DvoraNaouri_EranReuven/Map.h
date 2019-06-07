@@ -17,7 +17,7 @@ class Map : public GameObject
 {
 public:
 	Map(const string & name);
-	virtual ~Map();
+	~Map();
 
 	// Inherited via GameObject
 	virtual void draw(RenderWindow & window) override;
@@ -37,8 +37,8 @@ private:
 
 	unsigned short getColorData(Uint32 color, unsigned x, unsigned y);
 
+	int m_index;
 	string m_name;
-	//Texture m_TextureTop;
 	//Sprite m_SpriteTop;
 	Sprite m_SpriteBottom;
 	vector<vector<unsigned short>> m_mapData;

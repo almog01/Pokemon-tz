@@ -16,7 +16,7 @@ public:
 	// Inherited via GameObject
 	virtual void draw(RenderWindow & window) override;
 	virtual void setPosition(const Vector2f & pos) { m_sprite.setPosition(pos); }
-	virtual FloatRect getGlobalBounds() const override { return m_sprite.getGlobalBounds(); }
+	virtual FloatRect getGlobalBounds() const override;
 
 	virtual Vector2f getPosition() const { return m_sprite.getPosition(); }
 

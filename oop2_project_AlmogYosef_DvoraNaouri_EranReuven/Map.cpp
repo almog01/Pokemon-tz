@@ -5,7 +5,7 @@ using sf::Image;
 using sf::Vector2u;
 using std::make_unique;
 
-Map::Map(const string & name) : m_name(name)
+Map::Map(const string & name) : m_index(0), m_name(name)
 {
 	loadMap(name);
 }
@@ -68,10 +68,9 @@ unsigned short Map::getColorData(Uint32 color, unsigned x, unsigned y)
 
 void Map::addCollider(unique_ptr<Collider> collider)
 {
-	static int index = 0;
-	collider->setPosition(*(m_collidersPos)[index]);
+	collider->setPosition(*(m_collidersPos)[m_index]);
+	m_index++;
 	m_colliders.emplace_back(std::move(collider));
-	index++;
 }
 
 void Map::checkCollision(Player & player)

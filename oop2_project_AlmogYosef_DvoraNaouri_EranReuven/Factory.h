@@ -3,6 +3,7 @@
 #include <memory>
 #include <fstream>
 #include "Map.h"
+#include "Collider.h"
 
 using std::string;
 using std::unordered_map;
@@ -24,8 +25,11 @@ private:
 	Factory();
 	void createMaps();
 
-	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
+	/*template<class T>
+	void createCollider(const string & name) {}*/
 
-	ifstream m_file;
+	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
+	/*ifstream m_file;
+	unordered_map<string, void (*)()> m_colliderType;*/
 };
 

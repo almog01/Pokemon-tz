@@ -23,6 +23,14 @@ void Character::draw(RenderWindow & window)
 	window.draw(m_sprite);
 }
 
+FloatRect Character::getGlobalBounds() const
+{
+	auto bounds = m_sprite.getGlobalBounds();
+	bounds.top += (bounds.height / 2.60f);
+	bounds.height -= (bounds.height / 2.60f);
+	return bounds;
+}
+
 void Character::update()
 {
 }

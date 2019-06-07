@@ -8,7 +8,7 @@ using sf::Keyboard;
 using sf::Clock;
 using sf::Time;
 
-GameManager::GameManager() : m_resource(Resource::instance()), m_factory(Factory::instance())
+GameManager::GameManager() : m_resource(Resource::instance()), m_factory(Factory::instance()), m_screen(nullptr)
 {
 }
 
@@ -44,8 +44,9 @@ void GameManager::play()
 
 void GameManager::createWindow()
 {
-	m_window.create(VideoMode(1366, 768), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
-	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscree	Vector2f centerWindow(float(VideoMode::getDesktopMode().width / 2), float(VideoMode::getDesktopMode().height / 2));
+	//m_window.create(VideoMode(1366, 768), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
+	m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);
+	//Vector2f centerWindow(float(VideoMode::getDesktopMode().width / 2), float(VideoMode::getDesktopMode().height / 2));
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_map = Factory::map("pallet");
 }
@@ -60,8 +61,13 @@ void GameManager::initCharacters()
 
 void GameManager::draw()
 {
-	m_map->draw(m_window);
-	m_player.draw(m_window);
+	if (m_screen)
+		m_screen->draw(m_window);
+	else
+	{
+		m_map->draw(m_window);
+		m_player.draw(m_window);
+	}
 }
 
 void GameManager::handleEvents()
@@ -106,5 +112,5 @@ void GameManager::updateMap(const string & name)
 {
 	m_map = Factory::map(name);
 	m_player.setMap(m_map);
-	m_player.setPosition(Vector2f(50.f, 50.f));
+	//m_player.setPosition(Vector2f(50.f, 50.f));
 }

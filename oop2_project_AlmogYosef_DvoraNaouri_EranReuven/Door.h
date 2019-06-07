@@ -8,7 +8,7 @@ using std::string;
 class Door : public Collider
 {
 public:
-	Door(const string & destination, const Vector2f & size);
+	Door(const Vector2f & size, const string & dest, const Vector2f & destPos);
 	~Door();
 
 	// Inherited via Collider
@@ -22,10 +22,13 @@ public:
 	virtual void handleCollision(Pokemon & pokemon) override;
 	virtual void handleCollision(Door & door) override;
 
+	// Getters
 	string getDestination() const { return m_destination; }
+	Vector2f getDestPos() const { return m_destPos; }
+
 private:
 	RectangleShape m_bounds;
 	string m_destination;
-
+	Vector2f m_destPos;
 };
 

@@ -4,6 +4,7 @@
 #include "Factory.h"
 #include "Map.h"
 #include "Player.h"
+#include "Screen.h"
 #include <unordered_map>
 #include <memory>
 
@@ -11,6 +12,7 @@ using std::string;
 using sf::RenderWindow;
 using sf::View;
 using sf::Event;
+using std::unique_ptr;
 
 class GameManager
 {
@@ -47,5 +49,6 @@ private:
 	View m_view;			// current view
 	Map * m_map;			// current map
 	Player m_player;		// the player
+	unique_ptr<Screen> m_screen;
 };
 
