@@ -1,11 +1,11 @@
 #include "Map.h"
-#include <Windows.h>
+#include "NPC.h"
 
 using sf::Image;
 using sf::Vector2u;
 using std::make_unique;
 
-Map::Map(const string & name) : m_index(0), m_name(name)
+Map::Map(const string & name) : m_name(name)
 {
 	loadMap(name);
 }
@@ -66,10 +66,9 @@ unsigned short Map::getColorData(Uint32 color, unsigned x, unsigned y)
 	}
 }
 
-void Map::addCollider(unique_ptr<Collider> collider)
+void Map::addCollider(unique_ptr<Collider> collider, int index)
 {
-	collider->setPosition(*(m_collidersPos)[m_index]);
-	m_index++;
+	collider->setPosition(*(m_collidersPos)[index]);
 	m_colliders.emplace_back(std::move(collider));
 }
 
@@ -80,4 +79,21 @@ void Map::checkCollision(Player & player)
 		if ((*it1)->getGlobalBounds().intersects(player.getGlobalBounds()))
 			(*it1)->handleCollision(player);
 	}
+}
+
+bool Map::tryChat(const FloatRect & pov, NPC *& npc) const
+{
+	for (auto it1 = m_colliders.begin(); it1 != m_colliders.end(); ++it1)
+	{
+		if ((*it1)->getGlobalBounds().intersects(pov))
+		{
+			NPC* npcPtr = dynamic_cast<NPC*>((*it1).get());
+			if (npcPtr)
+			{
+				npc = npcPtr;
+				return true;
+			}
+		}
+	}
+	return false;
 }

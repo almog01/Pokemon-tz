@@ -12,6 +12,7 @@ using sf::Texture;
 using sf::Sprite;
 using sf::Uint32;
 using sf::Vector2f;
+using sf::FloatRect;
 
 class Map : public GameObject
 {
@@ -26,9 +27,11 @@ public:
 	string getName() const { return m_name; }
 	const vector<vector<unsigned short>> * getMapData() const { return &m_mapData; }
 
-	void addCollider(unique_ptr<Collider> collider);
+	void addCollider(unique_ptr<Collider> collider, int index);
 
 	void checkCollision(Player & player);
+
+	bool tryChat(const FloatRect & pov, NPC *& npc) const;
 
 private:
 	void loadMap(string name);
@@ -37,7 +40,6 @@ private:
 
 	unsigned short getColorData(Uint32 color, unsigned x, unsigned y);
 
-	int m_index;
 	string m_name;
 	//Sprite m_SpriteTop;
 	Sprite m_SpriteBottom;
