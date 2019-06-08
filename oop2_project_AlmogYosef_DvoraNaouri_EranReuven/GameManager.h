@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Screen.h"
+#include "NPC.h"
 #include <unordered_map>
 #include <memory>
 
@@ -42,12 +43,14 @@ private:
 
 	void updateMap(const string & name);
 
+	void openChat(NPC * npc);
+
 	// Members:
 	Resource & m_resource;	// resource occurrence to load the needed files
 	Factory & m_factory;	// factory occurrence to create the needed objects
 	RenderWindow m_window;	// main window
 	View m_view;			// current view
-	Map * m_map;			// current map
+	Map* m_map;				// current map
 	Player m_player;		// the player
 	unique_ptr<Screen> m_screen;
 };
