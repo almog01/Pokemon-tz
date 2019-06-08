@@ -19,32 +19,68 @@ Map * Factory::map(const string & key)
 Factory::Factory()
 {
 	createMaps();
+	createDoors();
+	createNPCs();
 }
 
 void Factory::createMaps()
 {
-	/*m_file.open("database/maps.txt");
-	string line;
-	getline(m_file, line);
-	istringstream stream(line);
+	m_file.open("database/maps.txt");
 	string name;
-	int numOfColliders;
-	stream >> name >> numOfColliders;
-	m_maps[name] = make_unique<Map>("pallet");
-	for (size_t i = 0; i < numOfColliders; i++)
-	{
-		getline(m_file, line);
-
-	}*/
-
-	m_maps["pallet"] = make_unique<City>("pallet");
-	m_maps["pallet"]->addCollider(make_unique<Door>(Vector2f(16.f, 17.f), "oaks_lab", Vector2f(97.f, 180.f)));
-	m_maps["oaks_lab"] = make_unique<House>("oaks_lab");
-	m_maps["oaks_lab"]->addCollider(make_unique<NPC>("professor_oak"));
-	m_maps["oaks_lab"]->addCollider(make_unique<Door>(Vector2f(26.f, 4.f), "pallet", Vector2f(256.f, 560.f)));
-	//m_maps["vermillion"] = make_unique<City>("vermillion");
+	while (getline(m_file, name))
+		m_maps[name] = make_unique<Map>(name);
+	m_file.close();
 }
 
+void Factory::createDoors()
+{
+	m_file.open("database/doors.txt");
+	string mapName;
+	while (getline(m_file, mapName))
+	{
+		int numOfNPCs;
+		m_file >> numOfNPCs;
+		m_file.get();
+		for (int i = 0; i < numOfNPCs; ++i)
+		{
+			string line;
+			getline(m_file, line);
+			istringstream stream(line);
+			float sizeX, sizeY, destX, destY;
+			string dest;
+			int index;
+			stream >> sizeX >> sizeY >> dest >> destX >> destY >> index;
+			m_maps[mapName]->addCollider(make_unique<Door>(Vector2f(sizeX, sizeY), dest, Vector2f(destX, destY)), index);
+		}
+	}
+	m_file.close();
+}
+
+void Factory::createNPCs()
+{
+	m_file.open("database/npcs.txt");
+	string mapName;
+	while (getline(m_file, mapName))
+	{
+		int numOfDoors;
+		m_file >> numOfDoors;
+		m_file.get();
+		for (int i = 0; i < numOfDoors; ++i)
+		{
+			string line;
+			getline(m_file, line);
+			istringstream stream(line);
+			int index;
+			string name;
+			stream >> name >> index;
+			auto npc = make_unique<NPC>(name);
+			getline(m_file, line);
+			npc->setChat(line);
+			m_maps[mapName]->addCollider(std::move(npc), index);
+		}
+	}
+	m_file.close();
+}
 
 Factory & Factory::instance()
 {

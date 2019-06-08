@@ -24,12 +24,10 @@ public:
 private:
 	Factory();
 	void createMaps();
-
-	/*template<class T>
-	void createCollider(const string & name) {}*/
+	void createDoors();
+	void createNPCs();
 
 	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
-	/*ifstream m_file;
-	unordered_map<string, void (*)()> m_colliderType;*/
+	ifstream m_file;
 };
 
