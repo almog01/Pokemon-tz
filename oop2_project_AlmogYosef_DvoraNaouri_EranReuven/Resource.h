@@ -4,6 +4,7 @@
 
 using sf::Texture;
 using sf::Image;
+using sf::Font;
 using std::unordered_map;
 using std::string;
 
@@ -18,6 +19,7 @@ public:
 
 	static const Texture & texture(const string & key);
 	static const Image & image(const string & key);
+	static Font font;
 
 private:
 	Resource();
@@ -27,6 +29,9 @@ private:
 
 	// Loads an image. Prints error message if the loading failed
 	void loadImage(const string & key, const string & path);
+
+	// Loads a font. Prints error message if the loading failed
+	void loadFont(Font & font, const string & path);
 
 	static unordered_map<string, Texture> m_textures;	// map of textures
 	static unordered_map<string, Image> m_images;		// map of images
