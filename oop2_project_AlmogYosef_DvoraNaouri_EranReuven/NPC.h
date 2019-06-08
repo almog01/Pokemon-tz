@@ -15,5 +15,14 @@ public:
 	virtual void handleCollision(NPC & npc) override;
 	virtual void handleCollision(Pokemon & pokemon) override;
 	virtual void handleCollision(Door & door) override;
+
+	// Setter
+	void setChat(const string & chat) { m_chat = chat; }
+
+	// Getter
+	string getChat() const { return m_chat; }
+
+private:
+	string m_chat;
 };
 

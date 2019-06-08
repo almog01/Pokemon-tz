@@ -1,0 +1,6 @@
+pallet
+1
+16 5 oaks_lab 97 180 0
+oaks_lab
+1
+26 1 pallet 256 560 1
