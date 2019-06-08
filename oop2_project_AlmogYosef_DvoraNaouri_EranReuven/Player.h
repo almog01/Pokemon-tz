@@ -4,6 +4,9 @@
 
 class Map;
 
+using sf::RectangleShape;
+using sf::FloatRect;
+
 class Player : public Character
 {
 public:
@@ -11,9 +14,13 @@ public:
 	~Player();
 
 	virtual void update() override;
+	
+	// Getters
+	string getMap() const { return m_map; }
+	FloatRect getPov() const { return m_pov.getGlobalBounds(); }
 
+	// Setters
 	virtual void setMap(const Map * map) override;
-	string getMap() { return m_map; }
 
 	// Inherited via Character
 	virtual void handleCollision(Collider & collider) override;
@@ -24,6 +31,7 @@ public:
 
 private:
 	Animation m_animation;
-	string m_map;	// current map
+	string m_map;			// current map
+	RectangleShape m_pov;	// point of view
 };
 
