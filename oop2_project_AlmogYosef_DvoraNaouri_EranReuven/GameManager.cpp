@@ -47,8 +47,8 @@ void GameManager::play()
 
 void GameManager::createWindow()
 {
-	m_window.create(VideoMode(1024, 600), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
-	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
+	//m_window.create(VideoMode(1024, 600), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
+	m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_map = Factory::map("pallet");
 }
@@ -149,11 +149,5 @@ void GameManager::openChat(NPC * npc)
 void GameManager::battleSence(int battleArena)
 {
 	m_screen = std::make_unique<Battle>(battleArena);
-
-//	m_pokemons.push_back(std::make_unique<Pokemon>("pikachu"));
-	//m_pokemons.push_back(std::make_unique<Pokemon>("pikachu"));
-	//m_pokemons[0]->setPosition({ 50.f, 50.f });
-	//m_pokemons[0]->setTextureRect({ 0, 10, 0, 10 });
-	//m_pokemons[0]->draw(m_window);
 }
 

@@ -1,34 +1,20 @@
 #include "Pokemon.h"
+#include "Resource.h"
 
 
-
-Pokemon::Pokemon(string pokemon)
+Pokemon::Pokemon(const string & name)
+	: m_back(Resource::texture(name + "_back")), m_front(Resource::texture(name + "_front")), m_icon(Resource::texture(name + "_icon"))
 {
-	m_sprite.setTexture(Resource::texture(pokemon), true);
-	//m_moves.resize(7);
-	//m_moves[0] = std::make_unique<Move>("tackle", Element::NORMAL, 30, 30);
-	//m_moves[1] = std::make_unique<Move>("thunder", Element::ELECTRIC, 40, 20);
-	//m_moves[2] = std::make_unique<Move>("flamethrower", Element::FIRE, 50, 10);
-	//m_moves[3] = std::make_unique<Move>("fly", Element::FLYING, 40, 10);
-	//m_moves[4] = std::make_unique<Move>("tail whip", Element::NORMAL, 0, 100);
-	//m_moves[5] = std::make_unique<Move>("roar", Element::NORMAL, 0, 30);
-	//m_moves[6] = std::make_unique<Move>("-", Element::NORMAL, 30, 0);
-	//
 }
 
-
-void Pokemon::setTextureRect(const IntRect & rect)
+void Pokemon::setTexture(const string & type)
 {
-	m_sprite.setTextureRect(rect);
-}
-
-void Pokemon::pokemonLoader(xyzPokemon pokemon)
-{
-	switch (pokemon)
-	{
-	default:
-		break;
-	}
+	if (type == "front")
+		m_sprite.setTexture(m_front);
+	else if(type == "back")
+		m_sprite.setTexture(m_back);	
+	else if(type == "icon")
+		m_sprite.setTexture(m_icon);
 }
 
 void Pokemon::handleCollision(Collider & collider)

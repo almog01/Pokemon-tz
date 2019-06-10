@@ -9,13 +9,19 @@ using std::make_unique;
 using std::istringstream;
 using std::getline;
 
-unordered_map<string, unique_ptr<Map>> Factory::m_maps{};
+unordered_map<string, unique_ptr<Map>> Factory::m_maps;
+unordered_map<string, unique_ptr<Move>> Factory::m_moves;
+unordered_map<string, unique_ptr<Pokemon>> Factory::m_pokemons;
 
 Map * Factory::map(const string & key)
 {
 	return m_maps.at(key).get();
 }
 
+Pokemon Factory::pokemon(const string & key)
+{
+	return *m_pokemons.at(key).get();
+}
 
 
 Factory::Factory()
@@ -23,6 +29,8 @@ Factory::Factory()
 	createMaps();
 	createDoors();
 	createNPCs();
+	createMoves();
+	createPokemons();
 }
 
 void Factory::createMaps()
@@ -80,6 +88,46 @@ void Factory::createNPCs()
 			npc->setChat(line);
 			m_maps[mapName]->addCollider(std::move(npc), index);
 		}
+	}
+	m_file.close();
+}
+
+void Factory::createMoves()
+{
+}
+
+void Factory::createPokemons()
+{
+	m_file.open("database/pokemons.txt");
+	string name;
+	while (getline(m_file, name))
+	{
+		auto pokemon = std::make_unique<Pokemon>(name);
+		string line;
+		getline(m_file, line);
+		istringstream stream(line);
+		string move;
+		while (stream >> move)
+		{
+			//pokemon->setMove(...)
+		}
+
+		getline(m_file, line);
+		stream.clear();
+		stream.str(line);
+		string element;
+		while (stream >> element)
+		{
+			pokemon->setElement(Move::stringToElement(element));
+		}
+		int maxHp;
+		bool canFly;
+		getline(m_file, line);
+		stream.clear();
+		stream.str(line);
+		stream >> maxHp >> canFly;
+		pokemon->setMaxHp(maxHp).setHp(maxHp).setCanFly(canFly);
+		m_pokemons[name] = std::move(pokemon);
 	}
 	m_file.close();
 }

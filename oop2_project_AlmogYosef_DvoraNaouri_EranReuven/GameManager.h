@@ -57,6 +57,7 @@ private:
 	Map* m_map;				// current map
 	Player m_player;		// the player
 	unique_ptr<Screen> m_screen;
-	//vector<unique_ptr<Pokemon>> m_pokemons;
+	unique_ptr<Pokemon> p1;
+	unique_ptr<Pokemon> p2;
 };
 

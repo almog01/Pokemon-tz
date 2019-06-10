@@ -12,6 +12,8 @@ using std::unordered_map;
 using std::unique_ptr;
 using std::ifstream;
 
+
+
 class Factory
 {
 public:
@@ -22,13 +24,15 @@ public:
 	Factory& operator=(const Factory&) = delete;
 
 	static Map * map(const string & key);
-	//static Pokemon pokemon(const string & key);
+	static Pokemon pokemon(const string & key);
 
 private:
 	Factory();
 	void createMaps();
 	void createDoors();
 	void createNPCs();
+	void createMoves();
+	void createPokemons();
 
 	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
 	static unordered_map < string, unique_ptr<Move>> m_moves;

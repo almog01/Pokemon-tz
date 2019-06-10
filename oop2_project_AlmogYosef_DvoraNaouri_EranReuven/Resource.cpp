@@ -26,7 +26,9 @@ Resource::Resource()
 
 	loadTexture("battle", "resource/img/battle/battleSheet.png");
 
-	loadTexture("pikachu", "resource/img/pokemons/pikachu.png");
+	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
+	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
+	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
 }
 
 

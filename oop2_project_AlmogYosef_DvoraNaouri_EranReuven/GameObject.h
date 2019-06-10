@@ -3,6 +3,7 @@
 #include "Resource.h"
 #include "Settings.h"
 
+
 using sf::RenderWindow;
 
 class GameObject

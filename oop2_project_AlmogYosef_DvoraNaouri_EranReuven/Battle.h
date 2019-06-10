@@ -14,6 +14,7 @@ private:
 	// Inherited via Screen
 	virtual void keyReleasedHandler(const Event & event) override;
 
-	std::unique_ptr<Pokemon> m_pokemons;
+	std::unique_ptr<Pokemon> m_p1;
+	std::unique_ptr<Pokemon> m_p2;
 };
 
