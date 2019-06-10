@@ -16,6 +16,8 @@ Map * Factory::map(const string & key)
 	return m_maps.at(key).get();
 }
 
+
+
 Factory::Factory()
 {
 	createMaps();

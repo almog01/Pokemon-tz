@@ -23,6 +23,10 @@ Resource::Resource()
 	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
 
 	loadTexture("chat_window", "resource/img/interface/chat_window.png");
+
+	loadTexture("battle", "resource/img/battle/battleSheet.png");
+
+	loadTexture("pikachu", "resource/img/pokemons/pikachu.png");
 }
 
 

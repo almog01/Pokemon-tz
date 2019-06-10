@@ -8,6 +8,7 @@
 #include "NPC.h"
 #include <unordered_map>
 #include <memory>
+#include "Pokemon.h"
 
 using std::string;
 using sf::RenderWindow;
@@ -45,6 +46,9 @@ private:
 
 	void openChat(NPC * npc);
 
+	void battleSence(int battleArena = 1);
+
+
 	// Members:
 	Resource & m_resource;	// resource occurrence to load the needed files
 	Factory & m_factory;	// factory occurrence to create the needed objects
@@ -53,5 +57,6 @@ private:
 	Map* m_map;				// current map
 	Player m_player;		// the player
 	unique_ptr<Screen> m_screen;
+	//vector<unique_ptr<Pokemon>> m_pokemons;
 };
 

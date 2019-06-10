@@ -156,6 +156,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Move.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Pharmacy.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="House.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Pharmacy.cpp" />

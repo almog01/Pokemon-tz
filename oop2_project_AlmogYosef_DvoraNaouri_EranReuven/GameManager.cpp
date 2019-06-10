@@ -2,6 +2,7 @@
 #include "Settings.h"
 #include "City.h"
 #include "Chat.h"
+#include "Battle.h"
 
 using std::make_unique;
 using sf::VideoMode;
@@ -101,6 +102,9 @@ void GameManager::keyReleasedHandler(const Event & event)
 	{
 		switch (event.key.code)
 		{
+		case Keyboard::B:		// Buttle button pressed
+			battleSence();
+			break;
 		case Keyboard::Escape:	// escape button pressed
 			m_window.close();	// close the game
 			break;
@@ -142,3 +146,14 @@ void GameManager::openChat(NPC * npc)
 {
 	m_screen = make_unique<Chat>(m_window, npc->getChat());
 }
+void GameManager::battleSence(int battleArena)
+{
+	m_screen = std::make_unique<Battle>(battleArena);
+
+//	m_pokemons.push_back(std::make_unique<Pokemon>("pikachu"));
+	//m_pokemons.push_back(std::make_unique<Pokemon>("pikachu"));
+	//m_pokemons[0]->setPosition({ 50.f, 50.f });
+	//m_pokemons[0]->setTextureRect({ 0, 10, 0, 10 });
+	//m_pokemons[0]->draw(m_window);
+}
+

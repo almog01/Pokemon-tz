@@ -4,6 +4,8 @@
 #include <fstream>
 #include "Map.h"
 #include "Collider.h"
+#include "Move.h"
+#include "Pokemon.h"
 
 using std::string;
 using std::unordered_map;
@@ -20,6 +22,7 @@ public:
 	Factory& operator=(const Factory&) = delete;
 
 	static Map * map(const string & key);
+	//static Pokemon pokemon(const string & key);
 
 private:
 	Factory();
@@ -28,6 +31,8 @@ private:
 	void createNPCs();
 
 	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
+	static unordered_map < string, unique_ptr<Move>> m_moves;
+	static unordered_map < string, unique_ptr<Pokemon>> m_pokemons;
 	ifstream m_file;
 };
 
