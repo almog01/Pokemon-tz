@@ -2,6 +2,7 @@
 #include "Settings.h"
 #include "City.h"
 #include "Chat.h"
+#include "Menu.h"
 
 using std::make_unique;
 using sf::VideoMode;
@@ -101,10 +102,13 @@ void GameManager::keyReleasedHandler(const Event & event)
 	{
 		switch (event.key.code)
 		{
-		case Keyboard::Escape:	// escape button pressed
+		case Keyboard::Escape:	// escape pressed
 			m_window.close();	// close the game
 			break;
-		case Keyboard::X:		// x button pressed
+		case Keyboard::Enter:	// enter pressed
+			m_screen = make_unique<Menu>();
+			break;
+		case Keyboard::X:		// x pressed
 			NPC* npc = nullptr;
 			if (m_map->tryChat(m_player.getPov(), npc))
 				openChat(npc);

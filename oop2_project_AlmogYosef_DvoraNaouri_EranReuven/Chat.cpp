@@ -7,24 +7,24 @@ using sf::Keyboard;
 using std::istringstream;
 
 const unsigned TEXT_SIZE = 15U;
-const float MARGIN_LEFT = 11.f;
+const float TEXT_MARGIN = 11.f;
 const float MARGIN_TOP = 4.f;
 const size_t MAX_LINE = 39;
 
 Chat::Chat(const RenderWindow & window, const string & chat)
 {
 	// initialize chat window
-	m_chatWindow.setTexture(Resource::texture("chat_window"), true);
-	m_chatWindow.setOrigin(m_chatWindow.getGlobalBounds().width / 2, m_chatWindow.getGlobalBounds().height / 2);
+	m_sprite.setTexture(Resource::texture("chat_window"), true);
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 	auto view = window.getView();
-	m_chatWindow.setPosition(Vector2f(view.getCenter().x, view.getCenter().y + (view.getSize().y / 2.5f)));
+	m_sprite.setPosition(Vector2f(view.getCenter().x, view.getCenter().y + (view.getSize().y / 2.5f)));
 
 	// initialize text
 	m_text.setFont(Resource::font);
 	m_text.setCharacterSize(TEXT_SIZE);
 	m_text.setFillColor(sf::Color::Black);
-	auto windowBounds = m_chatWindow.getGlobalBounds();
-	m_text.setPosition(Vector2f(windowBounds.left + MARGIN_LEFT, windowBounds.top + MARGIN_TOP));
+	auto windowBounds = m_sprite.getGlobalBounds();
+	m_text.setPosition(Vector2f(windowBounds.left + TEXT_MARGIN, windowBounds.top + MARGIN_TOP));
 	
 	// set chat
 	setChat(chat);
@@ -37,7 +37,7 @@ Chat::~Chat()
 
 void Chat::draw(RenderWindow & window)
 {
-	window.draw(m_chatWindow);
+	Screen::draw(window);
 	window.draw(m_text);
 }
 
@@ -102,7 +102,7 @@ void Chat::keyReleasedHandler(const Event & event)
 		if (m_it != m_chat.cend())
 			m_text.setString(*m_it);
 		else
-			m_isFinished = true;
+			m_closeScreen = true;
 		break;
 	}
 }

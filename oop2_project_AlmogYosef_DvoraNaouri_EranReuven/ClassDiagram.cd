@@ -31,7 +31,7 @@
   <Class Name="Chat" Collapsed="true">
     <Position X="27.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAEAAAAgAAAAMAAIAAAAAEAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Chat.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,14 +59,14 @@
   <Class Name="Factory" Collapsed="true">
     <Position X="31.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAECAAACAAAAAAIAABAAAAAABAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAQECAAACAAAAAAIAABAACAAABAAAAAgAAgAAAAAAA=</HashCode>
       <FileName>Factory.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameManager" Collapsed="true">
     <Position X="33.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GAAAAjAAAAAAABAAAAMEAAAAEACAAAgAAAAAABBUAAA=</HashCode>
+      <HashCode>GAAAAjAAAAAAABAAAAMEAAAAEACAAAgAAIAAABBUAAA=</HashCode>
       <FileName>GameManager.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,21 +87,21 @@
   <Class Name="Map" Collapsed="true">
     <Position X="14" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAABAAAAGBAAAgAAAAIIAAAAAJABAAAAAAQMQAAAAIA=</HashCode>
+      <HashCode>EAABAAAACBAAAgAAAAIIgAAAAJABAAAAAAQMQAAAAIA=</HashCode>
       <FileName>Map.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Screen" Collapsed="true">
     <Position X="24.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAABAIAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAEAAABAMAAAAgAAAAAAAEAAAAAAQAAAA=</HashCode>
       <FileName>Screen.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NPC" Collapsed="true">
     <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAEAAAAgAgAAAAAIAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NPC.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -115,7 +115,7 @@
   <Class Name="Player" Collapsed="true">
     <Position X="2.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAEABA=</HashCode>
+      <HashCode>AAAAACAQEAAAAAAgAAAAAAAAAAAJAAAAAAAgAQAEABA=</HashCode>
       <FileName>Player.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -126,17 +126,17 @@
       <FileName>Pokemon.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Profile" Collapsed="true">
+  <Class Name="Menu" Collapsed="true">
     <Position X="25.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAQ=</HashCode>
-      <FileName>Profile.h</FileName>
+      <HashCode>AAAAAAAAAABAAgAAAAMAAAAAAAAIAAAAAAAAAAAAICA=</HashCode>
+      <FileName>Menu.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Resource" Collapsed="true">
     <Position X="30" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAJAAAAAAAAAAAAAAAEAADAgAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAMAAAAAJAAAAAAAAAAAAAAAEABDAgAAAAAgCAAAAAg=</HashCode>
       <FileName>Resource.h</FileName>
     </TypeIdentifier>
   </Class>

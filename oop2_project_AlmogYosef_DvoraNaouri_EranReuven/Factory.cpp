@@ -38,10 +38,10 @@ void Factory::createDoors()
 	string mapName;
 	while (getline(m_file, mapName))
 	{
-		int numOfNPCs;
-		m_file >> numOfNPCs;
+		int numOfDoors;
+		m_file >> numOfDoors;
 		m_file.get();
-		for (int i = 0; i < numOfNPCs; ++i)
+		for (int i = 0; i < numOfDoors; ++i)
 		{
 			string line;
 			getline(m_file, line);
@@ -62,10 +62,10 @@ void Factory::createNPCs()
 	string mapName;
 	while (getline(m_file, mapName))
 	{
-		int numOfDoors;
-		m_file >> numOfDoors;
+		int numOfNPCs;
+		m_file >> numOfNPCs;
 		m_file.get();
-		for (int i = 0; i < numOfDoors; ++i)
+		for (int i = 0; i < numOfNPCs; ++i)
 		{
 			string line;
 			getline(m_file, line);

@@ -1,7 +1,6 @@
 #pragma once
 #include "Screen.h"
 
-using sf::Sprite;
 using sf::Text;
 using std::string;
 using std::vector;
@@ -19,7 +18,6 @@ public:
 	void setChat(const string & text);
 
 private:
-	Sprite m_chatWindow;
 	Text m_text;
 	vector<string> m_chat;
 	vector<string>::const_iterator m_it;

@@ -2,8 +2,8 @@
 #include <Windows.h>
 
 
-unordered_map<string, Texture> Resource::m_textures{};
-unordered_map<string, Image> Resource::m_images{};
+unordered_map<string, Texture> Resource::m_textures;
+unordered_map<string, Image> Resource::m_images;
 Font Resource::font;
 
 Resource::Resource()
@@ -23,6 +23,9 @@ Resource::Resource()
 	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
 
 	loadTexture("chat_window", "resource/img/interface/chat_window.png");
+	loadTexture("menu", "resource/img/interface/menu.png");
+	loadTexture("arrow", "resource/img/interface/arrow.png");
+	loadTexture("pokeball", "resource/img/interface/pokeball.png");
 }
 
 
