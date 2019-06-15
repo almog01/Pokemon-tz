@@ -15,10 +15,11 @@ public:
 
 	virtual void keyReleasedHandler(const Event & event) = 0;
 
-	bool isFinished() const { return m_closeScreen; }
+	bool isActive() const { return m_active; }
+	void deactivate() { m_active = false; }
 
 protected:
-	Sprite m_sprite;
-	bool m_closeScreen = false;	// screen finished flag
+	Sprite m_screen;
+	bool m_active = true;	// screen activated flag
 };
 

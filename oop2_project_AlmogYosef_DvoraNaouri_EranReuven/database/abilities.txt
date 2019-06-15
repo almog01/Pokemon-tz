@@ -1,0 +1,6 @@
+Tackle NORMAL 30 30
+Thundershock ELECTRIC 40 20
+Flamethrower FIRE 50 20
+Fly FLYING 40 10
+Tail_whip NORMAL 0 100
+Roar NORMAL 0 30

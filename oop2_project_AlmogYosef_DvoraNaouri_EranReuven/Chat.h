@@ -1,14 +1,17 @@
 #pragma once
 #include "Screen.h"
 
+using sf::View;
 using sf::Text;
+using sf::Texture;
+using sf::Color;
 using std::string;
 using std::vector;
 
 class Chat : public Screen
 {
 public:
-	Chat(const RenderWindow & window, const string & chat);
+	Chat(const Texture & frameTexture, const View & view, const string & chat, Color textColor = Color::Black);
 	~Chat();
 
 	// Inherited via Screen

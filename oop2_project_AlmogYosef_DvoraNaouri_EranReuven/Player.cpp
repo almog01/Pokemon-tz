@@ -16,6 +16,12 @@ Player::Player() : m_animation(*this, Resource::texture("player"), Vector2u(3, 4
 }
 
 
+Player & Player::instance()
+{
+	static Player inst;
+	return inst;
+}
+
 Player::~Player()
 {
 }

@@ -2,29 +2,27 @@
 #include <sstream>
 
 using sf::Vector2f;
-using sf::VideoMode;
 using sf::Keyboard;
 using std::istringstream;
 
 const unsigned TEXT_SIZE = 15U;
-const float TEXT_MARGIN = 11.f;
-const float MARGIN_TOP = 4.f;
+const float TEXT_MARGIN_X = 11.f;
+const float TEXT_MARGIN_Y = 4.f;
 const size_t MAX_LINE = 39;
 
-Chat::Chat(const RenderWindow & window, const string & chat)
+Chat::Chat(const Texture & frameTexture, const View & view, const string & chat, Color textColor)
 {
 	// initialize chat window
-	m_sprite.setTexture(Resource::texture("chat_window"), true);
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
-	auto view = window.getView();
-	m_sprite.setPosition(Vector2f(view.getCenter().x, view.getCenter().y + (view.getSize().y / 2.5f)));
+	m_screen.setTexture(frameTexture, true);
+	m_screen.setOrigin(m_screen.getGlobalBounds().width / 2, m_screen.getGlobalBounds().height);
+	m_screen.setPosition(Vector2f(view.getCenter().x, view.getCenter().y + (view.getSize().y / 2.f)));
 
 	// initialize text
 	m_text.setFont(Resource::font);
 	m_text.setCharacterSize(TEXT_SIZE);
-	m_text.setFillColor(sf::Color::Black);
-	auto windowBounds = m_sprite.getGlobalBounds();
-	m_text.setPosition(Vector2f(windowBounds.left + TEXT_MARGIN, windowBounds.top + MARGIN_TOP));
+	m_text.setFillColor(textColor);
+	auto frameBounds = m_screen.getGlobalBounds();
+	m_text.setPosition(Vector2f(frameBounds.left + TEXT_MARGIN_X, frameBounds.top + TEXT_MARGIN_Y));
 	
 	// set chat
 	setChat(chat);
@@ -102,7 +100,7 @@ void Chat::keyReleasedHandler(const Event & event)
 		if (m_it != m_chat.cend())
 			m_text.setString(*m_it);
 		else
-			m_closeScreen = true;
+			m_active = false;
 		break;
 	}
 }

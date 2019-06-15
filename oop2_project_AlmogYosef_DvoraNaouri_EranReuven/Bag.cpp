@@ -10,3 +10,7 @@ Bag::Bag()
 Bag::~Bag()
 {
 }
+
+void Bag::keyReleasedHandler(const Event & event)
+{
+}

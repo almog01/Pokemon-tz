@@ -2,7 +2,11 @@
 #include "Settings.h"
 #include "City.h"
 #include "Chat.h"
-#include "Menu.h"
+#include "Battle.h"
+#include "PokemonCommand.h"
+#include "BagCommand.h"
+#include "SaveCommand.h"
+#include "ExitCommand.h"
 
 using std::make_unique;
 using sf::VideoMode;
@@ -11,8 +15,12 @@ using sf::Keyboard;
 using sf::Clock;
 using sf::Time;
 
-GameManager::GameManager() : m_resource(Resource::instance()), m_factory(Factory::instance()), m_screen(nullptr)
+GameManager::GameManager() 
+	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false),
+	m_testTrainer("professor_oak")
 {
+	m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
+	m_player.addPokemon(Factory::pokemon("pikachu"));
 }
 
 
@@ -95,6 +103,11 @@ void GameManager::keyReleasedHandler(const Event & event)
 			m_window.close();	// close the game
 			return;
 		}
+		else if (m_menuActive && event.key.code == Keyboard::Enter)
+		{
+			m_menuActive = false;
+			m_screen.reset();
+		}
 		else
 			m_screen->keyReleasedHandler(event);
 	}
@@ -106,12 +119,17 @@ void GameManager::keyReleasedHandler(const Event & event)
 			m_window.close();	// close the game
 			break;
 		case Keyboard::Enter:	// enter pressed
-			m_screen = make_unique<Menu>();
+			openMenu();
 			break;
-		case Keyboard::X:		// x pressed
+		case Keyboard::Z:		// z pressed
+		{
 			NPC* npc = nullptr;
 			if (m_map->tryChat(m_player.getPov(), npc))
 				openChat(npc);
+			break;
+		}
+		case Keyboard::B:		// Battle button pressed
+			battleScene();
 			break;
 		}
 	}
@@ -121,7 +139,7 @@ void GameManager::update()
 {
 	if (m_screen)
 	{
-		if (m_screen->isFinished())
+		if (!m_screen->isActive())
 			m_screen.reset();
 	}
 	else
@@ -144,5 +162,23 @@ void GameManager::updateMap(const string & name)
 
 void GameManager::openChat(NPC * npc)
 {
-	m_screen = make_unique<Chat>(m_window, npc->getChat());
+	m_screen = make_unique<Chat>(Resource::texture("chat_window"), m_window.getView(), npc->getChat());
+}
+
+void GameManager::openMenu()
+{
+	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 4));
+	menu->setOrigin(RIGHT_MIDDLE);
+	menu->setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y));
+	menu->addCommand("POKEMON", make_unique<PokemonCommand>());
+	menu->addCommand("BAG", make_unique<BagCommand>());
+	menu->addCommand("SAVE", make_unique<SaveCommand>());
+	menu->addCommand("EXIT", make_unique<ExitCommand>(*menu));
+	m_menuActive = true;
+	m_screen = std::move(menu);
+}
+
+void GameManager::battleScene(int battleArena)
+{
+	m_screen = make_unique<Battle>(m_player, m_testTrainer, battleArena);
 }

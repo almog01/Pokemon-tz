@@ -26,6 +26,19 @@ Resource::Resource()
 	loadTexture("menu", "resource/img/interface/menu.png");
 	loadTexture("arrow", "resource/img/interface/arrow.png");
 	loadTexture("pokeball", "resource/img/interface/pokeball.png");
+
+	loadTexture("battle", "resource/img/battle/battle_sheet.png");
+	loadTexture("battle_menu_frame", "resource/img/battle/battle_menu_frame.png");
+	loadTexture("battle_menu_bg", "resource/img/battle/battle_menu_bg.png");
+	loadTexture("battle_menu_abilities", "resource/img/battle/battle_menu_abilities.png");
+	loadTexture("battle_player_statbar", "resource/img/battle/battle_player_statbar.png");
+	loadTexture("battle_enemy_statbar", "resource/img/battle/battle_enemy_statbar.png");
+	loadTexture("battle_hpbar", "resource/img/battle/battle_hpbar.png");
+	loadTexture("battle_expbar", "resource/img/battle/battle_expbar.png");
+
+	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
+	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
+	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
 }
 
 

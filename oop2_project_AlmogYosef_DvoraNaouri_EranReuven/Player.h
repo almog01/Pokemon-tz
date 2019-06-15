@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+#include "Trainer.h"
 #include "Animation.h"
 
 class Map;
@@ -7,11 +8,14 @@ class Map;
 using sf::RectangleShape;
 using sf::FloatRect;
 
-class Player : public Character
+class Player : public Character, public Trainer
 {
 public:
-	Player();
+	// Singleton Player
+	static Player& instance();
 	~Player();
+	Player(const Player&) = delete;
+	Player& operator=(const Player&) = delete;
 
 	virtual void update() override;
 	
@@ -30,6 +34,8 @@ public:
 	virtual void handleCollision(Door & door) override;
 
 private:
+	Player();
+
 	Animation m_animation;
 	string m_map;			// current map
 	RectangleShape m_pov;	// point of view

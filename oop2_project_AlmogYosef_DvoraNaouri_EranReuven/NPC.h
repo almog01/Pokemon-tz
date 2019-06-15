@@ -7,7 +7,7 @@ class NPC : public Character
 {
 public:
 	NPC(const string & name);
-	~NPC();
+	virtual ~NPC();
 
 	// Inherited via Character
 	virtual void handleCollision(Collider & collider) override;

@@ -84,7 +84,37 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuItem.h">
+    <ClInclude Include="Command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BagCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FightCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalNPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainerNPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ability.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -158,7 +188,37 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MenuItem.cpp">
+    <ClCompile Include="BagCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FightCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalNPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainerNPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ability.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

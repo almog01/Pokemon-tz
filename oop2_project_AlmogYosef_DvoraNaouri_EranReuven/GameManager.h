@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Screen.h"
 #include "NPC.h"
+#include "TrainerNPC.h"
+#include "Menu.h"
 #include <unordered_map>
 #include <memory>
 
@@ -44,14 +46,20 @@ private:
 	void updateMap(const string & name);
 
 	void openChat(NPC * npc);
+	void openMenu();
+
+	void battleScene(int battleArena = 1);
 
 	// Members:
-	Resource & m_resource;	// resource occurrence to load the needed files
-	Factory & m_factory;	// factory occurrence to create the needed objects
-	RenderWindow m_window;	// main window
-	View m_view;			// current view
-	Map* m_map;				// current map
-	Player m_player;		// the player
+	Resource & m_resource;		// resource occurrence to load the needed files
+	Factory & m_factory;		// factory occurrence to create the needed objects
+	RenderWindow m_window;		// main window
+	View m_view;				// current view
+	Map* m_map;					// current map
+	Player & m_player;			// the player
 	unique_ptr<Screen> m_screen;
+	bool m_menuActive;			// menu active flag
+
+	TrainerNPC m_testTrainer;
 };
 
