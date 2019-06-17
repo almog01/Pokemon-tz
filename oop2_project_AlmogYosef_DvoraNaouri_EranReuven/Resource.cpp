@@ -36,9 +36,20 @@ Resource::Resource()
 	loadTexture("battle_hpbar", "resource/img/battle/battle_hpbar.png");
 	loadTexture("battle_expbar", "resource/img/battle/battle_expbar.png");
 
+	loadTexture("pokemon_list_bg", "resource/img/pokemon_list/background.png");
+	loadTexture("pokemon_list_first", "resource/img/pokemon_list/first_pokemon.png");
+	loadTexture("pokemon_list_next", "resource/img/pokemon_list/next_pokemon.png");
+	loadTexture("pokemon_list_menu", "resource/img/pokemon_list/menu_frame.png");
+
 	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
 	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
 	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
+	loadTexture("mew_front", "resource/img/pokemons/mew/front.png");
+	loadTexture("mew_back", "resource/img/pokemons/mew/back.png");
+	loadTexture("mew_icon", "resource/img/pokemons/mew/icon.png");
+	loadTexture("mewtwo_front", "resource/img/pokemons/mewtwo/front.png");
+	loadTexture("mewtwo_back", "resource/img/pokemons/mewtwo/back.png");
+	loadTexture("mewtwo_icon", "resource/img/pokemons/mewtwo/icon.png");
 }
 
 

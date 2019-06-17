@@ -35,7 +35,7 @@ Chat::~Chat()
 
 void Chat::draw(RenderWindow & window)
 {
-	Screen::draw(window);
+	window.draw(m_screen);
 	window.draw(m_text);
 }
 

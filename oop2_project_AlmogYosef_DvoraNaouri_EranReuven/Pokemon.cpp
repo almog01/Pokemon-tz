@@ -24,6 +24,18 @@ void Pokemon::setTexture(const string & type)
 		m_sprite.setTexture(m_icon);
 }
 
+Sprite Pokemon::getHpBar() const
+{
+	Sprite bar(Resource::texture("battle_hpbar"));
+	auto rect = bar.getTextureRect();
+	static int rectWidth = rect.width;
+	if (m_hp <= 0)
+		bar.setTextureRect(sf::IntRect(rect.left, rect.top, 0, rect.height));
+	else
+		bar.setTextureRect(sf::IntRect(rect.left, rect.top, int((float(m_hp) / float(m_maxHp)) * rectWidth), rect.height));
+	return bar;
+}
+
 Ability * Pokemon::getAbility(int index) const
 {
 	try

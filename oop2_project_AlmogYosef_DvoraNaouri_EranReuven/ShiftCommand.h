@@ -1,10 +1,10 @@
 #pragma once
 #include "Command.h"
-class PokemonCommand :	public Command
+class ShiftCommand : public Command
 {
 public:
-	PokemonCommand();
-	~PokemonCommand();
+	ShiftCommand();
+	~ShiftCommand();
 
 	// Inherited via Command
 	virtual void execute() override;

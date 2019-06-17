@@ -2,5 +2,12 @@ Tackle NORMAL 30 30
 Thundershock ELECTRIC 40 20
 Flamethrower FIRE 50 20
 Fly FLYING 40 10
-Tail_whip NORMAL 0 100
+Tail_Whip NORMAL 0 100
 Roar NORMAL 0 30
+Pound NORMAL 40 30
+Mega_Punch NORMAL 80 20
+Psychic PSYCHIC 90 25
+Ancient_Power ROCK 60 35
+Confusion PSYCHIC 50 20
+Swift NORMAL 60 40
+Mist ICE 30 30

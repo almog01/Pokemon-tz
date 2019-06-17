@@ -11,7 +11,7 @@ public:
 	virtual ~Screen();
 
 	// Inherited via GameObject
-	virtual void draw(RenderWindow & window);
+	virtual void draw(RenderWindow & window) = 0;
 
 	virtual void keyReleasedHandler(const Event & event) = 0;
 

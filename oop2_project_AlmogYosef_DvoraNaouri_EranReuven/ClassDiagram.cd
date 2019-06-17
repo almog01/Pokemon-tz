@@ -1,16 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Animation" Collapsed="true">
-    <Position X="33.5" Y="0.5" Width="1.5" />
+  <Class Name="AbilityCommand" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAEAAAAEgAAAAgAAAAAgAAACAAgAgAgAgAAAgAAE=</HashCode>
+      <HashCode>AAAAAACACAAAAABAAAAEAEAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>AbilityCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animation" Collapsed="true">
+    <Position X="35.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAEAEAAEgAAAAgAAAAAgAAACAAgAAAgAgAAAgAAE=</HashCode>
       <FileName>Animation.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bag" Collapsed="true">
-    <Position X="22" Y="3.25" Width="1.5" />
+    <Position X="26.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAgAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Bag.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,9 +29,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Battle" Collapsed="true">
-    <Position X="26.5" Y="3.25" Width="1.5" />
+    <Position X="28.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQACAAAAAAAAAcAMECAAAAAAAQAAAAAACABACAAA=</HashCode>
+      <HashCode>AAAQQACFABAAAIAwcAOESAAAEgAAQgAEAAACAJACIAA=</HashCode>
       <FileName>Battle.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,28 +43,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Chat" Collapsed="true">
-    <Position X="28.75" Y="3.25" Width="1.5" />
+    <Position X="30.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAgAAAAMAAIAAAAAEAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Chat.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="City" Collapsed="true">
-    <Position X="10.75" Y="3.25" Width="1.5" />
+    <Position X="10.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>City.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Collider" Collapsed="true">
-    <Position X="6.25" Y="1.75" Width="1.5" />
+    <Position X="6" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACEEAAAAAAAAAAAAACAAAAAAAQAAAAAAQAAAA=</HashCode>
       <FileName>Collider.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Door" Collapsed="true">
-    <Position X="4" Y="3.25" Width="1.5" />
+    <Position X="3.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAGEEAAIAAAAAIACAACAAAAAAAAEAACAAAAQAA=</HashCode>
       <FileName>Door.h</FileName>
@@ -71,178 +78,192 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Factory" Collapsed="true">
-    <Position X="35.25" Y="0.5" Width="1.5" />
+    <Position X="37.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAQECIEACAAAAAAIAJBAACAAABAAAAAgAAiAAAAAAA=</HashCode>
       <FileName>Factory.h</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="FightCommand" Collapsed="true">
+    <Position X="11.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAAAAAAAAAEAAAAEAAAAAAAAAACABAAAAA=</HashCode>
+      <FileName>FightCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="GameManager" Collapsed="true">
-    <Position X="37" Y="0.5" Width="1.5" />
+    <Position X="39" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>GAAAAjAAAAAAABAAAAsEAAAAEACAFAgAAIAAABBcAAA=</HashCode>
       <FileName>GameManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameObject" Collapsed="true">
-    <Position X="17.5" Y="0.5" Width="1.5" />
+    <Position X="18.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>GameObject.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="House" Collapsed="true">
-    <Position X="15.25" Y="3.25" Width="1.5" />
+    <Position X="12.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>House.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Map" Collapsed="true">
-    <Position X="15.25" Y="1.75" Width="1.5" />
+    <Position X="15" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAABAAAACBAAAgAAAAIIgAAAAJABAAAAAAQMQAAAAIA=</HashCode>
       <FileName>Map.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Command" Collapsed="true">
-    <Position X="5" Y="9.5" Width="1.5" />
+    <Position X="6" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEBAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Command.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ability" Collapsed="true">
-    <Position X="31" Y="1.75" Width="1.5" />
+    <Position X="33" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAEIAAAAwAAAAgAAAAIACIACAAAQAgABAAgEAAAAAAA=</HashCode>
+      <HashCode>EAEIAAAAwAAAAgAAAAIACIACAAAQAgABBAgEAAAAAAA=</HashCode>
       <FileName>Ability.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PokemonCommand" Collapsed="true">
-    <Position X="0.5" Y="10.75" Width="1.5" />
+  <Class Name="NormalNPC" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>PokemonCommand.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAAAAA=</HashCode>
+      <FileName>NormalNPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokemonListCommand" Collapsed="true">
+    <Position X="2.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAEAAAAEAAAgAAAAAgAAAAAAAA=</HashCode>
+      <FileName>PokemonListCommand.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SaveCommand" Collapsed="true">
-    <Position X="2.75" Y="10.75" Width="1.5" />
+    <Position X="5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>SaveCommand.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Screen" Collapsed="true">
-    <Position X="25.25" Y="1.75" Width="1.5" />
+    <Position X="26.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAABAMAABAAEAAAABAEAAAAAAAAAAA=</HashCode>
       <FileName>Screen.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NPC" Collapsed="true">
-    <Position X="10.75" Y="4.75" Width="1.5" />
+    <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAEAAAAgAgAAAAAIAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NPC.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Pharmacy" Collapsed="true">
-    <Position X="17.5" Y="3.25" Width="1.5" />
+    <Position X="17.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pharmacy.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Player" Collapsed="true">
-    <Position X="5.25" Y="4.75" Width="1.5" />
+    <Position X="9.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAQEAAAAAAgAAAAAAAAAABJAAAAAAAgAQAEABA=</HashCode>
       <FileName>Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Pokemon" Collapsed="true">
-    <Position X="8.5" Y="4.75" Width="1.5" />
+    <Position X="10.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACEkEACQBAAIAGQAAQAIAhAIAAlWBwAAAgCgEI=</HashCode>
+      <HashCode>EAAAAACEkEgCQBAAIAGQAAQIIAhAYAAlWBwEAAgSgEI=</HashCode>
       <FileName>Pokemon.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Menu" Collapsed="true">
-    <Position X="24.25" Y="3.25" Width="1.5" />
+    <Position X="21.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQApAAQAABAMAAAACAAAIAABAAAAAAAIApAA=</HashCode>
+      <HashCode>AAAgAAAAQApAAQAABAMAAABCAAAIAQNgAAAAAAIApAA=</HashCode>
       <FileName>Menu.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Resource" Collapsed="true">
-    <Position X="33.5" Y="1.5" Width="1.5" />
+    <Position X="35.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAMAAAAAJAAAAAAAAAAAAAAAEABDAgAAAAAgCAAAAAg=</HashCode>
       <FileName>Resource.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Route" Collapsed="true">
-    <Position X="19.75" Y="3.25" Width="1.5" />
+    <Position X="15" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Route.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Settings" Collapsed="true">
-    <Position X="35.25" Y="1.5" Width="1.5" />
+    <Position X="37.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACQAAAgAAAAAAAAAUAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Settings.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shop" Collapsed="true">
-    <Position X="13" Y="3.25" Width="1.5" />
+    <Position X="19.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shop.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FightCommand" Collapsed="true">
-    <Position X="5" Y="10.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAEAAAAEAAAAAAAAQACABAAAAA=</HashCode>
-      <FileName>FightCommand.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Trainer" Collapsed="true">
-    <Position X="1.25" Y="3.5" Width="1.5" />
+    <Position X="3" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAACAAAQAAAACAAAAAgA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAABAAAAAAAAAAACAAAQAAAACAgAAAgA=</HashCode>
       <FileName>Trainer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NormalNPC" Collapsed="true">
-    <Position X="10.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAAAAA=</HashCode>
-      <FileName>NormalNPC.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="TrainerNPC" Collapsed="true">
-    <Position X="10.75" Y="8.25" Width="1.5" />
+    <Position X="6" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TrainerNPC.h</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PokemonList" Collapsed="true">
+    <Position X="24" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAgAAAAQAAAANAAIAgAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PokemonList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Utils" Collapsed="true">
+    <Position X="39" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="Element" Collapsed="true">
-    <Position X="33.5" Y="2.75" Width="1.5" />
+    <Position X="35.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAACgAAAAAAAAICAAAAAAAAAAAAQAQQAAAAAA=</HashCode>
       <FileName>Ability.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="SPOT" Collapsed="true">
-    <Position X="35.25" Y="2.75" Width="1.5" />
+    <Position X="37.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAABAAAAAAAAAgAAAAGAAAAAAABBAgAAAAAACAAA=</HashCode>
-      <FileName>Menu.h</FileName>
+      <FileName>Utils.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

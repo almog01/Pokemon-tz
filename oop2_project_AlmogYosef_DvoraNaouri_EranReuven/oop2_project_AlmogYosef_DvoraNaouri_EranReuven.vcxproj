@@ -163,7 +163,8 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="Ability.h" />
     <ClInclude Include="NormalNPC.h" />
-    <ClInclude Include="PokemonCommand.h" />
+    <ClInclude Include="PokemonListCommand.h" />
+    <ClInclude Include="PokemonList.h" />
     <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="NPC.h" />
@@ -174,9 +175,11 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="ShiftCommand.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Trainer.h" />
     <ClInclude Include="TrainerNPC.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbilityCommand.cpp" />
@@ -200,7 +203,8 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Ability.cpp" />
     <ClCompile Include="NormalNPC.cpp" />
-    <ClCompile Include="PokemonCommand.cpp" />
+    <ClCompile Include="PokemonListCommand.cpp" />
+    <ClCompile Include="PokemonList.cpp" />
     <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="NPC.cpp" />
@@ -210,9 +214,11 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="ShiftCommand.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="TrainerNPC.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

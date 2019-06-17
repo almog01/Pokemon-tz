@@ -1,10 +1,12 @@
 #pragma once
 #include "Character.h"
 #include "Ability.h"
+#include "Utils.h"
 
 using std::string;
 using std::vector;
 using std::unique_ptr;
+using sf::Sprite;
 
 class Pokemon : public Character
 {
@@ -18,8 +20,9 @@ public:
 	//functions to set and get pokemon stats, elements
 	void setLevel(int level) { m_level = level; }
 	int getLevel() const { return m_level; }
-	Pokemon& setHp(int hp) { m_hp = hp; return *this; }
+	Pokemon& setHp(int hp) { m_hp = (hp > 0) ? hp : 0; return *this; }
 	int getHp() const { return m_hp; }
+	Sprite getHpBar() const;
 	Pokemon& setMaxHp(int maxhp) { m_maxHp = maxhp; return *this; }
 	int getMaxHp() const { return m_maxHp; }
 	void setXp(int xp) { m_xp = xp; }
@@ -29,6 +32,8 @@ public:
 	Ability* getAbility(int index) const;
 	Ability* getRandAbility() const;
 	string getName() const { return m_name; }
+	const Texture & getIcon() { return m_icon; }
+	void setOrigin(SPOT spot) { Utils::setOrigin(m_sprite, spot); }
 
 	//add ability
 	void addAbility(Ability* x) { m_abilities.push_back(x); }

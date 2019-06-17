@@ -9,7 +9,7 @@ const float TEXT_MARGIN_X = 30.f;
 const float TEXT_MARGIN_Y = 18.f;
 const float ARROW_MARGIN = 8.f;
 
-Menu::Menu(const Texture & texture, Vector2f size, bool exitable) 
+Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable) 
 	: m_size(size), m_exitable(exitable), m_curSelection(0, 0), m_textPos(0, 0)
 {
 	m_textSize = TEXT_SIZE;
@@ -26,42 +26,6 @@ Menu::~Menu()
 {
 }
 
-void Menu::setOrigin(SPOT spot)
-{
-	switch (spot)
-	{
-	case TOP_LEFT:
-		m_screen.setOrigin(0, 0);
-		break;
-	case TOP_MIDDLE:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width / 2.f, 0);
-		break;
-	case TOP_RIGHT:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width, 0);
-		break;
-	case LEFT_MIDDLE:
-		m_screen.setOrigin(0, m_screen.getGlobalBounds().height / 2.f);
-		break;
-	case MIDDLE:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width / 2.f, m_screen.getGlobalBounds().height / 2.f);
-		break;
-	case RIGHT_MIDDLE:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width, m_screen.getGlobalBounds().height / 2.f);
-		break;
-	case BOTTOM_LEFT:
-		m_screen.setOrigin(0, m_screen.getGlobalBounds().height);
-		break;
-	case BOTTOM_MIDDLE:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width / 2.f, m_screen.getGlobalBounds().height);
-		break;
-	case BOTTOM_RIGHT:
-		m_screen.setOrigin(m_screen.getGlobalBounds().width, m_screen.getGlobalBounds().height);
-		break;
-	default:
-		break;
-	}
-}
-
 void Menu::select()
 {
 	int selected = int((m_curSelection.y * m_size.x) + m_curSelection.x);
@@ -71,7 +35,7 @@ void Menu::select()
 
 void Menu::draw(RenderWindow & window)
 {
-	Screen::draw(window);
+	window.draw(m_screen);
 	for (auto & text : m_texts)
 		window.draw(text);
 	if (!m_texts.empty())

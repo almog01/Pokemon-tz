@@ -2,7 +2,7 @@
 #include "Factory.h"
 #include "FightCommand.h"
 #include "BagCommand.h"
-#include "PokemonCommand.h"
+#include "PokemonListCommand.h"
 #include "ExitCommand.h"
 #include <cctype>
 
@@ -24,18 +24,14 @@ Battle::Battle(Trainer & player, Trainer & enemy, int battleType)
 	m_menuBg.setOrigin(m_menuBg.getGlobalBounds().width, m_menuBg.getGlobalBounds().height);
 	m_menuBg.setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y + (m_view.getSize().y / 2.f)));
 	// 2 choosed pokemons
-	m_p1 = m_player.getPokemon(0);
-	m_p1->setTexture("back");
-	m_p1->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(-85.f, -17.f));
-	m_p2 = m_enemy.getPokemon(0);
-	m_p2->setTexture("front");
-	m_p2->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(40.f, -60.f));
+	choosePokemon(true, 0);
+	choosePokemon(false, 0);
 	// initialize menu
 	m_menu.setOrigin(BOTTOM_RIGHT);
 	m_menu.setPosition(Vector2f(m_view.getCenter().x + m_view.getSize().x / 2.f, m_view.getCenter().y + m_view.getSize().y / 2.f));
-	m_menu.addCommand("Fight", std::make_unique<FightCommand>(m_view, m_subScreen, m_p1, m_playerUsedAbility));
+	m_menu.addCommand("Fight", std::make_unique<FightCommand>(m_view, m_subScreen, *m_playerPokemon, m_playerUsedAbility));
 	m_menu.addCommand("Bag", std::make_unique<BagCommand>());
-	m_menu.addCommand("Pokemon", std::make_unique<PokemonCommand>());
+	m_menu.addCommand("Pokemon", std::make_unique<PokemonListCommand>(m_subScreen, m_player, true));
 	m_menu.addCommand("Run", std::make_unique<ExitCommand>(m_menu));
 	// initialize statbars
 	m_playerStatbar.setTexture(Resource::texture("battle_player_statbar"), true);
@@ -52,19 +48,19 @@ Battle::Battle(Trainer & player, Trainer & enemy, int battleType)
 	m_expBar.setPosition(m_playerStatbar.getPosition() + Vector2f(32.f, 33.f));
 	// initialize texts
 	m_playerName.setFillColor(Color::Black);
-	m_playerName.setString(m_p1->getName());
+	m_playerName.setString((*m_playerPokemon)->getName());
 	m_playerName.setPosition(m_playerStatbar.getPosition() + Vector2f(15.f, -1.f));
 	m_playerLevel.setFillColor(Color::Black);
-	m_playerLevel.setString("Lv" + to_string(m_p1->getLevel()));
+	m_playerLevel.setString("Lv" + to_string((*m_playerPokemon)->getLevel()));
 	m_playerLevel.setPosition(m_playerStatbar.getPosition() + Vector2f(75.f, -1.f));
 	m_playerHP.setFillColor(Color::Black);
-	m_playerHP.setString(to_string(m_p1->getHp()) + "/" + to_string(m_p1->getMaxHp()));
+	m_playerHP.setString(to_string((*m_playerPokemon)->getHp()) + "/" + to_string((*m_playerPokemon)->getMaxHp()));
 	m_playerHP.setPosition(m_playerStatbar.getPosition() + Vector2f(62.f, 17.f));
 	m_enemyName.setFillColor(Color::Black);
-	m_enemyName.setString(m_p2->getName());
+	m_enemyName.setString((*m_enemyPokemon)->getName());
 	m_enemyName.setPosition(m_enemyStatbar.getPosition() + Vector2f(6.f, -1.f));
 	m_enemyLevel.setFillColor(Color::Black);
-	m_enemyLevel.setString("Lv" + to_string(m_p2->getLevel()));
+	m_enemyLevel.setString("Lv" + to_string((*m_enemyPokemon)->getLevel()));
 	m_enemyLevel.setPosition(m_enemyStatbar.getPosition() + Vector2f(66.f, -1.f));
 }
 
@@ -87,8 +83,8 @@ void Battle::draw(RenderWindow & window)
 	window.draw(m_enemyHpBar);
 	window.draw(m_enemyName);
 	window.draw(m_enemyLevel);
-	m_p1->draw(window);
-	m_p2->draw(window);
+	(*m_playerPokemon)->draw(window);
+	(*m_enemyPokemon)->draw(window);
 	m_menu.draw(window);
 	m_active = m_menu.isActive();
 	if (m_subScreen)
@@ -98,6 +94,8 @@ void Battle::draw(RenderWindow & window)
 		else
 			m_subScreen->draw(window);
 	}
+	else
+		window.setView(m_view);
 	if (m_msg)
 	{
 		if (!m_msg->isActive())
@@ -109,7 +107,6 @@ void Battle::draw(RenderWindow & window)
 		else
 			m_msg->draw(window);
 	}	
-	window.setView(m_view);
 }
 
 void Battle::keyReleasedHandler(const Event & event)
@@ -136,34 +133,44 @@ void Battle::battleArenaLoader(int battleType)
 	}
 }
 
-void Battle::updateHpBar(Sprite & bar, float max, float hp)
+void Battle::choosePokemon(bool isPlayer, int index)
 {
-	auto rect = bar.getTextureRect();
-	static int rectWidth = rect.width;
-	if (hp <= 0)
-		bar.setTextureRect(sf::IntRect(rect.left, rect.top, 0, rect.height));
+	if (isPlayer)
+	{
+		m_playerPokemon = m_player.begin() + index;
+		(*m_playerPokemon)->setTexture("back");
+		(*m_playerPokemon)->setOrigin(BOTTOM_MIDDLE);
+		(*m_playerPokemon)->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(-55.f, 32.f));
+	}
 	else
-		bar.setTextureRect(sf::IntRect(rect.left, rect.top, int((hp / max) * rectWidth), rect.height));
+	{
+		m_enemyPokemon = m_enemy.begin() + index;
+		(*m_enemyPokemon)->setTexture("front");
+		(*m_enemyPokemon)->setOrigin(BOTTOM_MIDDLE);
+		(*m_enemyPokemon)->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(60.f, -15.f));
+	}
 }
 
 void Battle::execPlayerTurn()
 {
 	if (m_playerUsedAbility)	// if an ability was used
 	{
-		m_msg = make_unique<Chat>(Resource::texture("battle_menu_bg"), m_view, m_p1->getName() + " used " + m_playerUsedAbility->getName(), Color::White);
-		m_playerUsedAbility->use(m_p2);
+		m_msg = make_unique<Chat>(Resource::texture("battle_menu_bg"), m_view, (*m_playerPokemon)->getName() + " used " + m_playerUsedAbility->getName(), Color::White);
+		m_playerUsedAbility->use((*m_enemyPokemon));
 		m_playerUsedAbility = nullptr;
-		updateHpBar(m_enemyHpBar, float(m_p2->getMaxHp()), float(m_p2->getHp()));
+		auto temp = (*m_enemyPokemon)->getHpBar();
+		m_enemyHpBar.setTextureRect(temp.getTextureRect());
 		m_isPlayerTurn = false;
 	}
 }
 
 void Battle::execEnemyTurn()
 {
-	Ability* enemyUsedAbility = m_p2->getRandAbility();
-	m_msg = make_unique<Chat>(Resource::texture("battle_menu_bg"), m_view, "Enemy " + m_p2->getName() + " used " + enemyUsedAbility->getName(), Color::White);
-	enemyUsedAbility->use(m_p1);
-	updateHpBar(m_playerHpBar, float(m_p1->getMaxHp()), float(m_p1->getHp()));
+	Ability* enemyUsedAbility = (*m_enemyPokemon)->getRandAbility();
+	m_msg = make_unique<Chat>(Resource::texture("battle_menu_bg"), m_view, "Enemy " + (*m_enemyPokemon)->getName() + " used " + enemyUsedAbility->getName(), Color::White);
+	enemyUsedAbility->use((*m_playerPokemon));
+	auto temp = (*m_playerPokemon)->getHpBar();
+	m_playerHpBar.setTextureRect(temp.getTextureRect());
 	m_isPlayerTurn = true;
 }
 

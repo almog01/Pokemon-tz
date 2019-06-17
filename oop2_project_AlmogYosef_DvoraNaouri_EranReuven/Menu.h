@@ -1,6 +1,7 @@
 #pragma once
 #include "Screen.h"
 #include "Command.h"
+#include "Utils.h"
 
 using std::vector;
 using std::pair;
@@ -8,15 +9,10 @@ using std::unique_ptr;
 using sf::Text;
 using sf::Vector2f;
 
-enum SPOT
-{
-	TOP_LEFT, TOP_MIDDLE, TOP_RIGHT, LEFT_MIDDLE, MIDDLE, RIGHT_MIDDLE, BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT
-};
-
 class Menu : public Screen
 {
 public:
-	Menu(const Texture & texture, Vector2f size, bool exitable = true);
+	Menu(const Texture & texture, const Vector2f & size, bool exitable = true);
 	~Menu();
 
 	// Inherited via Screen
@@ -26,7 +22,7 @@ public:
 	void addCommand(const string & name, unique_ptr<Command> c);
 
 	// Setters
-	void setOrigin(SPOT spot);
+	void setOrigin(SPOT spot) { Utils::setOrigin(m_screen, spot); }
 	void setPosition(const Vector2f & pos) { m_screen.setPosition(pos); }
 	void setTextSize(unsigned size) { m_textSize = size; }
 	void setTextMarginX(float margin) { m_textMarginX = margin; }

@@ -23,7 +23,7 @@ public:
 
 
 private:
-	void updateHpBar(Sprite & bar, float max, float hp);
+	void choosePokemon(bool isPlayer, int index);
 	void execPlayerTurn();
 	void execEnemyTurn();
 
@@ -42,9 +42,11 @@ private:
 	Menu m_menu;
 	Trainer & m_player;
 	Trainer & m_enemy;
+	vector<shared_ptr<Pokemon>>::iterator m_playerPokemon;
+	vector<shared_ptr<Pokemon>>::iterator m_enemyPokemon;
 	unique_ptr<Screen> m_subScreen = nullptr;
-	shared_ptr<Pokemon> m_p1;
-	shared_ptr<Pokemon> m_p2;
+	//shared_ptr<Pokemon> m_playerPokemon;
+	//shared_ptr<Pokemon> m_enemyPokemon;
 	Ability* m_playerUsedAbility = nullptr;
 	bool m_isPlayerTurn = true;			// player or enemy turn flag
 	unique_ptr<Chat> m_msg = nullptr;
