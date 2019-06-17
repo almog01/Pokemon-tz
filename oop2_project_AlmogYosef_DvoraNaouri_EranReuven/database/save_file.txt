@@ -1,0 +1,5 @@
+pallet
+180 550
+Mewtwo 106 106 2 0
+Mew 100 100 2 0
+Pikachu 110 110 2 0

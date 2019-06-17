@@ -174,7 +174,7 @@ void GameManager::openMenu()
 	menu->setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y));
 	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player));
 	menu->addCommand("BAG", make_unique<BagCommand>());
-	menu->addCommand("SAVE", make_unique<SaveCommand>());
+	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player));
 	menu->addCommand("EXIT", make_unique<ExitCommand>(*menu));
 	m_menuActive = true;
 	m_screen = std::move(menu);
