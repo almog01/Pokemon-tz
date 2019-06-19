@@ -30,6 +30,8 @@ private:
 	// Creates the main window
 	void createWindow();
 
+	void StartMenuScene();
+
 	// Initializers
 	void initCharacters();
 
@@ -59,6 +61,7 @@ private:
 	Player & m_player;			// the player
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
+	bool m_start;
 
 	TrainerNPC m_testTrainer;
 };

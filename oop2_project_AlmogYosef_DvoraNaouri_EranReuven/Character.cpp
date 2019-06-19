@@ -31,10 +31,6 @@ FloatRect Character::getGlobalBounds() const
 	return bounds;
 }
 
-void Character::update()
-{
-}
-
 void Character::setMap(const Map * map)
 {
 	m_mapData = map->getMapData();
@@ -43,7 +39,10 @@ void Character::setMap(const Map * map)
 void Character::move()
 {
 	m_sprite.move(m_direction);
-	if (checkMapCollision())
+	int mapData = checkMapCollision();
+	if (mapData == B_COLLISION)
+		stop();
+	else if (mapData == B_GRASS)
 		stop();
 }
 
@@ -52,7 +51,7 @@ void Character::stop()
 	m_sprite.move(-m_direction);
 }
 
-bool Character::checkMapCollision() const
+int Character::checkMapCollision() const
 {
 	array<Vector2f, BOUNDS> bounds;
 	int index = 0;
@@ -68,14 +67,19 @@ bool Character::checkMapCollision() const
 	try
 	{
 		for (auto& bound : bounds)
-			if ((*m_mapData).at(size_t(bound.y)).at(size_t(bound.x)) == 1)
-				return true;
+		{
+			short data = (*m_mapData).at(size_t(bound.y)).at(size_t(bound.x));
+			if (data == B_COLLISION)
+				return B_COLLISION;
+			else if (data == B_GRASS)
+				return B_GRASS;
+		}
 	}
 	catch (const std::out_of_range&)
 	{
-		return true;
+		return B_COLLISION;
 	}
-	return false;
+	return B_NO_COLLISION;
 }
 
 void Character::setTextureRect(const IntRect & rect)

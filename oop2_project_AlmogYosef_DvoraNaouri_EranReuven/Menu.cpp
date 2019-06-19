@@ -9,7 +9,7 @@ const float TEXT_MARGIN_X = 30.f;
 const float TEXT_MARGIN_Y = 18.f;
 const float ARROW_MARGIN = 8.f;
 
-Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable) 
+Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable, const Texture & arrow)
 	: m_size(size), m_exitable(exitable), m_curSelection(0, 0), m_textPos(0, 0)
 {
 	m_textSize = TEXT_SIZE;
@@ -19,7 +19,7 @@ Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable)
 	m_screen.setTexture(texture);
 
 	// initialize selection arrow
-	m_arrow.setTexture(Resource::texture("arrow"), true);
+	m_arrow.setTexture(arrow, true);
 }
 
 Menu::~Menu()
@@ -77,26 +77,31 @@ void Menu::addCommand(const string & name, unique_ptr<Command> c)
 	// initialize text
 	Text text(name, Resource::font, m_textSize);
 	text.setFillColor(Color::Black);
-	if (m_texts.empty())
-	{	// first text position
-		text.setPosition(Vector2f(m_screen.getGlobalBounds().left + 14.f, m_screen.getGlobalBounds().top + 2.f));
-		m_textPos.x++;
-	}
-	else
-	{
-		if (m_textPos.x < m_size.x)
-		{
-			text.setPosition(m_texts[0].getPosition() + Vector2f(m_textMarginX * (m_textPos.x + 1), m_textMarginY * m_textPos.y));
-			m_textPos.x++;
-		}
-		else if (m_textPos.x >= m_size.x)
-		{
-			m_textPos.x = 1;
-			m_textPos.y++;
-			text.setPosition(m_texts[0].getPosition() + Vector2f(0, m_textMarginY * m_textPos.y));
-		}
-	}
 	m_texts.push_back(text);
 	m_commands.emplace_back(option(name, std::move(c)));
 }
 
+void Menu::setPosition(const Vector2f & pos)
+{
+	m_screen.setPosition(pos);
+	if (!m_texts.empty())
+	{	// first text position
+		m_texts[0].setPosition(Vector2f(m_screen.getGlobalBounds().left + 14.f, m_screen.getGlobalBounds().top + 2.f));
+		m_textPos.x++;
+
+		for (size_t i = 1; i < m_texts.size(); ++i)
+		{
+			if (m_textPos.x < m_size.x)
+			{
+				m_texts[i].setPosition(m_texts[0].getPosition() + Vector2f(m_textMarginX * (m_textPos.x + 1), m_textMarginY * m_textPos.y));
+				m_textPos.x++;
+			}
+			else if (m_textPos.x >= m_size.x)
+			{
+				m_textPos.x = 1;
+				m_textPos.y++;
+				m_texts[i].setPosition(m_texts[0].getPosition() + Vector2f(0, m_textMarginY * m_textPos.y));
+			}
+		}
+	}
+}

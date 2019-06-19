@@ -3,6 +3,7 @@
 #include "Trainer.h"
 #include "Animation.h"
 
+class GameManager;
 class Map;
 
 using sf::RectangleShape;
@@ -17,7 +18,7 @@ public:
 	Player(const Player&) = delete;
 	Player& operator=(const Player&) = delete;
 
-	virtual void update() override;
+	void update();
 	
 	// Getters
 	string getMap() const { return m_map; }

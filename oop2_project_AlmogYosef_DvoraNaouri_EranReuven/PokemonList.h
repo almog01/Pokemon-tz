@@ -11,7 +11,7 @@ using std::shared_ptr;
 class PokemonList :	public Screen
 {
 public:
-	PokemonList(Trainer & trainer, bool inBattle = false);
+	PokemonList(Trainer & trainer, int & nextPokemon, bool inBattle = false);
 	~PokemonList();
 
 	// Inherited via Screen
@@ -31,5 +31,6 @@ private:
 	vector<Text> m_texts;
 	int m_selected;
 	unique_ptr<Screen> m_menu = nullptr;
+	int & m_nextPokemon;
 };
 

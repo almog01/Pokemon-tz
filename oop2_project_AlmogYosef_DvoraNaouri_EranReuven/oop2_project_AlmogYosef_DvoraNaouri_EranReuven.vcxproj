@@ -159,6 +159,8 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="House.h" />
+    <ClInclude Include="InstructionsCommand.h" />
+    <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Ability.h" />
@@ -177,6 +179,8 @@
     <ClInclude Include="Settings.h" />
     <ClInclude Include="ShiftCommand.h" />
     <ClInclude Include="Shop.h" />
+    <ClInclude Include="startCommand.h" />
+    <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Trainer.h" />
     <ClInclude Include="TrainerNPC.h" />
     <ClInclude Include="Utils.h" />
@@ -198,6 +202,8 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="House.cpp" />
+    <ClCompile Include="InstructionsCommand.cpp" />
+    <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Command.cpp" />
@@ -216,6 +222,8 @@
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="ShiftCommand.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="startCommand.cpp" />
+    <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="TrainerNPC.cpp" />
     <ClCompile Include="Utils.cpp" />

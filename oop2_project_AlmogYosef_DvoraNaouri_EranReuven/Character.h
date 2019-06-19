@@ -20,8 +20,6 @@ public:
 
 	virtual Vector2f getPosition() const { return m_sprite.getPosition(); }
 
-	virtual void update();
-
 	virtual void setMap(const Map * map);
 
 	// Inherited via GameObject
@@ -33,7 +31,7 @@ protected:
 	void move();
 	void stop();
 
-	bool checkMapCollision() const;
+	int checkMapCollision() const;
 
 	Sprite m_sprite;		// sprite of the character
 	float m_moveSpeed;		// move speed

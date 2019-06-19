@@ -2,11 +2,14 @@ pikachu
 Tackle Tail_Whip Thundershock Roar
 N_A ELECTRIC
 110 0
+route1
 mew
 Pound Mega_Punch Psychic Ancient_Power
 N_A PSYCHIC
 100 0
+route1
 mewtwo
 Confusion Swift Psychic Mist
 N_A PSYCHIC
 106 0
+route1

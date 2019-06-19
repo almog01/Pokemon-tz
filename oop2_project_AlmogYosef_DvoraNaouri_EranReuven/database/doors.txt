@@ -1,6 +1,14 @@
 pallet
-1
-16 5 oaks_lab 97 180 0
+2
+34 2 route1 200 620 0
+16 5 oaks_lab 97 180 1
 oaks_lab
 1
-26 1 pallet 256 560 1
+26 1 pallet 260 227 1
+route1
+2
+59 2 viridian 378 612 0
+32 2 pallet 200 7 1
+viridian
+1
+64 2 route1 185 10 6

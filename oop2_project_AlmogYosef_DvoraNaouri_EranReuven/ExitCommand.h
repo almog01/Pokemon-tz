@@ -1,17 +1,17 @@
 #pragma once
 #include "Command.h"
-#include "Menu.h"
+#include "Screen.h"
 
 class ExitCommand : public Command
 {
 public:
-	ExitCommand(Menu & menu);
+	ExitCommand(Screen * screen);
 	~ExitCommand();
 
 	// Inherited via Command
 	virtual void execute() override;
 
 private:
-	Menu & m_menu;
+	Screen * m_screen;
 };
 

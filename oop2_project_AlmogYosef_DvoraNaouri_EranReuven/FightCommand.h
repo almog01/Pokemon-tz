@@ -11,7 +11,7 @@ using std::shared_ptr;
 class FightCommand : public Command
 {
 public:
-	FightCommand(View & view, unique_ptr<Screen> & screen, shared_ptr<Pokemon> player, Ability*& usedAbility);
+	FightCommand(View & view, unique_ptr<Screen> & screen, shared_ptr<Pokemon> & player, Ability*& usedAbility);
 	~FightCommand();
 
 	// Inherited via Command
@@ -20,7 +20,7 @@ public:
 private:
 	View & m_view;
 	unique_ptr<Screen> & m_screen;
-	shared_ptr<Pokemon> m_player;
+	shared_ptr<Pokemon> & m_pokemon;
 	Ability*& m_usedAbility;
 };
 

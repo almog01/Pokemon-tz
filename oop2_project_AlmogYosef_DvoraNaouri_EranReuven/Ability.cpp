@@ -40,9 +40,10 @@ Element Ability::stringToElement(const string & x)
 		return N_A;
 }
 
-void Ability::use(shared_ptr<Pokemon> enemy)
+void Ability::use(shared_ptr<Pokemon> enemy, float lvlDiff)
 {
-	enemy->setHp(enemy->getHp() - m_damage);
+	int finalDamage = int(lvlDiff * m_damage);
+	enemy->setHp(enemy->getHp() - finalDamage);
 }
 
 void Ability::draw(sf::RenderWindow &window)

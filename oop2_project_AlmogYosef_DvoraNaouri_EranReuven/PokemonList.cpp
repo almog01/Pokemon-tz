@@ -11,7 +11,8 @@ using std::make_unique;
 
 const unsigned TEXT_SIZE = 14U;
 
-PokemonList::PokemonList(Trainer & trainer, bool inBattle) : m_inBattle(inBattle), m_selected(0)
+PokemonList::PokemonList(Trainer & trainer, int & nextPokemon, bool inBattle)
+	: m_inBattle(inBattle), m_selected(0), m_nextPokemon(nextPokemon)
 {
 	m_screen.setTexture(Resource::texture("pokemon_list_bg"));
 	m_view = View(m_screen.getGlobalBounds());
@@ -50,7 +51,7 @@ void PokemonList::keyReleasedHandler(const Event & event)
 			updateSelection();
 			break;
 		case Keyboard::Up:
-			m_selected = (m_selected - 1) >= 0 ? m_selected - 1 : m_selected - 1 + m_frames.size();
+			m_selected = (m_selected - 1) >= 0 ? m_selected - 1 : m_selected - 1 + int(m_frames.size());
 			updateSelection();
 			break;
 		case Keyboard::Down:
@@ -131,10 +132,10 @@ void PokemonList::select()
 	if (m_inBattle)
 	{
 		auto menu = make_unique <Menu>(Resource::texture("pokemon_list_menu"), Vector2f(1.f, 2.f));
+		menu->addCommand("Shift", make_unique<ShiftCommand>(m_selected, m_nextPokemon));
+		menu->addCommand("Cancel", make_unique<ExitCommand>(menu.get()));
 		menu->setOrigin(BOTTOM_RIGHT);
 		menu->setPosition(Vector2f(m_view.getSize().x, m_view.getSize().y));
-		menu->addCommand("Shift", make_unique<ShiftCommand>());
-		menu->addCommand("Cancel", make_unique<ExitCommand>(*menu));
 		m_menu = std::move(menu);
 	}
 }

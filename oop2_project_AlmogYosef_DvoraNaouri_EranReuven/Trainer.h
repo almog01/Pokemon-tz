@@ -16,6 +16,8 @@ public:
 
 	void addPokemon(Pokemon pokemon) { m_pokemons.emplace_back(make_shared<Pokemon>(pokemon)); }
 
+	bool isDefeated() const;
+
 	vector<shared_ptr<Pokemon>>::iterator begin() { return m_pokemons.begin(); }
 	vector<shared_ptr<Pokemon>>::iterator end() { return m_pokemons.end(); }
 	vector<shared_ptr<Pokemon>>::const_iterator cbegin() { return m_pokemons.cbegin(); }

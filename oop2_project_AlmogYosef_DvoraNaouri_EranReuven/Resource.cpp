@@ -10,6 +10,10 @@ Resource::Resource()
 {
 	loadFont(font, "resource/font/pokemon_fire_red.ttf");
 
+	loadTexture("start_menu_bg", "resource/img/startmenu/pokemon-tz.png");
+	loadTexture("main_menu", "resource/img/startmenu/MainMenu.png");
+	loadTexture("mainMenu_arrow", "resource/img/startmenu/mainMarrow.png");
+
 	loadTexture("player", "resource/img/characters/player.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
 
@@ -19,6 +23,12 @@ Resource::Resource()
 	loadTexture("oaks_lab", "resource/img/maps/oaks_lab/oaks_lab.png");
 	loadImage("oaks_lab_data", "resource/img/maps/oaks_lab/oaks_lab_data.png");
 
+	loadTexture("route1", "resource/img/maps/route1/route1.png");
+	loadImage("route1_data", "resource/img/maps/route1/route1_data.png");
+
+	loadTexture("viridian", "resource/img/maps/viridian/viridian.png");
+	loadImage("viridian_data", "resource/img/maps/viridian/viridian_data.png");
+
 	loadTexture("vermillion", "resource/img/maps/vermillion/vermillion.png");
 	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
 
@@ -26,6 +36,7 @@ Resource::Resource()
 	loadTexture("menu", "resource/img/interface/menu.png");
 	loadTexture("arrow", "resource/img/interface/arrow.png");
 	loadTexture("pokeball", "resource/img/interface/pokeball.png");
+	loadTexture("boolean_menu", "resource/img/interface/boolean_menu.png");
 
 	loadTexture("battle", "resource/img/battle/battle_sheet.png");
 	loadTexture("battle_menu_frame", "resource/img/battle/battle_menu_frame.png");

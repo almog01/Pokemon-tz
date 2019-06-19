@@ -2,6 +2,7 @@
 #include "Screen.h"
 #include "Pokemon.h"
 #include "Trainer.h"
+#include "Player.h"
 #include "Menu.h"
 #include "Chat.h"
 
@@ -12,7 +13,8 @@ using sf::Text;
 class Battle : public Screen
 {
 public:
-	Battle(Trainer & player, Trainer & enemy, int battleType = 1);
+	Battle(Player & player, Trainer & enemy, int battleType = 1);
+	Battle(Player & player, Pokemon & wildPokemon, int battleType = 1);
 	~Battle();
 
 	// Inherited via Screen
@@ -23,9 +25,17 @@ public:
 
 
 private:
+	void initBattle(int battleType);
+	void updateHpBar(Pokemon & pokemon, Sprite & bar);
+	bool printMessage(const string & msg);
 	void choosePokemon(bool isPlayer, int index);
+	void playTurns();
 	void execPlayerTurn();
 	void execEnemyTurn();
+	void playerDeadHandler();
+	void enemyDeadHandler();
+	void addExp();
+	void updateExpBar();
 
 	sf::View m_view;
 	Sprite m_menuBg;		// menu background
@@ -40,15 +50,20 @@ private:
 	Text m_enemyName;
 	Text m_enemyLevel;
 	Menu m_menu;
-	Trainer & m_player;
-	Trainer & m_enemy;
-	vector<shared_ptr<Pokemon>>::iterator m_playerPokemon;
-	vector<shared_ptr<Pokemon>>::iterator m_enemyPokemon;
+	Player & m_player;
+	Trainer * m_enemy = nullptr;
+	shared_ptr<Pokemon> m_playerPokemon;
+	shared_ptr<Pokemon> m_enemyPokemon;
 	unique_ptr<Screen> m_subScreen = nullptr;
-	//shared_ptr<Pokemon> m_playerPokemon;
-	//shared_ptr<Pokemon> m_enemyPokemon;
 	Ability* m_playerUsedAbility = nullptr;
-	bool m_isPlayerTurn = true;			// player or enemy turn flag
+	Ability* m_enemyUsedAbility = nullptr;
+	bool m_isPlayerTurn = false;			// player or enemy turn flag
+	bool m_playerTurnExec = true;
+	bool m_enemyTurnExec = true;
 	unique_ptr<Chat> m_msg = nullptr;
+	int m_currPokemon = 0;
+	int m_nextPokemon = 0;
+	int m_enemyCurrPokemon = 0;
+	bool m_expAdded = false;
 };
 

@@ -52,17 +52,17 @@ unsigned short Map::getColorData(Uint32 color, unsigned x, unsigned y)
 {
 	switch (color)
 	{
-	case 255:			// black = collision
-		return 1;
-	case 4294967295:	// white = no collision
-		return 0;
-	case 16711935:		// green = grass
-		return 2;
-	case 4278190335:	// red = collider
+	case C_BLACK:				// black = collision
+		return B_COLLISION;
+	case C_WHITE:				// white = no collision
+		return B_NO_COLLISION;
+	case C_GREEN:				// green = grass
+		return B_GRASS;
+	case C_RED:					// red = save collider position
 		m_collidersPos.emplace_back(make_unique<Vector2f>(float(x), float(y)));
-		return 0;
+		return B_NO_COLLISION;
 	default:
-		return 0;		// no collision
+		return B_NO_COLLISION;	// no collision
 	}
 }
 

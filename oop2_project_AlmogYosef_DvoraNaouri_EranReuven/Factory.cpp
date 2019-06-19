@@ -150,7 +150,15 @@ void Factory::createPokemons()
 		stream.str(line);
 		stream >> maxHp >> canFly;
 		pokemon->setMaxHp(maxHp).setHp(maxHp).setCanFly(canFly);
+
 		m_pokemons[name] = std::move(pokemon);
+
+		getline(m_file, line);
+		stream.clear();
+		stream.str(line);
+		string mapName;
+		while (stream >> mapName)
+			m_maps[mapName]->addWildPokemon(Factory::pokemon(name));	// add a copy of the pokemon to the map
 	}
 	m_file.close();
 }

@@ -37,7 +37,7 @@ public:
 	int getSpeed() { return m_speed; }
 	string getName() { return m_name; }
 
-	void use(shared_ptr<Pokemon> enemy);
+	void use(shared_ptr<Pokemon> enemy, float lvlDiff);
 
 private:
 	string m_name;

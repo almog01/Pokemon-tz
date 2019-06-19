@@ -1,4 +1,4 @@
 oaks_lab
 1
 professor_oak 0
-Hello and Welcome to Pokemon-tz!. Go ahead and choose your starting pokemon.
+Hello and Welcome to Pokemon-tz!

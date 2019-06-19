@@ -6,7 +6,7 @@ Door::Door(const Vector2f & size, const string & dest, const Vector2f & destPos)
 	: m_destination(dest), m_destPos(destPos)
 {
 	m_bounds.setSize(size);
-	m_bounds.setFillColor(sf::Color::Black);
+	m_bounds.setFillColor(sf::Color::Transparent);
 }
 
 

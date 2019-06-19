@@ -12,7 +12,7 @@ using sf::Vector2f;
 class Menu : public Screen
 {
 public:
-	Menu(const Texture & texture, const Vector2f & size, bool exitable = true);
+	Menu(const Texture & texture, const Vector2f & size, bool exitable = true, const Texture & arrow = Resource::texture("arrow"));
 	~Menu();
 
 	// Inherited via Screen
@@ -23,14 +23,14 @@ public:
 
 	// Setters
 	void setOrigin(SPOT spot) { Utils::setOrigin(m_screen, spot); }
-	void setPosition(const Vector2f & pos) { m_screen.setPosition(pos); }
+	void setPosition(const Vector2f & pos);
 	void setTextSize(unsigned size) { m_textSize = size; }
 	void setTextMarginX(float margin) { m_textMarginX = margin; }
 	void setTextMarginY(float margin) { m_textMarginY = margin; }
 
 	void select();
 
-private:
+protected:
 	typedef pair<string, unique_ptr<Command>> option;
 	vector<option> m_commands;
 	Vector2f m_size;

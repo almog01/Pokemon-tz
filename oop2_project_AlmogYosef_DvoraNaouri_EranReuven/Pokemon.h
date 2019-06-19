@@ -23,6 +23,7 @@ public:
 	Pokemon& setHp(int hp) { m_hp = (hp > 0) ? hp : 0; return *this; }
 	int getHp() const { return m_hp; }
 	Sprite getHpBar() const;
+	Sprite getExpBar() const;
 	Pokemon& setMaxHp(int maxhp) { m_maxHp = maxhp; return *this; }
 	int getMaxHp() const { return m_maxHp; }
 	void setXp(int xp) { m_xp = xp; }
@@ -34,6 +35,8 @@ public:
 	string getName() const { return m_name; }
 	const Texture & getIcon() { return m_icon; }
 	void setOrigin(SPOT spot) { Utils::setOrigin(m_sprite, spot); }
+	bool isDead() const { return m_hp == 0; }
+	void addExp(int amount);
 
 	//add ability
 	void addAbility(Ability* x) { m_abilities.push_back(x); }

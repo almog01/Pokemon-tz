@@ -8,6 +8,6 @@ Pound NORMAL 40 30
 Mega_Punch NORMAL 80 20
 Psychic PSYCHIC 90 25
 Ancient_Power ROCK 60 35
-Confusion PSYCHIC 50 20
-Swift NORMAL 60 40
+Confusion PSYCHIC 50 1
+Swift NORMAL 60 100
 Mist ICE 30 30
