@@ -2,10 +2,10 @@
 #include <sstream>
 
 
-SaveCommand::SaveCommand(Player & player) : m_player(player)
+SaveCommand::SaveCommand(Player & player)
+	:m_player(player)
 {
 }
-
 
 SaveCommand::~SaveCommand()
 {
@@ -14,7 +14,7 @@ SaveCommand::~SaveCommand()
 void SaveCommand::execute()
 {
 	stringstream str;
-	ofstream saveFile("database/save_file.txt");
+	ofstream saveFile ("database/save_file.txt");
 
 	saveFile << m_player.getMap();
 	saveFile << '\n';

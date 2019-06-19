@@ -3,6 +3,7 @@
 #include "Player.h"
 #include <fstream>
 
+
 using std::ofstream;
 using std::stringstream;
 
@@ -14,8 +15,6 @@ public:
 
 	// Inherited via Command
 	virtual void execute() override;
-
-private:
 	Player& m_player;
 };
 

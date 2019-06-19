@@ -1,7 +1,6 @@
 #include "GameManager.h"
 #include "Settings.h"
 #include "City.h"
-#include "StartMenu.h"
 #include "Chat.h"
 #include "Battle.h"
 #include "PokemonListCommand.h"
@@ -17,11 +16,9 @@ using sf::Clock;
 using sf::Time;
 
 GameManager::GameManager() 
-	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false), m_start(true),
+	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false),
 	m_testTrainer("professor_oak")
 {
-	m_testTrainer.addPokemon(Factory::pokemon("mew"));
-	m_testTrainer.addPokemon(Factory::pokemon("mewtwo"));
 	m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
 	m_player.addPokemon(Factory::pokemon("mewtwo"));
 	m_player.addPokemon(Factory::pokemon("mew"));
@@ -44,9 +41,6 @@ void GameManager::play()
 
 	while (m_window.isOpen())	// main window loop
 	{
-		if (m_start)
-			StartMenuScene();
-
 		handleEvents();		// handle each events
 
 		m_window.clear();	// clear the main window
@@ -69,15 +63,9 @@ void GameManager::createWindow()
 	m_map = Factory::map("pallet");
 }
 
-void GameManager::StartMenuScene()
-{
-	m_screen = make_unique<StartMenu>(m_player);
-	m_start = false;
-}
-
 void GameManager::initCharacters()
 {
-	m_player.setPosition(Vector2f(180.f, 280.f));
+	m_player.setPosition(Vector2f(180.f, 550.f));
 	m_player.setMap(m_map);
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);
@@ -182,19 +170,17 @@ void GameManager::openChat(NPC * npc)
 void GameManager::openMenu()
 {
 	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 4));
-	int temp;
-	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player, temp));
-	menu->addCommand("BAG", make_unique<BagCommand>());
-	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player));
-	menu->addCommand("EXIT", make_unique<ExitCommand>(menu.get()));
 	menu->setOrigin(RIGHT_MIDDLE);
 	menu->setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y));
+	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player));
+	menu->addCommand("BAG", make_unique<BagCommand>());
+	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player));
+	menu->addCommand("EXIT", make_unique<ExitCommand>(*menu));
 	m_menuActive = true;
 	m_screen = std::move(menu);
 }
 
 void GameManager::battleScene(int battleArena)
 {
-	if (!m_player.isDefeated() && !m_testTrainer.isDefeated())
-		m_screen = make_unique<Battle>(m_player, m_testTrainer, battleArena);
+	m_screen = make_unique<Battle>(m_player, m_testTrainer, battleArena);
 }
