@@ -172,10 +172,11 @@ void GameManager::openMenu()
 	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 4));
 	menu->setOrigin(RIGHT_MIDDLE);
 	menu->setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y));
-	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player));
+	int temp;
+	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player, temp));
 	menu->addCommand("BAG", make_unique<BagCommand>());
 	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player));
-	menu->addCommand("EXIT", make_unique<ExitCommand>(*menu));
+	menu->addCommand("EXIT", make_unique<ExitCommand>(menu.get()));
 	m_menuActive = true;
 	m_screen = std::move(menu);
 }
