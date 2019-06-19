@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "Settings.h"
+#include "StartMenu.h"
 #include "City.h"
 #include "Chat.h"
 #include "Battle.h"
@@ -16,10 +17,10 @@ using sf::Clock;
 using sf::Time;
 
 GameManager::GameManager() 
-	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false),
+	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false), m_start(true),
 	m_testTrainer("professor_oak")
 {
-	m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
+	//m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
 	m_player.addPokemon(Factory::pokemon("mewtwo"));
 	m_player.addPokemon(Factory::pokemon("mew"));
 	m_player.addPokemon(Factory::pokemon("pikachu"));
@@ -41,6 +42,9 @@ void GameManager::play()
 
 	while (m_window.isOpen())	// main window loop
 	{
+		if (m_start)
+			StartMenuScene();
+
 		handleEvents();		// handle each events
 
 		m_window.clear();	// clear the main window
@@ -183,4 +187,10 @@ void GameManager::openMenu()
 void GameManager::battleScene(int battleArena)
 {
 	m_screen = make_unique<Battle>(m_player, m_testTrainer, battleArena);
+}
+
+void GameManager::StartMenuScene()
+{
+	m_screen = make_unique<StartMenu>(m_player);
+	m_start = false;
 }

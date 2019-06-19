@@ -12,7 +12,7 @@ using sf::Vector2f;
 class Menu : public Screen
 {
 public:
-	Menu(const Texture & texture, const Vector2f & size, bool exitable = true);
+	Menu(const Texture & texture, const Vector2f & size, bool exitable = true, const Texture & arrow = Resource::texture("arrow"));
 	~Menu();
 
 	// Inherited via Screen

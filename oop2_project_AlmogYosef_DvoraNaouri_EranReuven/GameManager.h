@@ -49,6 +49,7 @@ private:
 	void openMenu();
 
 	void battleScene(int battleArena = 1);
+	void StartMenuScene();
 
 	// Members:
 	Resource & m_resource;		// resource occurrence to load the needed files
@@ -59,6 +60,7 @@ private:
 	Player & m_player;			// the player
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
+	bool m_start;
 
 	TrainerNPC m_testTrainer;
 };

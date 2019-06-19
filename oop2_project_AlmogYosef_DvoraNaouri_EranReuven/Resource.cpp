@@ -10,6 +10,11 @@ Resource::Resource()
 {
 	loadFont(font, "resource/font/pokemon_fire_red.ttf");
 
+	loadTexture("start_menu_bg", "resource/img/startmenu/pokemon-tz.png");
+	loadTexture("main_menu", "resource/img/startmenu/MainMenu.png");
+	loadTexture("mainMenu_arrow", "resource/img/startmenu/mainMarrow.png");
+
+
 	loadTexture("player", "resource/img/characters/player.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
 

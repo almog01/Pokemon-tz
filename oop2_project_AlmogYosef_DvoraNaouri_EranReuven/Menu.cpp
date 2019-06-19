@@ -9,7 +9,7 @@ const float TEXT_MARGIN_X = 30.f;
 const float TEXT_MARGIN_Y = 18.f;
 const float ARROW_MARGIN = 8.f;
 
-Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable) 
+Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable, const Texture & arrow)
 	: m_size(size), m_exitable(exitable), m_curSelection(0, 0), m_textPos(0, 0)
 {
 	m_textSize = TEXT_SIZE;
@@ -19,7 +19,7 @@ Menu::Menu(const Texture & texture, const Vector2f & size, bool exitable)
 	m_screen.setTexture(texture);
 
 	// initialize selection arrow
-	m_arrow.setTexture(Resource::texture("arrow"), true);
+	m_arrow.setTexture(arrow, true);
 }
 
 Menu::~Menu()
