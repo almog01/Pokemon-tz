@@ -65,7 +65,7 @@ void GameManager::createWindow()
 
 void GameManager::initCharacters()
 {
-	m_player.setPosition(Vector2f(180.f, 550.f));
+	m_player.setPosition(Vector2f(180.f, 200.f));
 	m_player.setMap(m_map);
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);
