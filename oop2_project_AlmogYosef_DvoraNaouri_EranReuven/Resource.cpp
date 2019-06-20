@@ -30,6 +30,9 @@ Resource::Resource()
 	loadTexture("viridian", "resource/img/maps/viridian/viridian.png");
 	loadImage("viridian_data", "resource/img/maps/viridian/viridian_data.png");
 
+	loadTexture("pharmacy", "resource/img/maps/pharmacy/pharmacy.png");
+	loadImage("pharmacy_data", "resource/img/maps/pharmacy/pharmacy_data.png");
+
 	loadTexture("vermillion", "resource/img/maps/vermillion/vermillion.png");
 	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
 

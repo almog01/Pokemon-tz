@@ -191,7 +191,6 @@ void GameManager::openChat()
 		else
 			m_screen = make_unique<Chat>(Resource::texture("chat_window"), m_window.getView(), npc->getChat());
 	}
-	
 }
 
 void GameManager::openMenu()
