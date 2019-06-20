@@ -4,6 +4,7 @@
 #include "Door.h"
 #include "NPC.h"
 #include "TrainerNPC.h"
+#include "NurseNPC.h"
 #include <sstream>
 
 using std::make_unique;
@@ -21,6 +22,7 @@ Factory::Factory()
 	createAbilities();
 	createPokemons();
 	createNPCs();
+	createSpecialNPCs();
 	createTrainers();
 }
 
@@ -92,7 +94,7 @@ void Factory::createAbilities()
 		string name, element;
 		int damage, speed;
 		stream >> name >> element >> damage >> speed;
-		m_abilities[name] = make_unique<Ability>(name, Ability::stringToElement(element), damage, speed);
+		m_abilities[name] = make_unique<Ability>(name, element, damage, speed);
 	}
 	m_file.close();
 }
@@ -116,16 +118,10 @@ void Factory::createPokemons()
 		stream.clear();
 		stream.str(line);
 		string element;
-		while (stream >> element)
-			pokemon->setElement(Ability::stringToElement(element));
-
 		int maxHp;
-		bool canFly;
-		getline(m_file, line);
-		stream.clear();
-		stream.str(line);
-		stream >> maxHp >> canFly;
-		pokemon->setMaxHp(maxHp).setHp(maxHp).setCanFly(canFly);
+		stream >> element >> maxHp;
+		pokemon->setElement(element);
+		pokemon->setMaxHp(maxHp).setHp(maxHp);
 
 		m_pokemons[name] = std::move(pokemon);
 
@@ -163,6 +159,13 @@ void Factory::createNPCs()
 		}
 	}
 	m_file.close();
+}
+
+void Factory::createSpecialNPCs()
+{
+	auto nurse = make_unique<NurseNPC>("nurse");
+	nurse->setChat("I've restored your Pokemons to full health! We hope to see you again!");
+	m_maps["pharmacy"]->addCollider(std::move(nurse), 0);
 }
 
 void Factory::createTrainers()

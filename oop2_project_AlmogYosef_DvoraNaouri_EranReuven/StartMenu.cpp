@@ -36,5 +36,8 @@ void StartMenu::draw(RenderWindow & window)
 
 void StartMenu::keyReleasedHandler(const Event & event)
 {
-	m_menu.keyReleasedHandler(event);
+	if (event.key.code == sf::Keyboard::Enter)
+		m_menu.select();
+	else
+		m_menu.keyReleasedHandler(event);
 }

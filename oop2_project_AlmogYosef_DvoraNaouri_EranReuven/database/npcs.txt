@@ -2,7 +2,7 @@ oaks_lab
 1
 professor_oak 0
 Hello and Welcome to Pokemon-tz!
-pharmacy
+shop
 1
-nurse 0
-I've restored your Pokemons to full health! We hope to see you again!
+shop_npc 0
+I'm sorry, we're closed at the moment.

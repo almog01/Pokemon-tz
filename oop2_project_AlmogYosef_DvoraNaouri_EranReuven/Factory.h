@@ -32,6 +32,7 @@ private:
 	void createAbilities();
 	void createPokemons();
 	void createNPCs();
+	void createSpecialNPCs();
 	void createTrainers();
 
 	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps

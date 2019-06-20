@@ -1,7 +1,6 @@
 #include "Battle.h"
 #include "Factory.h"
 #include "FightCommand.h"
-#include "BagCommand.h"
 #include "PokemonListCommand.h"
 #include "ExitCommand.h"
 #include <cctype>
@@ -89,7 +88,7 @@ void Battle::initBattle(int battleType)
 		m_active = false;
 	// initialize menu
 	m_menu.addCommand("Fight", make_unique<FightCommand>(m_view, m_subScreen, m_playerPokemon, m_playerUsedAbility));
-	m_menu.addCommand("Bag", make_unique<BagCommand>());
+	m_menu.addCommand("Bag", nullptr);
 	m_menu.addCommand("Pokemon", make_unique<PokemonListCommand>(m_subScreen, m_player, m_nextPokemon, true));
 	m_menu.addCommand("Run", make_unique<ExitCommand>(&*this));
 	m_menu.setOrigin(BOTTOM_RIGHT);
@@ -105,7 +104,6 @@ void Battle::initBattle(int battleType)
 
 void Battle::draw(RenderWindow & window)
 {
-	playTurns();
 	if (!m_active)
 		return;
 	window.draw(m_screen);
@@ -122,6 +120,7 @@ void Battle::draw(RenderWindow & window)
 	window.draw(m_enemyLevel);
 	m_playerPokemon->draw(window);
 	m_enemyPokemon->draw(window);
+	playTurns(window);
 	m_menu.draw(window);
 	if (m_subScreen)
 	{
@@ -240,7 +239,7 @@ void Battle::choosePokemon(bool isPlayer, int index)
 	}
 }
 
-void Battle::playTurns()
+void Battle::playTurns(RenderWindow & window)
 {
 	playerDeadHandler();
 	enemyDeadHandler();
@@ -263,16 +262,19 @@ void Battle::playTurns()
 			m_playerTurnExec = m_enemyTurnExec = false;
 		}
 		if (m_isPlayerTurn)
-			execPlayerTurn();
+			execPlayerTurn(window);
 		else
-			execEnemyTurn();
+			execEnemyTurn(window);
 		if (m_playerTurnExec && m_enemyTurnExec)
 			m_playerUsedAbility = m_enemyUsedAbility = nullptr;
 	}
 }
 
-void Battle::execPlayerTurn()
+void Battle::execPlayerTurn(RenderWindow & window)
 {
+	m_playerUsedAbility->setOrigin(BOTTOM_MIDDLE);
+	m_playerUsedAbility->setPosition(m_enemyPokemon->getPosition());
+	m_playerUsedAbility->draw(window);
 	if (printMessage(m_playerPokemon->getName() + " used " + m_playerUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_playerPokemon->getLevel()) / float(m_enemyPokemon->getLevel());
@@ -283,8 +285,11 @@ void Battle::execPlayerTurn()
 	}
 }
 
-void Battle::execEnemyTurn()
+void Battle::execEnemyTurn(RenderWindow & window)
 {
+	m_enemyUsedAbility->setOrigin(BOTTOM_MIDDLE);
+	m_enemyUsedAbility->setPosition(m_playerPokemon->getPosition());
+	m_enemyUsedAbility->draw(window);
 	if (printMessage("Enemy " + m_enemyPokemon->getName() + " used " + m_enemyUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_enemyPokemon->getLevel()) / float(m_playerPokemon->getLevel());
@@ -315,7 +320,7 @@ void Battle::playerDeadHandler()
 		}
 		else	// the player doesn't have more alive pokemons
 		{
-			if (printMessage("You are out of useable Pokemons!"))
+			if (printMessage("You are out of useable Pokemons! Go to the pharmacy to heal your Pokemons."))
 				m_active = false;
 		}
 	}

@@ -13,14 +13,10 @@ public:
 	virtual void draw(RenderWindow & window) override;
 	virtual void keyReleasedHandler(const Event & event) override;
 
-
 private:
 	sf::View m_view;
 	sf::Sprite m_backGround;
-	//sf::Sprite m_menuBg;
 	Menu m_menu;
 	Player& m_player;
-
-
 };
 

@@ -5,7 +5,6 @@
 #include "Chat.h"
 #include "Battle.h"
 #include "PokemonListCommand.h"
-#include "BagCommand.h"
 #include "SaveCommand.h"
 #include "ExitCommand.h"
 
@@ -19,10 +18,8 @@ using sf::Time;
 const int WILD_RANDOMNESS = 120;
 
 GameManager::GameManager() 
-	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false),
-	m_testTrainer("professor_oak")
+	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
-	m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
 	m_player.addPokemon(Factory::pokemon("mewtwo"));
 	m_player.addPokemon(Factory::pokemon("mew"));
 	m_player.addPokemon(Factory::pokemon("pikachu"));
@@ -148,9 +145,6 @@ void GameManager::keyReleasedHandler(const Event & event)
 		case Keyboard::Z:		// z pressed
 			openChat();
 			break;
-		case Keyboard::B:		// Battle button pressed
-			battleScene(m_testTrainer);
-			break;
 		}
 	}
 }
@@ -189,17 +183,16 @@ void GameManager::openChat()
 		if (trainer)
 			battleScene(*trainer);
 		else
-			m_screen = make_unique<Chat>(Resource::texture("chat_window"), m_window.getView(), npc->getChat());
+			npc->startChat(m_screen, m_window.getView());
 	}
 }
 
 void GameManager::openMenu()
 {
-	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 4));
+	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 3));
 	int temp;
 	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player, temp));
-	menu->addCommand("BAG", make_unique<BagCommand>());
-	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player));
+	menu->addCommand("SAVE", make_unique<SaveCommand>(m_player, m_screen, m_window));
 	menu->addCommand("EXIT", make_unique<ExitCommand>(menu.get()));
 	menu->setOrigin(RIGHT_MIDDLE);
 	menu->setPosition(Vector2f(m_view.getCenter().x + (m_view.getSize().x / 2.f), m_view.getCenter().y));

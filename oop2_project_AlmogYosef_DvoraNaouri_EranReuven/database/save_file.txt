@@ -1,5 +1,5 @@
-viridian
-415.5 447
-Mewtwo 106 106 2 0
-Mew 100 100 2 0
-Pikachu 110 110 2 0
+pallet
+117.5 134.5
+Mewtwo 134 102 6 32
+Mew 100 100 2 75
+Pikachu 110 110 2 50

@@ -1,9 +1,11 @@
 #include "SaveCommand.h"
+#include "Chat.h"
 #include <sstream>
 
+using std::make_unique;
 
-SaveCommand::SaveCommand(Player & player)
-	: m_player(player)
+SaveCommand::SaveCommand(Player & player, unique_ptr<Screen> & screen, RenderWindow & window)
+	: m_player(player), m_screen(screen), m_window(window)
 {
 }
 
@@ -37,4 +39,5 @@ void SaveCommand::execute()
 		saveFile << '\n';
 	}
 	saveFile.close();
+	m_screen = make_unique<Chat>(Resource::texture("chat_window"), m_window.getView(), "Game saved!");
 }

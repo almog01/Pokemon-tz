@@ -65,7 +65,5 @@ private:
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
 	bool m_start = true;
-
-	TrainerNPC m_testTrainer;
 };
 

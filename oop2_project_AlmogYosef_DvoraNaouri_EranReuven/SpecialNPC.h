@@ -4,6 +4,6 @@ class SpecialNPC : public NPC
 {
 public:
 	SpecialNPC(const string & name);
-	~SpecialNPC();
+	virtual ~SpecialNPC();
 };
 

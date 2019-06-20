@@ -7,7 +7,7 @@ Roar NORMAL 0 30
 Pound NORMAL 40 30
 Mega_Punch NORMAL 80 20
 Psychic PSYCHIC 90 25
-Ancient_Power ROCK 60 35
+Ancient_Power GROUND 60 35
 Confusion PSYCHIC 50 1
 Swift NORMAL 60 100
-Mist ICE 30 30
+Mist NORMAL 30 30

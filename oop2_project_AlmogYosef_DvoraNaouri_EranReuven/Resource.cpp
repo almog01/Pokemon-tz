@@ -8,41 +8,46 @@ Font Resource::font;
 
 Resource::Resource()
 {
+	// game font
 	loadFont(font, "resource/font/pokemon_fire_red.ttf");
-
+	
+	// start menu
 	loadTexture("start_menu_bg", "resource/img/startmenu/pokemon-tz.png");
 	loadTexture("main_menu", "resource/img/startmenu/MainMenu.png");
 	loadTexture("mainMenu_arrow", "resource/img/startmenu/mainMarrow.png");
-
+	
+	// characters
 	loadTexture("player", "resource/img/characters/player.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
 	loadTexture("trainer1", "resource/img/characters/trainer1.png");
 	loadTexture("nurse", "resource/img/characters/nurse.png");
+	loadTexture("shop_npc", "resource/img/characters/shop_npc.png");
 
+	// maps
+	loadTexture("home", "resource/img/maps/home/home.png");
+	loadImage("home_data", "resource/img/maps/home/home_data.png");
 	loadTexture("pallet", "resource/img/maps/pallet/pallet.png");
 	loadImage("pallet_data", "resource/img/maps/pallet/pallet_data.png");
-
 	loadTexture("oaks_lab", "resource/img/maps/oaks_lab/oaks_lab.png");
 	loadImage("oaks_lab_data", "resource/img/maps/oaks_lab/oaks_lab_data.png");
-
 	loadTexture("route1", "resource/img/maps/route1/route1.png");
 	loadImage("route1_data", "resource/img/maps/route1/route1_data.png");
-
 	loadTexture("viridian", "resource/img/maps/viridian/viridian.png");
 	loadImage("viridian_data", "resource/img/maps/viridian/viridian_data.png");
-
 	loadTexture("pharmacy", "resource/img/maps/pharmacy/pharmacy.png");
 	loadImage("pharmacy_data", "resource/img/maps/pharmacy/pharmacy_data.png");
-
+	loadTexture("shop", "resource/img/maps/shop/shop.png");
+	loadImage("shop_data", "resource/img/maps/shop/shop_data.png");
 	loadTexture("vermillion", "resource/img/maps/vermillion/vermillion.png");
 	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
-
+	
+	// interface
 	loadTexture("chat_window", "resource/img/interface/chat_window.png");
 	loadTexture("menu", "resource/img/interface/menu.png");
 	loadTexture("arrow", "resource/img/interface/arrow.png");
-	loadTexture("pokeball", "resource/img/interface/pokeball.png");
 	loadTexture("boolean_menu", "resource/img/interface/boolean_menu.png");
 
+	// battle screen
 	loadTexture("battle", "resource/img/battle/battle_sheet.png");
 	loadTexture("battle_menu_frame", "resource/img/battle/battle_menu_frame.png");
 	loadTexture("battle_menu_bg", "resource/img/battle/battle_menu_bg.png");
@@ -52,11 +57,23 @@ Resource::Resource()
 	loadTexture("battle_hpbar", "resource/img/battle/battle_hpbar.png");
 	loadTexture("battle_expbar", "resource/img/battle/battle_expbar.png");
 
+	// pokemon list screen
 	loadTexture("pokemon_list_bg", "resource/img/pokemon_list/background.png");
 	loadTexture("pokemon_list_first", "resource/img/pokemon_list/first_pokemon.png");
 	loadTexture("pokemon_list_next", "resource/img/pokemon_list/next_pokemon.png");
 	loadTexture("pokemon_list_menu", "resource/img/pokemon_list/menu_frame.png");
 
+	// abilities
+	loadTexture("NORMAL_ability", "resource/img/abilities/normal.png");
+	loadTexture("ELECTRIC_ability", "resource/img/abilities/electric.png");
+	loadTexture("GROUND_ability", "resource/img/abilities/ground.png");
+	loadTexture("FIRE_ability", "resource/img/abilities/fire.png");
+	loadTexture("WATER_ability", "resource/img/abilities/water.png");
+	loadTexture("FLYING_ability", "resource/img/abilities/flying.png");
+	loadTexture("GRASS_ability", "resource/img/abilities/grass.png");
+	loadTexture("PSYCHIC_ability", "resource/img/abilities/psychic.png");
+
+	// pokemons
 	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
 	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
 	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
