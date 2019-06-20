@@ -1,5 +1,8 @@
+home
 pallet
 route1
 oaks_lab
 viridian
+pharmacy
+shop
 vermillion

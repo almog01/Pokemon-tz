@@ -28,10 +28,11 @@ private:
 	void initBattle(int battleType);
 	void updateHpBar(Pokemon & pokemon, Sprite & bar);
 	bool printMessage(const string & msg);
+	int getFirstAlivePokemon(Trainer & trainer);
 	void choosePokemon(bool isPlayer, int index);
-	void playTurns();
-	void execPlayerTurn();
-	void execEnemyTurn();
+	void playTurns(RenderWindow & window);
+	void execPlayerTurn(RenderWindow & window);
+	void execEnemyTurn(RenderWindow & window);
 	void playerDeadHandler();
 	void enemyDeadHandler();
 	void addExp();

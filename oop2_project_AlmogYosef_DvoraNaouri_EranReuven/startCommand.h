@@ -3,12 +3,12 @@
 #include "Menu.h"
 #include "StartMenu.h"
 
-class startCommand :
+class StartCommand :
 	public Command
 {
 public:
-	startCommand(StartMenu& startmenu);
-	~startCommand();
+	StartCommand(StartMenu& startmenu);
+	~StartCommand();
 
 	// Inherited via Command
 	virtual void execute() override;

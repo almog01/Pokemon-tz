@@ -2,7 +2,9 @@
 #include "City.h"
 #include "House.h"
 #include "Door.h"
-#include "NormalNPC.h"
+#include "NPC.h"
+#include "TrainerNPC.h"
+#include "NurseNPC.h"
 #include <sstream>
 
 using std::make_unique;
@@ -17,9 +19,11 @@ Factory::Factory()
 {
 	createMaps();
 	createDoors();
-	createNPCs();
 	createAbilities();
 	createPokemons();
+	createNPCs();
+	createSpecialNPCs();
+	createTrainers();
 }
 
 Factory & Factory::instance()
@@ -80,32 +84,6 @@ void Factory::createDoors()
 	m_file.close();
 }
 
-void Factory::createNPCs()
-{
-	m_file.open("database/npcs.txt");
-	string mapName;
-	while (getline(m_file, mapName))
-	{
-		int numOfNPCs;
-		m_file >> numOfNPCs;
-		m_file.get();
-		for (int i = 0; i < numOfNPCs; ++i)
-		{
-			string line;
-			getline(m_file, line);
-			istringstream stream(line);
-			int index;
-			string name;
-			stream >> name >> index;
-			auto npc = make_unique<NormalNPC>(name);
-			getline(m_file, line);
-			npc->setChat(line);
-			m_maps[mapName]->addCollider(std::move(npc), index);
-		}
-	}
-	m_file.close();
-}
-
 void Factory::createAbilities()
 {
 	m_file.open("database/abilities.txt");
@@ -116,7 +94,7 @@ void Factory::createAbilities()
 		string name, element;
 		int damage, speed;
 		stream >> name >> element >> damage >> speed;
-		m_abilities[name] = make_unique<Ability>(name, Ability::stringToElement(element), damage, speed);
+		m_abilities[name] = make_unique<Ability>(name, element, damage, speed);
 	}
 	m_file.close();
 }
@@ -140,16 +118,10 @@ void Factory::createPokemons()
 		stream.clear();
 		stream.str(line);
 		string element;
-		while (stream >> element)
-			pokemon->setElement(Ability::stringToElement(element));
-
 		int maxHp;
-		bool canFly;
-		getline(m_file, line);
-		stream.clear();
-		stream.str(line);
-		stream >> maxHp >> canFly;
-		pokemon->setMaxHp(maxHp).setHp(maxHp).setCanFly(canFly);
+		stream >> element >> maxHp;
+		pokemon->setElement(element);
+		pokemon->setMaxHp(maxHp).setHp(maxHp);
 
 		m_pokemons[name] = std::move(pokemon);
 
@@ -159,6 +131,71 @@ void Factory::createPokemons()
 		string mapName;
 		while (stream >> mapName)
 			m_maps[mapName]->addWildPokemon(Factory::pokemon(name));	// add a copy of the pokemon to the map
+	}
+	m_file.close();
+}
+
+void Factory::createNPCs()
+{
+	m_file.open("database/npcs.txt");
+	string mapName;
+	while (getline(m_file, mapName))
+	{
+		int numOfNPCs;
+		m_file >> numOfNPCs;
+		m_file.get();
+		for (int i = 0; i < numOfNPCs; ++i)
+		{
+			string line;
+			getline(m_file, line);
+			istringstream stream(line);
+			int index;
+			string name;
+			stream >> name >> index;
+			auto npc = make_unique<NPC>(name);
+			getline(m_file, line);
+			npc->setChat(line);
+			m_maps[mapName]->addCollider(std::move(npc), index);
+		}
+	}
+	m_file.close();
+}
+
+void Factory::createSpecialNPCs()
+{
+	auto nurse = make_unique<NurseNPC>("nurse");
+	nurse->setChat("I've restored your Pokemons to full health! We hope to see you again!");
+	m_maps["pharmacy"]->addCollider(std::move(nurse), 0);
+}
+
+void Factory::createTrainers()
+{
+	m_file.open("database/trainers.txt");
+	string mapName;
+	while (getline(m_file, mapName))
+	{
+		int numOfTrainers;
+		m_file >> numOfTrainers;
+		m_file.get();
+		for (int i = 0; i < numOfTrainers; ++i)
+		{
+			string line;
+			getline(m_file, line);
+			istringstream stream(line);
+			int index;
+			string name;
+			stream >> name >> index;
+			auto trainer = make_unique<TrainerNPC>(name);
+			getline(m_file, line);
+			trainer->setChat(line);
+			getline(m_file, line);
+			stream.clear();
+			stream.str(line);
+			string pokemonName;
+			while (stream >> pokemonName)
+				trainer->addPokemon(Factory::pokemon(pokemonName));
+			m_maps[mapName]->addCollider(std::move(trainer), index);
+		}
 	}
 	m_file.close();
 }

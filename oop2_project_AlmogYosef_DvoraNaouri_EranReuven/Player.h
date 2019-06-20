@@ -18,7 +18,7 @@ public:
 	Player(const Player&) = delete;
 	Player& operator=(const Player&) = delete;
 
-	void update();
+	void update(GameManager & gm);
 	
 	// Getters
 	string getMap() const { return m_map; }

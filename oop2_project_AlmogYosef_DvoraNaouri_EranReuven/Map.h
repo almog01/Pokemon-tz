@@ -40,17 +40,17 @@ public:
 	bool tryChat(const FloatRect & pov, NPC *& npc) const;
 
 	void addWildPokemon(const Pokemon & pokemon) { m_wildPokemons.emplace_back(make_shared<Pokemon>(pokemon)); }
+	Pokemon getWildPokemon() const;
 
 private:
-	void loadMap(string name);
+	void loadMap(const string & name);
 
-	void loadMapData(string name);
+	void loadMapData(const string & name);
 
 	unsigned short getColorData(Uint32 color, unsigned x, unsigned y);
 
 	string m_name;
-	//Sprite m_SpriteTop;
-	Sprite m_SpriteBottom;
+	Sprite m_sprite;
 	vector<vector<unsigned short>> m_mapData;
 	vector<unique_ptr<Vector2f>> m_collidersPos;
 	vector<unique_ptr<Collider>> m_colliders;

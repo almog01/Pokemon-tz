@@ -15,21 +15,21 @@ Map::~Map()
 {
 }
 
-void Map::loadMap(string name)
+void Map::loadMap(const string & name)
 {
-	// Init sprite
-	m_SpriteBottom.setTexture(Resource::texture(name));
+	// initialize sprite
+	m_sprite.setTexture(Resource::texture(name));
 	loadMapData(name);
 }
 
 void Map::draw(RenderWindow & window)
 {
-	window.draw(m_SpriteBottom);
+	window.draw(m_sprite);
 	for (auto& collider : m_colliders)
 		collider->draw(window);
 }
 
-void Map::loadMapData(string name)
+void Map::loadMapData(const string & name)
 {
 	Image image(Resource::image(name + "_data"));
 
@@ -96,4 +96,10 @@ bool Map::tryChat(const FloatRect & pov, NPC *& npc) const
 		}
 	}
 	return false;
+}
+
+Pokemon Map::getWildPokemon() const
+{
+	size_t random = rand() % m_wildPokemons.size();
+	return *m_wildPokemons.at(random);
 }

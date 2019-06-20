@@ -15,7 +15,7 @@ StartMenu::StartMenu(Player& player)
 	sf::Vector2f menuFactor = { -600, 380 };
 	m_menu.setOrigin(BOTTOM_RIGHT);
 	m_menu.setTextMarginY(165);
-	m_menu.addCommand("", make_unique<startCommand>((*this)));
+	m_menu.addCommand("", make_unique<StartCommand>((*this)));
 	m_menu.addCommand("", make_unique<LoadCommand>((*this), m_player));
 	m_menu.addCommand("", make_unique<InstructionsCommand>());
 	m_menu.addCommand("", make_unique<ExitCommand>(&*this));
@@ -36,7 +36,10 @@ void StartMenu::draw(RenderWindow & window)
 
 void StartMenu::keyReleasedHandler(const Event & event)
 {
-	m_menu.keyReleasedHandler(event);
+	if (event.key.code == sf::Keyboard::Enter)
+		m_menu.select();
+	else
+		m_menu.keyReleasedHandler(event);
 }
 
 void StartMenu::setTexture(sf::Texture x)

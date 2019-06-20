@@ -1,16 +1,16 @@
-#include "startCommand.h"
+#include "StartCommand.h"
 
 
-startCommand::startCommand(StartMenu& startmenu)
+StartCommand::StartCommand(StartMenu& startmenu)
 	:m_startmenu(startmenu)
 {
 }
 
-startCommand::~startCommand()
+StartCommand::~StartCommand()
 {
 }
 
-void startCommand::execute()
+void StartCommand::execute()
 {
 	m_startmenu.deactivate();
 }

@@ -25,13 +25,12 @@ public:
 	// Inherited via GameObject
 	virtual void setTextureRect(const IntRect & rect) override;
 
-
 protected:
 	// Movement
-	void move();
+	void move(bool & inGrass);
 	void stop();
 
-	int checkMapCollision() const;
+	bool checkMapCollision(bool & inGrass) const;
 
 	Sprite m_sprite;		// sprite of the character
 	float m_moveSpeed;		// move speed

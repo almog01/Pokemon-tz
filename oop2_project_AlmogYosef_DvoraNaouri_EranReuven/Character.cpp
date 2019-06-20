@@ -36,13 +36,10 @@ void Character::setMap(const Map * map)
 	m_mapData = map->getMapData();
 }
 
-void Character::move()
+void Character::move(bool & inGrass)
 {
 	m_sprite.move(m_direction);
-	int mapData = checkMapCollision();
-	if (mapData == B_COLLISION)
-		stop();
-	else if (mapData == B_GRASS)
+	if (checkMapCollision(inGrass))
 		stop();
 }
 
@@ -51,7 +48,7 @@ void Character::stop()
 	m_sprite.move(-m_direction);
 }
 
-int Character::checkMapCollision() const
+bool Character::checkMapCollision(bool & inGrass) const
 {
 	array<Vector2f, BOUNDS> bounds;
 	int index = 0;
@@ -69,10 +66,10 @@ int Character::checkMapCollision() const
 		for (auto& bound : bounds)
 		{
 			short data = (*m_mapData).at(size_t(bound.y)).at(size_t(bound.x));
-			if (data == B_COLLISION)
+			if (data == B_GRASS)
+				inGrass = true;
+			else if (data == B_COLLISION)
 				return B_COLLISION;
-			else if (data == B_GRASS)
-				return B_GRASS;
 		}
 	}
 	catch (const std::out_of_range&)

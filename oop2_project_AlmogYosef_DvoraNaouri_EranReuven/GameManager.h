@@ -26,11 +26,13 @@ public:
 	// Starts the game
 	void play();
 
+	void wildPokemonBattle();
+
 private:
 	// Creates the main window
 	void createWindow();
 
-	void StartMenuScene();
+	void startMenuScene();
 
 	// Initializers
 	void initCharacters();
@@ -47,22 +49,21 @@ private:
 
 	void updateMap(const string & name);
 
-	void openChat(NPC * npc);
+	void openChat();
 	void openMenu();
 
-	void battleScene(int battleArena = 1);
+	void battleScene(Trainer & trainer, int battleArena = 1);
+	void battleScene(Pokemon & pokemon, int battleArena = 1);
 
 	// Members:
-	Resource & m_resource;		// resource occurrence to load the needed files
-	Factory & m_factory;		// factory occurrence to create the needed objects
+	Resource & m_resource;		// resource instance to load the files
+	Factory & m_factory;		// factory instance to create the game objects
 	RenderWindow m_window;		// main window
 	View m_view;				// current view
 	Map* m_map;					// current map
 	Player & m_player;			// the player
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
-	bool m_start;
-
-	TrainerNPC m_testTrainer;
+	bool m_start = true;
 };
 

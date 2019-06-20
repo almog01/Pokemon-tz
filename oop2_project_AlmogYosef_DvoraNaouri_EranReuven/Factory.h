@@ -29,9 +29,11 @@ private:
 	Factory();
 	void createMaps();
 	void createDoors();
-	void createNPCs();
 	void createAbilities();
 	void createPokemons();
+	void createNPCs();
+	void createSpecialNPCs();
+	void createTrainers();
 
 	static unordered_map<string, unique_ptr<Map>> m_maps;	// maps
 	static unordered_map <string, unique_ptr<Ability>> m_abilities;

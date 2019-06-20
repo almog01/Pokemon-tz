@@ -1,11 +1,12 @@
 #include "NPC.h"
 #include "Player.h"
+#include "Chat.h"
 
+using std::make_unique;
 
 NPC::NPC(const string & name)
 {
 	m_sprite.setTexture(Resource::texture(name), true);
-	m_sprite.setTextureRect(sf::IntRect(16, 0, 16, 19));
 }
 
 
@@ -33,4 +34,9 @@ void NPC::handleCollision(Pokemon & pokemon)
 
 void NPC::handleCollision(Door & door)
 {
+}
+
+void NPC::startChat(unique_ptr<Screen>& screen, const View & view) const
+{
+	screen = make_unique<Chat>(Resource::texture("chat_window"), view, m_chat);
 }

@@ -1,7 +1,6 @@
 #include "Battle.h"
 #include "Factory.h"
 #include "FightCommand.h"
-#include "BagCommand.h"
 #include "PokemonListCommand.h"
 #include "ExitCommand.h"
 #include <cctype>
@@ -21,13 +20,15 @@ Battle::Battle(Player & player, Trainer & enemy, int battleType)
 	// initialize battle screen
 	initBattle(battleType);
 	// choose enemy pokemon
-	choosePokemon(false, m_enemyCurrPokemon);
+	m_enemyCurrPokemon = getFirstAlivePokemon(enemy);
+	if (m_enemyCurrPokemon != -1)
+		choosePokemon(false, m_enemyCurrPokemon);
+	else
+		m_active = false;
 	// initialize enemy texts
 	m_enemyName.setFillColor(Color::Black);
-	m_enemyName.setString(m_enemyPokemon->getName());
 	m_enemyName.setPosition(m_enemyStatbar.getPosition() + Vector2f(6.f, -1.f));
 	m_enemyLevel.setFillColor(Color::Black);
-	m_enemyLevel.setString("Lv" + to_string(m_enemyPokemon->getLevel()));
 	m_enemyLevel.setPosition(m_enemyStatbar.getPosition() + Vector2f(66.f, -1.f));
 }
 
@@ -38,7 +39,12 @@ Battle::Battle(Player & player, Pokemon & wildPokemon, int battleType)
 {
 	// initialize battle screen
 	initBattle(battleType);
-	// initialize wild pokemon texts
+	// initialize wild pokemon stats
+	m_enemyPokemon = make_shared<Pokemon>(wildPokemon);
+	m_enemyPokemon->setTexture("front");
+	m_enemyPokemon->setOrigin(BOTTOM_MIDDLE);
+	m_enemyPokemon->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(60.f, -15.f));
+	updateHpBar(*m_enemyPokemon, m_enemyHpBar);
 	m_enemyName.setFillColor(Color::Black);
 	m_enemyName.setString(m_enemyPokemon->getName());
 	m_enemyName.setPosition(m_enemyStatbar.getPosition() + Vector2f(6.f, -1.f));
@@ -75,31 +81,29 @@ void Battle::initBattle(int battleType)
 	m_expBar.setTexture(Resource::texture("battle_expbar"));
 	m_expBar.setPosition(m_playerStatbar.getPosition() + Vector2f(32.f, 33.f));
 	// choose player pokemon
-	choosePokemon(true, m_currPokemon);
+	m_currPokemon = getFirstAlivePokemon(m_player);
+	if (m_currPokemon != -1)
+		choosePokemon(true, m_currPokemon);
+	else
+		m_active = false;
 	// initialize menu
 	m_menu.addCommand("Fight", make_unique<FightCommand>(m_view, m_subScreen, m_playerPokemon, m_playerUsedAbility));
-	m_menu.addCommand("Bag", make_unique<BagCommand>());
+	m_menu.addCommand("Bag", nullptr);
 	m_menu.addCommand("Pokemon", make_unique<PokemonListCommand>(m_subScreen, m_player, m_nextPokemon, true));
 	m_menu.addCommand("Run", make_unique<ExitCommand>(&*this));
 	m_menu.setOrigin(BOTTOM_RIGHT);
 	m_menu.setPosition(Vector2f(m_view.getCenter().x + m_view.getSize().x / 2.f, m_view.getCenter().y + m_view.getSize().y / 2.f));
 	// initialize player texts
 	m_playerName.setFillColor(Color::Black);
-	m_playerName.setString(m_playerPokemon->getName());
 	m_playerName.setPosition(m_playerStatbar.getPosition() + Vector2f(15.f, -1.f));
 	m_playerLevel.setFillColor(Color::Black);
-	m_playerLevel.setString("Lv" + to_string(m_playerPokemon->getLevel()));
 	m_playerLevel.setPosition(m_playerStatbar.getPosition() + Vector2f(75.f, -1.f));
 	m_playerHP.setFillColor(Color::Black);
-	m_playerHP.setString(to_string(m_playerPokemon->getHp()) + "/" + to_string(m_playerPokemon->getMaxHp()));
 	m_playerHP.setPosition(m_playerStatbar.getPosition() + Vector2f(62.f, 17.f));
 }
 
 void Battle::draw(RenderWindow & window)
 {
-	playTurns();
-	playerDeadHandler();
-	enemyDeadHandler();
 	if (!m_active)
 		return;
 	window.draw(m_screen);
@@ -116,6 +120,7 @@ void Battle::draw(RenderWindow & window)
 	window.draw(m_enemyLevel);
 	m_playerPokemon->draw(window);
 	m_enemyPokemon->draw(window);
+	playTurns(window);
 	m_menu.draw(window);
 	if (m_subScreen)
 	{
@@ -193,6 +198,21 @@ bool Battle::printMessage(const string & msg)
 	return false;
 }
 
+int Battle::getFirstAlivePokemon(Trainer & trainer)
+{
+	int index = 0;
+	auto pokemon = (*(trainer.cbegin() + index));
+	while (pokemon->isDead())
+	{
+		++index;
+		pokemon = (*(trainer.cbegin() + index));
+	}
+	if (trainer.cbegin() + index == trainer.cend())
+		return -1;
+	else
+		return index;
+}
+
 void Battle::choosePokemon(bool isPlayer, int index)
 {
 	if (isPlayer)
@@ -203,6 +223,9 @@ void Battle::choosePokemon(bool isPlayer, int index)
 		m_playerPokemon->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(-55.f, 32.f));
 		updateHpBar(*m_playerPokemon, m_playerHpBar);
 		updateExpBar();
+		m_playerName.setString(m_playerPokemon->getName());
+		m_playerLevel.setString("Lv" + to_string(m_playerPokemon->getLevel()));
+		m_playerHP.setString(to_string(m_playerPokemon->getHp()) + "/" + to_string(m_playerPokemon->getMaxHp()));
 	}
 	else
 	{
@@ -211,11 +234,15 @@ void Battle::choosePokemon(bool isPlayer, int index)
 		m_enemyPokemon->setOrigin(BOTTOM_MIDDLE);
 		m_enemyPokemon->setPosition(Vector2f(m_view.getCenter().x, m_view.getCenter().y) + Vector2f(60.f, -15.f));
 		updateHpBar(*m_enemyPokemon, m_enemyHpBar);
+		m_enemyName.setString(m_enemyPokemon->getName());
+		m_enemyLevel.setString("Lv" + to_string(m_enemyPokemon->getLevel()));
 	}
 }
 
-void Battle::playTurns()
+void Battle::playTurns(RenderWindow & window)
 {
+	playerDeadHandler();
+	enemyDeadHandler();
 	if (m_playerUsedAbility)	// if an ability was used
 	{
 		if (m_playerTurnExec && m_enemyTurnExec)
@@ -235,17 +262,19 @@ void Battle::playTurns()
 			m_playerTurnExec = m_enemyTurnExec = false;
 		}
 		if (m_isPlayerTurn)
-			execPlayerTurn();
+			execPlayerTurn(window);
 		else
-			execEnemyTurn();
+			execEnemyTurn(window);
 		if (m_playerTurnExec && m_enemyTurnExec)
 			m_playerUsedAbility = m_enemyUsedAbility = nullptr;
-
 	}
 }
 
-void Battle::execPlayerTurn()
+void Battle::execPlayerTurn(RenderWindow & window)
 {
+	m_playerUsedAbility->setOrigin(BOTTOM_MIDDLE);
+	m_playerUsedAbility->setPosition(m_enemyPokemon->getPosition());
+	m_playerUsedAbility->draw(window);
 	if (printMessage(m_playerPokemon->getName() + " used " + m_playerUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_playerPokemon->getLevel()) / float(m_enemyPokemon->getLevel());
@@ -256,8 +285,11 @@ void Battle::execPlayerTurn()
 	}
 }
 
-void Battle::execEnemyTurn()
+void Battle::execEnemyTurn(RenderWindow & window)
 {
+	m_enemyUsedAbility->setOrigin(BOTTOM_MIDDLE);
+	m_enemyUsedAbility->setPosition(m_playerPokemon->getPosition());
+	m_enemyUsedAbility->draw(window);
 	if (printMessage("Enemy " + m_enemyPokemon->getName() + " used " + m_enemyUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_enemyPokemon->getLevel()) / float(m_playerPokemon->getLevel());
@@ -288,7 +320,7 @@ void Battle::playerDeadHandler()
 		}
 		else	// the player doesn't have more alive pokemons
 		{
-			if (printMessage("You are out of useable Pokemons!"))
+			if (printMessage("You are out of useable Pokemons! Go to the pharmacy to heal your Pokemons."))
 				m_active = false;
 		}
 	}

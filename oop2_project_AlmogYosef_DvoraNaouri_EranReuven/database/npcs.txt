@@ -2,3 +2,7 @@ oaks_lab
 1
 professor_oak 0
 Hello and Welcome to Pokemon-tz!
+shop
+1
+shop_npc 0
+I'm sorry, we're closed at the moment.
