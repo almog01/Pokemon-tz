@@ -5,7 +5,7 @@
 NPC::NPC(const string & name)
 {
 	m_sprite.setTexture(Resource::texture(name), true);
-	m_sprite.setTextureRect(sf::IntRect(16, 0, 16, 19));
+	//m_sprite.setTextureRect(sf::IntRect(16, 0, 16, 19));
 }
 
 

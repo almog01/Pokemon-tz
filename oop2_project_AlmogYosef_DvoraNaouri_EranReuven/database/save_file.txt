@@ -1,5 +1,5 @@
-pallet
-180 550
-Mewtwo 106 106 2 0
-Mew 100 100 2 0
-Pikachu 110 110 2 0
+route1
+97.5 535
+Mewtwo 106 0 2 25
+Mew 100 0 2 25
+Pikachu 110 0 2 50

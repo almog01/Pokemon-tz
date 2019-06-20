@@ -8,7 +8,7 @@ oaks_lab
 route1
 2
 59 2 viridian 378 612 0
-32 2 pallet 200 7 1
+32 2 pallet 200 7 2
 viridian
 1
 64 2 route1 185 10 6

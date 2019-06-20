@@ -179,7 +179,7 @@
     <ClInclude Include="Settings.h" />
     <ClInclude Include="ShiftCommand.h" />
     <ClInclude Include="Shop.h" />
-    <ClInclude Include="startCommand.h" />
+    <ClInclude Include="StartCommand.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Trainer.h" />
     <ClInclude Include="TrainerNPC.h" />
@@ -222,7 +222,7 @@
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="ShiftCommand.cpp" />
     <ClCompile Include="Shop.cpp" />
-    <ClCompile Include="startCommand.cpp" />
+    <ClCompile Include="StartCommand.cpp" />
     <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="TrainerNPC.cpp" />

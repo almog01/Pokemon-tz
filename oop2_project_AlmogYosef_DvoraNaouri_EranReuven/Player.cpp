@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Door.h"
+#include "GameManager.h"
 
 using sf::Keyboard;
 
@@ -15,7 +16,6 @@ Player::Player() : m_animation(*this, Resource::texture("player"), Vector2u(3, 4
 	m_pov.setSize(Vector2f(1.f, 1.f));
 }
 
-
 Player & Player::instance()
 {
 	static Player inst;
@@ -26,35 +26,44 @@ Player::~Player()
 {
 }
 
-void Player::update()
+void Player::update(GameManager & gm)
 {
+	bool inGrass = false;
 	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
 		m_direction = Vector2f(0, -m_moveSpeed);	// up = {0, -y}
-		move();
+		move(inGrass);
 		m_animation.play("up");
 		m_pov.setPosition(m_sprite.getPosition() + Vector2f(sizeX / 2, -sizeY / 8.f));
+		if (inGrass)
+			gm.wildPokemonBattle();
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Down))
 	{
 		m_direction = Vector2f(0, m_moveSpeed);	// down = {0, y}
-		move();
+		move(inGrass);
 		m_animation.play("down");
 		m_pov.setPosition(m_sprite.getPosition() + Vector2f(sizeX / 2, sizeY * 1.12f));
+		if (inGrass)
+			gm.wildPokemonBattle();
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		m_direction = Vector2f(-m_moveSpeed, 0);	// left = {-x, 0}
-		move();
+		move(inGrass);
 		m_animation.play("left");
 		m_pov.setPosition(m_sprite.getPosition() + Vector2f(-sizeX / 8, sizeY / 2));
+		if (inGrass)
+			gm.wildPokemonBattle();
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
 		m_direction = Vector2f(m_moveSpeed, 0);	// right = {x, 0}
-		move();
+		move(inGrass);
 		m_animation.play("right");
 		m_pov.setPosition(m_sprite.getPosition() + Vector2f(sizeX * 1.12f, sizeY / 2));
+		if (inGrass)
+			gm.wildPokemonBattle();
 	}
 }
 

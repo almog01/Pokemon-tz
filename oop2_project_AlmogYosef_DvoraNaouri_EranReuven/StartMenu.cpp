@@ -15,7 +15,7 @@ StartMenu::StartMenu(Player& player)
 	sf::Vector2f menuFactor = { -600, 380 };
 	m_menu.setOrigin(BOTTOM_RIGHT);
 	m_menu.setTextMarginY(165);
-	m_menu.addCommand("", make_unique<startCommand>((*this)));
+	m_menu.addCommand("", make_unique<StartCommand>((*this)));
 	m_menu.addCommand("", make_unique<LoadCommand>((*this), m_player));
 	m_menu.addCommand("", make_unique<ExitCommand>(&*this));
 	m_menu.addCommand("", make_unique<ExitCommand>(&*this));

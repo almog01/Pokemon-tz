@@ -135,7 +135,7 @@
     <ClInclude Include="StartMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="startCommand.h">
+    <ClInclude Include="StartCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -260,7 +260,7 @@
     <ClCompile Include="StartMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="startCommand.cpp">
+    <ClCompile Include="StartCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

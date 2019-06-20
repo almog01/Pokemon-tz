@@ -16,6 +16,7 @@ Resource::Resource()
 
 	loadTexture("player", "resource/img/characters/player.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
+	loadTexture("trainer1", "resource/img/characters/trainer1.png");
 
 	loadTexture("pallet", "resource/img/maps/pallet/pallet.png");
 	loadImage("pallet_data", "resource/img/maps/pallet/pallet_data.png");
