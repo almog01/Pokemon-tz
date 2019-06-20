@@ -17,7 +17,7 @@ Map::~Map()
 
 void Map::loadMap(const string & name)
 {
-	// Init sprite
+	// initialize sprite
 	m_sprite.setTexture(Resource::texture(name));
 	loadMapData(name);
 }

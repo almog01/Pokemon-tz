@@ -3,7 +3,7 @@
 
 
 SaveCommand::SaveCommand(Player & player)
-	:m_player(player)
+	: m_player(player)
 {
 }
 
@@ -23,7 +23,6 @@ void SaveCommand::execute()
 	str << playerPos.x << " " << playerPos.y << '\n';
 	saveFile << str.str();
 
-	auto pokemons = m_player.cbegin();
 	for (auto pokemons = m_player.cbegin(); pokemons != m_player.cend(); ++pokemons)
 	{
 		saveFile << (*pokemons)->getName();

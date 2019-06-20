@@ -164,7 +164,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Ability.h" />
-    <ClInclude Include="NormalNPC.h" />
+    <ClInclude Include="SpecialNPC.h" />
     <ClInclude Include="PokemonListCommand.h" />
     <ClInclude Include="PokemonList.h" />
     <ClInclude Include="SaveCommand.h" />
@@ -208,7 +208,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Ability.cpp" />
-    <ClCompile Include="NormalNPC.cpp" />
+    <ClCompile Include="SpecialNPC.cpp" />
     <ClCompile Include="PokemonListCommand.cpp" />
     <ClCompile Include="PokemonList.cpp" />
     <ClCompile Include="SaveCommand.cpp" />

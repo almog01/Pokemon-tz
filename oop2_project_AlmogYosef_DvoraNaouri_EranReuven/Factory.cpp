@@ -2,7 +2,7 @@
 #include "City.h"
 #include "House.h"
 #include "Door.h"
-#include "NormalNPC.h"
+#include "NPC.h"
 #include "TrainerNPC.h"
 #include <sstream>
 
@@ -156,7 +156,7 @@ void Factory::createNPCs()
 			int index;
 			string name;
 			stream >> name >> index;
-			auto npc = make_unique<NormalNPC>(name);
+			auto npc = make_unique<NPC>(name);
 			getline(m_file, line);
 			npc->setChat(line);
 			m_maps[mapName]->addCollider(std::move(npc), index);

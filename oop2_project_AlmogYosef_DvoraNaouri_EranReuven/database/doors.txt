@@ -15,4 +15,4 @@ viridian
 64 2 route1 185 10 6
 pharmacy
 1
-26 2 viridian 415 432 0
+26 2 viridian 415 432 1
