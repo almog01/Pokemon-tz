@@ -160,6 +160,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="InstructionsCommand.h" />
+    <ClInclude Include="InstructionScreen.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Command.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="InstructionsCommand.cpp" />
+    <ClCompile Include="InstructionScreen.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

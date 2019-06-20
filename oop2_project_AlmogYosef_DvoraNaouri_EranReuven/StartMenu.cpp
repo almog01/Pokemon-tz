@@ -17,7 +17,7 @@ StartMenu::StartMenu(Player& player)
 	m_menu.setTextMarginY(165);
 	m_menu.addCommand("", make_unique<startCommand>((*this)));
 	m_menu.addCommand("", make_unique<LoadCommand>((*this), m_player));
-	m_menu.addCommand("", make_unique<ExitCommand>(&*this));
+	m_menu.addCommand("", make_unique<InstructionsCommand>());
 	m_menu.addCommand("", make_unique<ExitCommand>(&*this));
 	m_menu.setPosition(Vector2f(m_view.getCenter() + menuFactor));
 }
@@ -37,4 +37,9 @@ void StartMenu::draw(RenderWindow & window)
 void StartMenu::keyReleasedHandler(const Event & event)
 {
 	m_menu.keyReleasedHandler(event);
+}
+
+void StartMenu::setTexture(sf::Texture x)
+{
+	m_screen.setTexture(x);
 }

@@ -6,5 +6,9 @@ class InstructionsCommand :
 public:
 	InstructionsCommand();
 	~InstructionsCommand();
+
+	// Inherited via Command
+	virtual void execute() override;
+
 };
 

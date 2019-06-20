@@ -7,6 +7,7 @@
 #include "BagCommand.h"
 #include "SaveCommand.h"
 #include "ExitCommand.h"
+#include "startMenu.h"
 
 using std::make_unique;
 using sf::VideoMode;
@@ -16,7 +17,7 @@ using sf::Clock;
 using sf::Time;
 
 GameManager::GameManager() 
-	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false),
+	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false), m_start(true),
 	m_testTrainer("professor_oak")
 {
 	m_testTrainer.addPokemon(Factory::pokemon("pikachu"));
@@ -41,6 +42,9 @@ void GameManager::play()
 
 	while (m_window.isOpen())	// main window loop
 	{
+		if (m_start)
+			StartMenuScene();
+
 		handleEvents();		// handle each events
 
 		m_window.clear();	// clear the main window
@@ -61,6 +65,12 @@ void GameManager::createWindow()
 	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_map = Factory::map("pallet");
+}
+
+void GameManager::StartMenuScene()
+{
+	m_screen = make_unique<StartMenu>(m_player);
+	m_start = false;
 }
 
 void GameManager::initCharacters()
