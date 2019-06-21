@@ -8,17 +8,17 @@ using std::ifstream;
 using std::istringstream;
 
 class LoadCommand :
-	public Command
+	public Command // inherit from Command
 {
 public:
-	LoadCommand(StartMenu& startm, Player& player);
-	~LoadCommand();
+	LoadCommand(StartMenu& startm, Player& player); //constructor
+	~LoadCommand(); //destructor
 
 	// Inherited via Command
-	virtual void execute() override;
+	virtual void execute() override; //execute ovrride function to execute command
 private:
-	Player& m_player;
-	StartMenu& m_startm;
+	Player& m_player; //player reference to load player condition
+	StartMenu& m_startm; //start menu reference to be able to close it.
 
 };
 

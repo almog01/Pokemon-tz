@@ -195,7 +195,6 @@
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Ability.cpp" />
     <ClCompile Include="NurseNPC.cpp" />
     <ClCompile Include="SpecialNPC.cpp" />

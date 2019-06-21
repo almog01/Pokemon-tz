@@ -2,12 +2,12 @@
 
 
 
-Trainer::Trainer()
+Trainer::Trainer() //constructor
 {
 }
 
 
-Trainer::~Trainer()
+Trainer::~Trainer() //destroctor
 {
 }
 
@@ -19,7 +19,7 @@ void Trainer::healPokemons()
 
 bool Trainer::isDefeated() const
 {
-	for (auto & pokemon : m_pokemons)
+	for (auto & pokemon : m_pokemons) //run over the pokemon to figure if the trainer is deafeted
 		if (pokemon->getHp() > 0)
 			return false;
 	return true;

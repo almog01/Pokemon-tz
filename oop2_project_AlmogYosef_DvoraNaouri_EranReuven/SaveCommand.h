@@ -9,16 +9,16 @@ using std::ofstream;
 using std::stringstream;
 using sf::RenderWindow;
 
-class SaveCommand :	public Command
+class SaveCommand :	public Command // inherit from Command
 {
 public:
-	SaveCommand(Player& player, unique_ptr<Screen> & screen, RenderWindow & window);
-	~SaveCommand();
+	SaveCommand(Player& player, unique_ptr<Screen> & screen, RenderWindow & window); //constructor
+	~SaveCommand(); //destructor
 
 	// Inherited via Command
-	virtual void execute() override;
-	Player& m_player;
-	unique_ptr<Screen> & m_screen;
-	RenderWindow & m_window;
+	virtual void execute() override; //execute ovrride function to execute command
+	Player& m_player; //player reference
+	unique_ptr<Screen> & m_screen; //screen reference
+	RenderWindow & m_window; //window reference
 };
 

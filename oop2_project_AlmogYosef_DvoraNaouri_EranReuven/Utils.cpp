@@ -1,8 +1,9 @@
 #include "Utils.h"
 
-void Utils::setOrigin(Sprite & sprite, SPOT spot)
+void Utils::setOrigin(Sprite & sprite, SPOT spot) //set origins by the spot enums
 {
-	switch (spot)
+	switch (spot) //cases will hanle by spot enum which origin we want for each
+				  //spot enum. it has been used over screens classes and such
 	{
 	case TOP_LEFT:
 		sprite.setOrigin(0, 0);
