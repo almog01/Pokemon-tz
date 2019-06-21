@@ -5,13 +5,14 @@
 class ExitCommand : public Command
 {
 public:
-	ExitCommand(Screen * screen);
+	ExitCommand(Screen * screen, bool isMainScreen = false);
 	~ExitCommand();
 
 	// Inherited via Command
 	virtual void execute() override;
 
 private:
+	bool m_isMain;
 	Screen * m_screen;
 };
 

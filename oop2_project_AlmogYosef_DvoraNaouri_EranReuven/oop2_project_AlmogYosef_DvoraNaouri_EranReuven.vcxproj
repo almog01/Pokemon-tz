@@ -156,6 +156,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InstructionsCommand.h" />
+    <ClInclude Include="InstructionScreen.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Command.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InstructionsCommand.cpp" />
+    <ClCompile Include="InstructionScreen.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

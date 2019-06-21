@@ -15,7 +15,8 @@ Resource::Resource()
 	loadTexture("start_menu_bg", "resource/img/startmenu/pokemon-tz.png");
 	loadTexture("main_menu", "resource/img/startmenu/MainMenu.png");
 	loadTexture("mainMenu_arrow", "resource/img/startmenu/mainMarrow.png");
-	
+	loadTexture("mainMenu_instructions", "resource/img/startmenu/Instructions.png");
+
 	// characters
 	loadTexture("player", "resource/img/characters/player.png");
 	loadTexture("mom", "resource/img/characters/mom.png");
