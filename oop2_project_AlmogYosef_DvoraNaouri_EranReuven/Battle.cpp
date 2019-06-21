@@ -56,6 +56,10 @@ Battle::Battle(Player & player, Pokemon & wildPokemon, shared_ptr<Music> music)
 
 Battle::~Battle()
 {
+	// heal enemy's pokemons when battle is over
+	if (m_enemy)
+		m_enemy->healPokemons();
+
 	// change music at the end of the battle
 	m_music->stop();
 	m_music = Resource::music("background");

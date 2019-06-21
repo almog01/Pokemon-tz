@@ -14,6 +14,8 @@ public:
 	Trainer();
 	virtual ~Trainer();
 
+	void healPokemons();
+
 	void addPokemon(Pokemon pokemon) { m_pokemons.emplace_back(make_shared<Pokemon>(pokemon)); }
 
 	bool isDefeated() const;

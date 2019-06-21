@@ -8,7 +8,9 @@ using std::string;
 class Door : public Collider
 {
 public:
+	// c-tor
 	Door(const Vector2f & size, const string & dest, const Vector2f & destPos);
+	// d-tor
 	~Door();
 
 	// Inherited via Collider
@@ -26,8 +28,8 @@ public:
 	Vector2f getDestPos() const { return m_destPos; }
 
 private:
-	RectangleShape m_bounds;
-	string m_destination;
-	Vector2f m_destPos;
+	RectangleShape m_bounds;	// bounds of the door
+	string m_destination;		// the destination which the door moves to
+	Vector2f m_destPos;			// the position in the new destination
 };
 
