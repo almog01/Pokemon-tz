@@ -22,4 +22,5 @@ void InstructionScreen::draw(RenderWindow & window)
 
 void InstructionScreen::keyReleasedHandler(const Event & event)
 {
+	deactivate();
 }

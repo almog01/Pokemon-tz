@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AbilityCommand" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACACAAAAABAAAAEAEAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>AbilityCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animation" Collapsed="true">
+    <Position X="40" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAEAEAAEgAAAAgAAAAAgAAACAAgAAAgAgAAAgAAE=</HashCode>
+      <FileName>Animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battle" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABQQACFABACAIAwQAOETCBBEwAEQgAEQFACAJgCIoA=</HashCode>
+      <FileName>Battle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="34" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAEAAAACAAAIAAAAiAQIhAAAAEACAQAACKAA=</HashCode>
+      <FileName>Character.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAgAAAAMAAIAAAAAEAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Chat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="City" Collapsed="true">
+    <Position X="26.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>City.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Collider" Collapsed="true">
+    <Position X="33" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACEEAAAAAAAAAAAAACAAAAAAAQAAAAAAQAAAA=</HashCode>
+      <FileName>Collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Door" Collapsed="true">
+    <Position X="30.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAGEEAAIAAAAAIACAACAAAAAAAAEAACAAAAQAA=</HashCode>
+      <FileName>Door.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExitCommand" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABEAAAAEgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExitCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Factory" Collapsed="true">
+    <Position X="41.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQECIEACAgAAAAIAJBAACAAABAAAAAgAAiAAAAAAA=</HashCode>
+      <FileName>Factory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FightCommand" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAAAAAAAAAEAAAAEAAAAAAAAQACABAAAAA=</HashCode>
+      <FileName>FightCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="43.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAIjCAACAAABAAAAMEAAAAEACAFAgAAIAAABBcAAA=</HashCode>
+      <FileName>GameManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="19.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="House" Collapsed="true">
+    <Position X="28.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>House.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InstructionsCommand" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAEAAAAAAAAAAAEAAACAAAAAAA=</HashCode>
+      <FileName>InstructionsCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InstructionScreen" Collapsed="true">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAMIABAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>InstructionScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoadCommand" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAEAEAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoadCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map" Collapsed="true">
+    <Position X="24" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAACACBAAAgAAAAIIgAAgBJABAAAAAAQMQAAAAIA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Command" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEBAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ability" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEIAAAAwAgAAgAAAAIACIAiAAAQAgCBBAgEAAAAAAA=</HashCode>
+      <FileName>Ability.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NurseNPC" Collapsed="true">
+    <Position X="35.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAGCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NurseNPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpecialNPC" Collapsed="true">
+    <Position X="35.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialNPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokemonListCommand" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBAAAAEAAAAAAAAAAAEAAAAEAAAgAAAAAgAAAAAAAA=</HashCode>
+      <FileName>PokemonListCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokemonList" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBAAACAgAAAAQAAAANAAIAgAAAAAABAABAAABAAAAA=</HashCode>
+      <FileName>PokemonList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveCommand" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgAAAAAAAAAAAEAAAAEAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>SaveCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Screen" Collapsed="true">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAABAMAABAAEAAAABAEAAAAAAAAAAA=</HashCode>
+      <FileName>Screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NPC" Collapsed="true">
+    <Position X="33" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAEAAAAgAAAAAAAIAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pharmacy" Collapsed="true">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pharmacy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="32" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAQEAAAAAAgAAAAAAAAAABJAAAAAAAgAQAEABA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pokemon" Collapsed="true">
+    <Position X="37.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAAAAE0EgCQBAAAAEAAAAIIBBEYAAlWBwEAAgSAEA=</HashCode>
+      <FileName>Pokemon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu" Collapsed="true">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAQApAAQAABAMAAABCAAAIAQNgAAAAAAIApAA=</HashCode>
+      <FileName>Menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resource" Collapsed="true">
+    <Position X="40" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAJAAAAAAAAAAAAAAAEABDAgAAAAAgCAAAAAg=</HashCode>
+      <FileName>Resource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Route" Collapsed="true">
+    <Position X="19.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Route.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings" Collapsed="true">
+    <Position X="41.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACQAAAgAAAAAAAAAUAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Settings.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShiftCommand" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAEAAAAAQAAAAEAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShiftCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop" Collapsed="true">
+    <Position X="24" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shop.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartCommand" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAEAAAAAAAAAAAABAAAAAABAAA=</HashCode>
+      <FileName>StartCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartMenu" Collapsed="true">
+    <Position X="15" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAMEAAAAAAAAAAABgBACABAAAAA=</HashCode>
+      <FileName>StartMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trainer" Collapsed="true">
+    <Position X="30" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAABAAAAAAAAQAACBAAQAAAACAgAAAgA=</HashCode>
+      <FileName>Trainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainerNPC" Collapsed="true">
+    <Position X="33" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TrainerNPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Utils" Collapsed="true">
+    <Position X="43.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MapDataColors" Collapsed="true">
+    <Position X="43.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAACAAgAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MapDataBehavior" Collapsed="true">
+    <Position X="41.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Element" Collapsed="true">
+    <Position X="40" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACgAAAAAACgAAAAAAAAACAAAAAAAAAAAAQAQQAAAAAA=</HashCode>
+      <FileName>Ability.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SPOT" Collapsed="true">
+    <Position X="40" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAABAAAAAAAAAgAAAAGAAAAAAABBAgAAAAAACAAA=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

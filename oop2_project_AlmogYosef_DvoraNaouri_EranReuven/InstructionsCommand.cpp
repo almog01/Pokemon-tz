@@ -3,7 +3,8 @@
 
 
 
-InstructionsCommand::InstructionsCommand()
+InstructionsCommand::InstructionsCommand(std::unique_ptr<Screen> &subScreen)
+	:m_subScreen(subScreen)
 {
 }
 
@@ -14,5 +15,5 @@ InstructionsCommand::~InstructionsCommand()
 
 void InstructionsCommand::execute()
 {
-	std::make_unique<InstructionScreen>();
+	m_subScreen = std::make_unique<InstructionScreen>();
 }

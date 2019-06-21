@@ -5,7 +5,7 @@
 class ExitCommand : public Command
 {
 public:
-	ExitCommand(Screen * screen);
+	ExitCommand(Screen * screen, bool isMainScreen = false);
 	~ExitCommand();
 
 	// Inherited via Command
@@ -13,5 +13,6 @@ public:
 
 private:
 	Screen * m_screen;
+	bool m_isMain;
 };
 
