@@ -1,7 +1,5 @@
 #include "GameManager.h"
-#include "Settings.h"
 #include "StartMenu.h"
-#include "City.h"
 #include "Chat.h"
 #include "Battle.h"
 #include "PokemonListCommand.h"
@@ -16,16 +14,17 @@ using sf::Clock;
 using sf::Time;
 
 const int WILD_RANDOMNESS = 120;
+const int UPS = 60;			// updates per second
 
 GameManager::GameManager() 
 	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
-	m_player.addPokemon(Factory::pokemon("pikachu"));
-	m_player.addPokemon(Factory::pokemon("mewtwo"));
-	m_player.addPokemon(Factory::pokemon("mew"));
-	m_player.addPokemon(Factory::pokemon("charizard"));
-	m_player.addPokemon(Factory::pokemon("blastoise"));
-	m_player.addPokemon(Factory::pokemon("venusaur"));
+	m_player.addPokemon(Factory::pokemon("pikachu", 5));
+	m_player.addPokemon(Factory::pokemon("mewtwo", 5));
+	m_player.addPokemon(Factory::pokemon("mew", 5));
+	m_player.addPokemon(Factory::pokemon("charizard", 5));
+	m_player.addPokemon(Factory::pokemon("blastoise", 5));
+	m_player.addPokemon(Factory::pokemon("venusaur", 5));
 }
 
 
@@ -40,7 +39,7 @@ void GameManager::play()
 
 	Clock clock;
 	Time accumulator = Time::Zero;
-	Time fps = sf::seconds(1.f / Settings::FPS());
+	Time ups = sf::seconds(1.f / UPS);
 
 	while (m_window.isOpen())	// main window loop
 	{
@@ -51,8 +50,8 @@ void GameManager::play()
 
 		m_window.clear();	// clear the main window
 
-		while (accumulator > fps) {
-			accumulator -= fps;
+		while (accumulator > ups) {
+			accumulator -= ups;
 			update();
 		}
 		draw();				// clear, draw and display each object on the main window
@@ -73,8 +72,8 @@ void GameManager::wildPokemonBattle()
 
 void GameManager::createWindow()
 {
-	m_window.create(VideoMode(1024, 600), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
-	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
+	m_window.create(VideoMode(1024, 600), "Pokemon-tz", sf::Style::Close | sf::Style::Resize);	// create fullscreen window
+	//m_window.create(VideoMode(), "Pokemon-tz", sf::Style::Fullscreen);	// create fullscreen window
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_map = Factory::map("home");
 }

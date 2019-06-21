@@ -14,3 +14,19 @@ shop
 1
 shop_npc 0
 I'm sorry, we're closed at the moment.
+house1
+1
+npc6 0
+That's what she said...
+viridian
+5
+npc8 1
+They say inside this building there are the best trainers in the world! You should try fight them!
+npc3 3
+I'm looking to the left.
+npc2 4
+I'm looking straight.
+npc4 5
+I'm looking to the right.
+npc5 9
+Welcome to Viridian, the toughest city in the world. Feel free to look around. You can also heal your pokemons in our very own Pharmacy!

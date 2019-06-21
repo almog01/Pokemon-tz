@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Resource.h"
-#include "Settings.h"
 
 using sf::RenderWindow;
 

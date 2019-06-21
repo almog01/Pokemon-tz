@@ -1,7 +1,7 @@
 blastoise
 Tackle Bubble Water_Gun Hydro_Pump
 WATER 150
-route1
+route2
 butterfree
 Confusion Stun_Spore Giga_Drain Supersonic
 GRASS 125
@@ -13,7 +13,7 @@ route1
 charizard
 Scratch Ember Wing_Attack Flamethrower
 FIRE 140
-route1
+route2
 dodrio
 Peck Agility Quick_Attack Drill_Peck
 GROUND 125
@@ -21,7 +21,7 @@ route1
 magneton
 Tackle Thundershock Tri_Attack Zap_Cannon
 LIGHTNING 120
-route1
+route2
 pidgeot
 Gust Quick_Attack Sand_Attack Wing_Attack
 FLYING 125
@@ -33,7 +33,7 @@ route1
 venusaur
 Tackle Vine_Whip Razor_Leaf Cut
 GRASS 150
-route1
+route2
 farfetchd
 Tackle Peck Sand_Attack Razor_Leaf
 GROUND 125
@@ -45,8 +45,8 @@ route1
 mew
 Pound Mega_Punch Psychic Ancient_Power
 PSYCHIC 140
-route1
+route2
 mewtwo
 Confusion Swift Psychic Mist
 PSYCHIC 150
-route1
+route2

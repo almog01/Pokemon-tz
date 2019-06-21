@@ -101,5 +101,7 @@ bool Map::tryChat(const FloatRect & pov, NPC *& npc) const
 Pokemon Map::getWildPokemon() const
 {
 	size_t random = rand() % m_wildPokemons.size();
+	int level = (rand() % 5) + 2;
+	m_wildPokemons.at(random)->setLevel(level);
 	return *m_wildPokemons.at(random);
 }

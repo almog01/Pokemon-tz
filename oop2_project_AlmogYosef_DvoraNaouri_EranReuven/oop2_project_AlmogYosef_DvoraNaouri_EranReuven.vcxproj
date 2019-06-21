@@ -148,7 +148,6 @@
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Chat.h" />
-    <ClInclude Include="City.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="ExitCommand.h" />
@@ -156,7 +155,6 @@
     <ClInclude Include="FightCommand.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="House.h" />
     <ClInclude Include="InstructionsCommand.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="Map.h" />
@@ -169,15 +167,11 @@
     <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="NPC.h" />
-    <ClInclude Include="Pharmacy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Route.h" />
-    <ClInclude Include="Settings.h" />
     <ClInclude Include="ShiftCommand.h" />
-    <ClInclude Include="Shop.h" />
     <ClInclude Include="StartCommand.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Trainer.h" />
@@ -190,7 +184,6 @@
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Chat.cpp" />
-    <ClCompile Include="City.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="ExitCommand.cpp" />
@@ -198,7 +191,6 @@
     <ClCompile Include="FightCommand.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="House.cpp" />
     <ClCompile Include="InstructionsCommand.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="main.cpp" />
@@ -212,22 +204,16 @@
     <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="NPC.cpp" />
-    <ClCompile Include="Pharmacy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Resource.cpp" />
-    <ClCompile Include="Route.cpp" />
     <ClCompile Include="ShiftCommand.cpp" />
-    <ClCompile Include="Shop.cpp" />
     <ClCompile Include="StartCommand.cpp" />
     <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="TrainerNPC.cpp" />
     <ClCompile Include="Utils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

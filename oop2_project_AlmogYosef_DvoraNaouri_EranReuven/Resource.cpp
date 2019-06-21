@@ -21,9 +21,22 @@ Resource::Resource()
 	loadTexture("mom", "resource/img/characters/mom.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
 	loadTexture("trainer1", "resource/img/characters/trainer1.png");
+	loadTexture("trainer2", "resource/img/characters/trainer2.png");
+	loadTexture("trainer3", "resource/img/characters/trainer3.png");
+	loadTexture("trainer4", "resource/img/characters/trainer4.png");
+	loadTexture("trainer5", "resource/img/characters/trainer5.png");
+	loadTexture("trainer6", "resource/img/characters/trainer6.png");
 	loadTexture("nurse", "resource/img/characters/nurse.png");
 	loadTexture("shop_npc", "resource/img/characters/shop_npc.png");
 	loadTexture("npc1", "resource/img/characters/npc1.png");
+	loadTexture("npc2", "resource/img/characters/npc2.png");
+	loadTexture("npc3", "resource/img/characters/npc3.png");
+	loadTexture("npc4", "resource/img/characters/npc4.png");
+	loadTexture("npc5", "resource/img/characters/npc5.png");
+	loadTexture("npc6", "resource/img/characters/npc6.png");
+	loadTexture("npc7", "resource/img/characters/npc7.png");
+	loadTexture("npc8", "resource/img/characters/npc8.png");
+	loadTexture("npc9", "resource/img/characters/npc9.png");
 
 	// maps
 	loadTexture("home", "resource/img/maps/home/home.png");
@@ -40,8 +53,12 @@ Resource::Resource()
 	loadImage("pharmacy_data", "resource/img/maps/pharmacy/pharmacy_data.png");
 	loadTexture("shop", "resource/img/maps/shop/shop.png");
 	loadImage("shop_data", "resource/img/maps/shop/shop_data.png");
-	loadTexture("vermillion", "resource/img/maps/vermillion/vermillion.png");
-	loadImage("vermillion_data", "resource/img/maps/vermillion/vermillion_data.png");
+	loadTexture("house1", "resource/img/maps/house1/house1.png");
+	loadImage("house1_data", "resource/img/maps/house1/house1_data.png");
+	loadTexture("gym", "resource/img/maps/gym/gym.png");
+	loadImage("gym_data", "resource/img/maps/gym/gym_data.png");
+	loadTexture("route2", "resource/img/maps/route2/route2.png");
+	loadImage("route2_data", "resource/img/maps/route2/route2_data.png");
 	
 	// interface
 	loadTexture("chat_window", "resource/img/interface/chat_window.png");

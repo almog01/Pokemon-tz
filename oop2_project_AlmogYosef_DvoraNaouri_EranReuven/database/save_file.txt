@@ -1,8 +1,8 @@
-route1
-292.5 257.5
-Pikachu 120 0 2 25
-Mewtwo 157 0 3 23
-Mew 140 140 2 50
-Charizard 140 35 2 60
-Blastoise 150 100 2 50
-Venusaur 150 150 2 25
+viridian
+490.5 122.5
+Pikachu 141 0 5 27
+Mewtwo 171 171 5 36
+Mew 168 168 6 81
+Charizard 168 168 6 71
+Blastoise 185 0 7 42
+Venusaur 171 171 5 54

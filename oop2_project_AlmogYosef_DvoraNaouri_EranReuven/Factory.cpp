@@ -1,6 +1,4 @@
 #include "Factory.h"
-#include "City.h"
-#include "House.h"
 #include "Door.h"
 #include "NPC.h"
 #include "TrainerNPC.h"
@@ -194,13 +192,15 @@ void Factory::createTrainers()
 			stream >> name >> index;
 			auto trainer = make_unique<TrainerNPC>(name);
 			getline(m_file, line);
-			trainer->setChat(line);
-			getline(m_file, line);
 			stream.clear();
 			stream.str(line);
 			string pokemonName;
 			while (stream >> pokemonName)
-				trainer->addPokemon(Factory::pokemon(pokemonName));
+			{
+				int level;
+				stream >> level;
+				trainer->addPokemon(Factory::pokemon(pokemonName, level));
+			}
 			m_maps[mapName]->addCollider(std::move(trainer), index);
 		}
 	}

@@ -1,5 +1,16 @@
 route1
-1
-trainer1 1
-You have no chance!
-pikachu mew
+3
+trainer1 3
+caterpie 6 pidgeot 6 ponyta 6
+trainer2 2
+pikachu 7 farfetchd 7 magneton 7
+trainer3 1
+charizard 8 blastoise 8 venusaur 8
+gym
+3
+trainer4 0
+charizard 10 mew 11 mewtwo 12 
+trainer6 1
+ponyta 9 butterfree 9 farfetchd 9
+trainer5 2
+dodrio 9 caterpie 9 pikachu 9

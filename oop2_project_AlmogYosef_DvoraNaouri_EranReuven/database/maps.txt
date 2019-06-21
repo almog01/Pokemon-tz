@@ -5,4 +5,6 @@ oaks_lab
 viridian
 pharmacy
 shop
-vermillion
+house1
+gym
+route2
