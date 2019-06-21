@@ -1,7 +1,15 @@
+home
+1
+mom 0
+Good luck my son. Now go and catch'em all! Don't forget to change underwear every day!
 oaks_lab
 1
 professor_oak 0
 Hello and Welcome to Pokemon-tz!
+pallet
+1
+npc1 2
+ZzZzZzZzZzZz...
 shop
 1
 shop_npc 0

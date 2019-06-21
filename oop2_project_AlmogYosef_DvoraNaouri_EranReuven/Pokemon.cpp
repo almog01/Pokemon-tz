@@ -7,8 +7,8 @@ using sf::IntRect;
 const float MAX_XP = 100;
 const int LEVEL_UP_BONUS_HP = 7;
 
-Pokemon::Pokemon(const string & name)
-	: m_back(Resource::texture(name + "_back")), m_front(Resource::texture(name + "_front")), m_icon(Resource::texture(name + "_icon"))
+Pokemon::Pokemon(const string & name, int level)
+	: m_back(Resource::texture(name + "_back")), m_front(Resource::texture(name + "_front")), m_icon(Resource::texture(name + "_icon")), m_level(level)
 {
 	m_name = name;
 	m_name[0] = toupper(m_name[0]);	// convert first letter to uppercase
@@ -26,6 +26,16 @@ void Pokemon::setTexture(const string & type)
 		m_sprite.setTexture(m_back);
 	else if (type == "icon")
 		m_sprite.setTexture(m_icon);
+}
+
+Pokemon & Pokemon::setLevel(int level)
+{
+	int diff = level - m_level;
+	for (int i = 0; i < diff; ++i)
+		m_maxHp += LEVEL_UP_BONUS_HP;
+	m_hp = m_maxHp;
+	m_level = level;
+	return *this;
 }
 
 Sprite Pokemon::getHpBar() const

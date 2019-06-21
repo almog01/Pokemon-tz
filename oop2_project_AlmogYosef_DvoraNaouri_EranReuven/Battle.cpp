@@ -10,7 +10,7 @@ using std::to_string;
 using std::make_unique;
 
 const unsigned TEXT_SIZE = 14U;
-const float BASE_EXP = 25;
+const float BASE_EXP = 45;
 
 Battle::Battle(Player & player, Trainer & enemy, int battleType)
 	: m_menu(Resource::texture("battle_menu_frame"), Vector2f(2.f, 2.f), false), m_player(player), m_enemy(&enemy),

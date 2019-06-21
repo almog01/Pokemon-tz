@@ -51,6 +51,13 @@ Pokemon Factory::pokemon(const string & name)
 	return *m_pokemons.at(name).get();
 }
 
+Pokemon Factory::pokemon(const string & name, int level)
+{
+	auto p = m_pokemons.at(name).get();
+	p->setLevel(level);
+	return *p;
+}
+
 void Factory::createMaps()
 {
 	m_file.open("database/maps.txt");

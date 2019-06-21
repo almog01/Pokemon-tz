@@ -1,7 +1,7 @@
 #include "Ability.h"
 #include "Pokemon.h"
 
-const int ELEMENT_BONUS = 20;
+const int ELEMENT_BONUS = 15;
 
 Ability::Ability(const string & name, const string & element, int damage, int speed)
 	: m_sprite(Resource::texture(element + "_ability")), m_element(stringToElement(element)), m_damage(damage), m_speed(speed)

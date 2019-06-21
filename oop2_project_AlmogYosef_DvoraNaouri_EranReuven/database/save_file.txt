@@ -1,5 +1,8 @@
-pallet
-117.5 134.5
-Mewtwo 134 102 6 32
-Mew 100 100 2 75
-Pikachu 110 110 2 50
+route1
+292.5 257.5
+Pikachu 120 0 2 25
+Mewtwo 157 0 3 23
+Mew 140 140 2 50
+Charizard 140 35 2 60
+Blastoise 150 100 2 50
+Venusaur 150 150 2 25

@@ -11,14 +11,14 @@ using sf::Sprite;
 class Pokemon : public Character
 {
 public:
-	Pokemon(const string & name);
+	Pokemon(const string & name, int level = 2);
 	~Pokemon();
 
 	//set Texture for present sprite
 	void setTexture(const string & type);
 
 	//functions to set and get pokemon stats, elements
-	Pokemon& setLevel(int level) { m_level = level; return *this; }
+	Pokemon& setLevel(int level);
 	int getLevel() const { return m_level; }
 	Pokemon& setHp(int hp) { m_hp = (hp > 0) ? hp : 0; return *this; }
 	int getHp() const { return m_hp; }
@@ -61,7 +61,7 @@ private:
 	vector<Ability*> m_abilities;
 
 	//pokemon stats
-	int m_level = 2;
+	int m_level;
 	int m_hp;
 	int m_maxHp;
 	int m_xp = 0;

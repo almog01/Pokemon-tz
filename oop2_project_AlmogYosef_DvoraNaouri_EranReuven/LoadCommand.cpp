@@ -45,7 +45,7 @@ void LoadCommand::execute()
 			if ((*pokemons)->getName() == pokemonName)
 			{
 				stream >> maxHp >> hp >> level >> xp;
-				(*pokemons)->setMaxHp(maxHp).setHp(hp).setLevel(level).setXp(xp);
+				(*pokemons)->setLevel(level).setMaxHp(maxHp).setHp(hp).setXp(xp);
 			}
 		}
 	}

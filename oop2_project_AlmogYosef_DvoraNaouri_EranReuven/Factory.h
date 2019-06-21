@@ -24,6 +24,7 @@ public:
 	static Map * map(const string & name);
 	static Ability * ability(const string & name);
 	static Pokemon pokemon(const string & name);
+	static Pokemon pokemon(const string & name, int level);
 
 private:
 	Factory();

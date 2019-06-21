@@ -20,9 +20,12 @@ const int WILD_RANDOMNESS = 120;
 GameManager::GameManager() 
 	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
+	m_player.addPokemon(Factory::pokemon("pikachu"));
 	m_player.addPokemon(Factory::pokemon("mewtwo"));
 	m_player.addPokemon(Factory::pokemon("mew"));
-	m_player.addPokemon(Factory::pokemon("pikachu"));
+	m_player.addPokemon(Factory::pokemon("charizard"));
+	m_player.addPokemon(Factory::pokemon("blastoise"));
+	m_player.addPokemon(Factory::pokemon("venusaur"));
 }
 
 
@@ -73,7 +76,7 @@ void GameManager::createWindow()
 	m_window.create(VideoMode(1024, 600), Settings::WINDOW_TITLE(), sf::Style::Close | sf::Style::Resize);	// create fullscreen window
 	//m_window.create(VideoMode(), Settings::WINDOW_TITLE(), sf::Style::Fullscreen);	// create fullscreen window
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
-	m_map = Factory::map("pallet");
+	m_map = Factory::map("home");
 }
 
 void GameManager::startMenuScene()
@@ -84,7 +87,7 @@ void GameManager::startMenuScene()
 
 void GameManager::initCharacters()
 {
-	m_player.setPosition(Vector2f(180.f, 200.f));
+	m_player.setPosition(Vector2f(134.f, 42.f));
 	m_player.setMap(m_map);
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);

@@ -1,12 +1,52 @@
+blastoise
+Tackle Bubble Water_Gun Hydro_Pump
+WATER 150
+route1
+butterfree
+Confusion Stun_Spore Giga_Drain Supersonic
+GRASS 125
+route1
+caterpie
+Tackle Vine_Whip Cut String_Shot
+GRASS 115
+route1
+charizard
+Scratch Ember Wing_Attack Flamethrower
+FIRE 140
+route1
+dodrio
+Peck Agility Quick_Attack Drill_Peck
+GROUND 125
+route1
+magneton
+Tackle Thundershock Tri_Attack Zap_Cannon
+LIGHTNING 120
+route1
+pidgeot
+Gust Quick_Attack Sand_Attack Wing_Attack
+FLYING 125
+route1
+ponyta
+Ember Quick_Attack Fire_Spin Fire_Blast
+FIRE 125
+route1
+venusaur
+Tackle Vine_Whip Razor_Leaf Cut
+GRASS 150
+route1
+farfetchd
+Tackle Peck Sand_Attack Razor_Leaf
+GROUND 125
+route1
 pikachu
-Tackle Tail_Whip Thundershock Roar
-ELECTRIC 110
+Tackle Thundershock Thunderbolt Agility
+ELECTRIC 120
 route1
 mew
 Pound Mega_Punch Psychic Ancient_Power
-PSYCHIC 100
+PSYCHIC 140
 route1
 mewtwo
 Confusion Swift Psychic Mist
-PSYCHIC 106
+PSYCHIC 150
 route1

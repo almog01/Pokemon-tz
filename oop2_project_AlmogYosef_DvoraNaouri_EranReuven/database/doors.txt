@@ -1,11 +1,11 @@
 home
 1
-26 3 pallet 95 130 0
+26 3 pallet 95 130 1
 pallet
 3
 34 2 route1 200 620 0
 16 5 home 70 128 1
-16 5 oaks_lab 97 180 2
+16 5 oaks_lab 97 180 3
 oaks_lab
 1
 26 1 pallet 257 227 1

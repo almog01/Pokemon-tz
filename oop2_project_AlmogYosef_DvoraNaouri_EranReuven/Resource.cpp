@@ -18,10 +18,12 @@ Resource::Resource()
 	
 	// characters
 	loadTexture("player", "resource/img/characters/player.png");
+	loadTexture("mom", "resource/img/characters/mom.png");
 	loadTexture("professor_oak", "resource/img/characters/professor_oak.png");
 	loadTexture("trainer1", "resource/img/characters/trainer1.png");
 	loadTexture("nurse", "resource/img/characters/nurse.png");
 	loadTexture("shop_npc", "resource/img/characters/shop_npc.png");
+	loadTexture("npc1", "resource/img/characters/npc1.png");
 
 	// maps
 	loadTexture("home", "resource/img/maps/home/home.png");
@@ -74,15 +76,45 @@ Resource::Resource()
 	loadTexture("PSYCHIC_ability", "resource/img/abilities/psychic.png");
 
 	// pokemons
-	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
-	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
-	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
+	loadTexture("blastoise_front", "resource/img/pokemons/blastoise/front.png");
+	loadTexture("blastoise_back", "resource/img/pokemons/blastoise/back.png");
+	loadTexture("blastoise_icon", "resource/img/pokemons/blastoise/icon.png");
+	loadTexture("butterfree_front", "resource/img/pokemons/butterfree/front.png");
+	loadTexture("butterfree_back", "resource/img/pokemons/butterfree/back.png");
+	loadTexture("butterfree_icon", "resource/img/pokemons/butterfree/icon.png");
+	loadTexture("caterpie_front", "resource/img/pokemons/caterpie/front.png");
+	loadTexture("caterpie_back", "resource/img/pokemons/caterpie/back.png");
+	loadTexture("caterpie_icon", "resource/img/pokemons/caterpie/icon.png");
+	loadTexture("charizard_front", "resource/img/pokemons/charizard/front.png");
+	loadTexture("charizard_back", "resource/img/pokemons/charizard/back.png");
+	loadTexture("charizard_icon", "resource/img/pokemons/charizard/icon.png");
+	loadTexture("dodrio_front", "resource/img/pokemons/dodrio/front.png");
+	loadTexture("dodrio_back", "resource/img/pokemons/dodrio/back.png");
+	loadTexture("dodrio_icon", "resource/img/pokemons/dodrio/icon.png");
+	loadTexture("farfetchd_front", "resource/img/pokemons/farfetchd/front.png");
+	loadTexture("farfetchd_back", "resource/img/pokemons/farfetchd/back.png");
+	loadTexture("farfetchd_icon", "resource/img/pokemons/farfetchd/icon.png");
+	loadTexture("magneton_front", "resource/img/pokemons/magneton/front.png");
+	loadTexture("magneton_back", "resource/img/pokemons/magneton/back.png");
+	loadTexture("magneton_icon", "resource/img/pokemons/magneton/icon.png");
 	loadTexture("mew_front", "resource/img/pokemons/mew/front.png");
 	loadTexture("mew_back", "resource/img/pokemons/mew/back.png");
 	loadTexture("mew_icon", "resource/img/pokemons/mew/icon.png");
 	loadTexture("mewtwo_front", "resource/img/pokemons/mewtwo/front.png");
 	loadTexture("mewtwo_back", "resource/img/pokemons/mewtwo/back.png");
 	loadTexture("mewtwo_icon", "resource/img/pokemons/mewtwo/icon.png");
+	loadTexture("pidgeot_front", "resource/img/pokemons/pidgeot/front.png");
+	loadTexture("pidgeot_back", "resource/img/pokemons/pidgeot/back.png");
+	loadTexture("pidgeot_icon", "resource/img/pokemons/pidgeot/icon.png");
+	loadTexture("pikachu_front", "resource/img/pokemons/pikachu/front.png");
+	loadTexture("pikachu_back", "resource/img/pokemons/pikachu/back.png");
+	loadTexture("pikachu_icon", "resource/img/pokemons/pikachu/icon.png");
+	loadTexture("ponyta_front", "resource/img/pokemons/ponyta/front.png");
+	loadTexture("ponyta_back", "resource/img/pokemons/ponyta/back.png");
+	loadTexture("ponyta_icon", "resource/img/pokemons/ponyta/icon.png");
+	loadTexture("venusaur_front", "resource/img/pokemons/venusaur/front.png");
+	loadTexture("venusaur_back", "resource/img/pokemons/venusaur/back.png");
+	loadTexture("venusaur_icon", "resource/img/pokemons/venusaur/icon.png");
 }
 
 
