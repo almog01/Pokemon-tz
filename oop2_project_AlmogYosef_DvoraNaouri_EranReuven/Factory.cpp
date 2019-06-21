@@ -15,6 +15,7 @@ unordered_map<string, unique_ptr<Pokemon>> Factory::m_pokemons;
 
 Factory::Factory()
 {
+	// create all
 	createMaps();
 	createDoors();
 	createAbilities();
@@ -51,6 +52,7 @@ Pokemon Factory::pokemon(const string & name)
 
 Pokemon Factory::pokemon(const string & name, int level)
 {
+	// inorder to return a pokemon with a specific level
 	auto p = m_pokemons.at(name).get();
 	p->setLevel(level);
 	return *p;
@@ -58,6 +60,7 @@ Pokemon Factory::pokemon(const string & name, int level)
 
 void Factory::createMaps()
 {
+	// open maps file and create the maps based on it
 	m_file.open("database/maps.txt");
 	string name;
 	while (getline(m_file, name))
@@ -67,15 +70,17 @@ void Factory::createMaps()
 
 void Factory::createDoors()
 {
+	// open doors file and create the doors based on it
 	m_file.open("database/doors.txt");
-	string mapName;
+	string mapName;	// the map to add the door to
 	while (getline(m_file, mapName))
 	{
-		int numOfDoors;
+		int numOfDoors;	// number of doors in the current map
 		m_file >> numOfDoors;
 		m_file.get();
 		for (int i = 0; i < numOfDoors; ++i)
 		{
+			// read door data than create it in the maps colliders
 			string line;
 			getline(m_file, line);
 			istringstream stream(line);
@@ -91,10 +96,12 @@ void Factory::createDoors()
 
 void Factory::createAbilities()
 {
+	// open abilities file and create the abilities based on it
 	m_file.open("database/abilities.txt");
 	string line;
 	while (getline(m_file, line))
 	{
+		// read ability data than create it in the abilities unordered map
 		istringstream stream(line);
 		string name, element;
 		int damage, speed;
@@ -106,10 +113,12 @@ void Factory::createAbilities()
 
 void Factory::createPokemons()
 {
+	// open pokemons file and create the pokemons based on it
 	m_file.open("database/pokemons.txt");
 	string name;
 	while (getline(m_file, name))
 	{
+		// read pokemon data than create it in the pokemons unordered map
 		auto pokemon = std::make_unique<Pokemon>(name);
 		istringstream stream;
 		string line;
@@ -142,15 +151,17 @@ void Factory::createPokemons()
 
 void Factory::createNPCs()
 {
+	// open npcs file and create the npcs based on it
 	m_file.open("database/npcs.txt");
 	string mapName;
 	while (getline(m_file, mapName))
 	{
-		int numOfNPCs;
+		int numOfNPCs;	// number of npcs in the map
 		m_file >> numOfNPCs;
 		m_file.get();
 		for (int i = 0; i < numOfNPCs; ++i)
 		{
+			// read npc data than create it in the map collider
 			string line;
 			getline(m_file, line);
 			istringstream stream(line);
@@ -168,6 +179,7 @@ void Factory::createNPCs()
 
 void Factory::createSpecialNPCs()
 {
+	// the nurse is a special npc that can also restore the player's pokemon to full health
 	auto nurse = make_unique<NurseNPC>("nurse");
 	nurse->setChat("I've restored your Pokemons to full health! We hope to see you again!");
 	m_maps["pharmacy"]->addCollider(std::move(nurse), 0);
@@ -175,15 +187,17 @@ void Factory::createSpecialNPCs()
 
 void Factory::createTrainers()
 {
+	// open trainers file and create the trainers based on it
 	m_file.open("database/trainers.txt");
 	string mapName;
 	while (getline(m_file, mapName))
 	{
-		int numOfTrainers;
+		int numOfTrainers;	// number of trainers in the map
 		m_file >> numOfTrainers;
 		m_file.get();
 		for (int i = 0; i < numOfTrainers; ++i)
 		{
+			// read trainer data than create it in the map collider
 			string line;
 			getline(m_file, line);
 			istringstream stream(line);

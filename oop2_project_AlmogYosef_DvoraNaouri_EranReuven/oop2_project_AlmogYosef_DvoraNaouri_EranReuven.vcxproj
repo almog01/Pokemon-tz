@@ -162,11 +162,11 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="Ability.h" />
     <ClInclude Include="NurseNPC.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="SpecialNPC.h" />
     <ClInclude Include="PokemonListCommand.h" />
     <ClInclude Include="PokemonList.h" />
     <ClInclude Include="SaveCommand.h" />
-    <ClInclude Include="Screen.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pokemon.h" />
@@ -185,13 +185,11 @@
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Chat.cpp" />
-    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="ExitCommand.cpp" />
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="FightCommand.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InstructionsCommand.cpp" />
     <ClCompile Include="InstructionScreen.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
@@ -204,7 +202,6 @@
     <ClCompile Include="PokemonListCommand.cpp" />
     <ClCompile Include="PokemonList.cpp" />
     <ClCompile Include="SaveCommand.cpp" />
-    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pokemon.cpp" />

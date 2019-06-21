@@ -4,8 +4,8 @@
 
 using std::array;
 
-const float MOVE_SPEED = 2.5f;
-const int BOUNDS = 8;
+const float MOVE_SPEED = 2.5f;	// character move speed
+const int BOUNDS = 8;			// number of bounds
 
 Character::Character()
 {
@@ -25,6 +25,7 @@ void Character::draw(RenderWindow & window)
 
 FloatRect Character::getGlobalBounds() const
 {
+	// reduce the bounds of the character to make it collide only from half of his body
 	auto bounds = m_sprite.getGlobalBounds();
 	bounds.top += (bounds.height / 2.60f);
 	bounds.height -= (bounds.height / 2.60f);
@@ -33,14 +34,14 @@ FloatRect Character::getGlobalBounds() const
 
 void Character::setMap(const Map * map)
 {
-	m_mapData = map->getMapData();
+	m_mapData = map->getMapData();	// get the map collision data
 }
 
 void Character::move(bool & inGrass)
 {
-	m_sprite.move(m_direction);
-	if (checkMapCollision(inGrass))
-		stop();
+	m_sprite.move(m_direction);		// move character
+	if (checkMapCollision(inGrass))	// if collided with static object in map
+		stop();						// stop moving
 }
 
 void Character::stop()
@@ -50,6 +51,7 @@ void Character::stop()
 
 bool Character::checkMapCollision(bool & inGrass) const
 {
+	// to check collision with static objects in the map, we save 8 points of the character bounds:
 	array<Vector2f, BOUNDS> bounds;
 	int index = 0;
 	bounds[index++] = m_sprite.getPosition() + Vector2f(0, sizeY / 2);	// top left
@@ -63,20 +65,21 @@ bool Character::checkMapCollision(bool & inGrass) const
 
 	try
 	{
-		for (auto& bound : bounds)
+		for (auto& bound : bounds)	// for each bound of the character
 		{
+			// save the data that in the current collided: bound <-> map
 			short data = (*m_mapData).at(size_t(bound.y)).at(size_t(bound.x));
-			if (data == B_GRASS)
+			if (data == B_GRASS)	// if collided with grass
 				inGrass = true;
-			else if (data == B_COLLISION)
+			else if (data == B_COLLISION)	// if collided with static object
 				return B_COLLISION;
 		}
 	}
-	catch (const std::out_of_range&)
+	catch (const std::out_of_range&)	// when going out of the range of the map
 	{
-		return B_COLLISION;
+		return B_COLLISION;		// return collision
 	}
-	return B_NO_COLLISION;
+	return B_NO_COLLISION;	// if any of the bounds didn't collide, return no collision
 }
 
 void Character::setTextureRect(const IntRect & rect)

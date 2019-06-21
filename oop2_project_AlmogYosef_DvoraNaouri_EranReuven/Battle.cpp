@@ -56,6 +56,7 @@ Battle::Battle(Player & player, Pokemon & wildPokemon, shared_ptr<Music> music)
 
 Battle::~Battle()
 {
+	// change music at the end of the battle
 	m_music->stop();
 	m_music = Resource::music("background");
 	m_music->play();
@@ -103,6 +104,7 @@ void Battle::initBattle()
 	m_playerLevel.setPosition(m_playerStatbar.getPosition() + Vector2f(75.f, -1.f));
 	m_playerHP.setFillColor(Color::Black);
 	m_playerHP.setPosition(m_playerStatbar.getPosition() + Vector2f(62.f, 17.f));
+	// play battle music
 	m_music = Resource::music("battle");
 	m_music->play();
 }
@@ -111,6 +113,7 @@ void Battle::draw(RenderWindow & window)
 {
 	if (!m_active)
 		return;
+	// draw every part of the battle
 	window.draw(m_screen);
 	window.draw(m_menuBg);
 	window.draw(m_playerStatbar);
@@ -127,7 +130,7 @@ void Battle::draw(RenderWindow & window)
 	m_enemyPokemon->draw(window);
 	playTurns(window);
 	m_menu.draw(window);
-	if (m_subScreen)
+	if (m_subScreen)	// if there is opened sub-screen
 	{
 		if (!m_subScreen->isActive())
 		{
@@ -139,7 +142,7 @@ void Battle::draw(RenderWindow & window)
 	}
 	else
 		window.setView(m_view);
-	if (m_msg)
+	if (m_msg)	// if there is opened message
 	{
 		if (!m_msg->isActive())
 			m_msg.reset();
@@ -150,12 +153,13 @@ void Battle::draw(RenderWindow & window)
 
 void Battle::keyReleasedHandler(const Event & event)
 {
+	// if there is opened message or sub-screen, transfer the event handler to them
 	if (m_msg)
 		m_msg->keyReleasedHandler(event);
 	else if (m_subScreen)
 	{
 		m_subScreen->keyReleasedHandler(event);
-		if (m_currPokemon != m_nextPokemon)
+		if (m_currPokemon != m_nextPokemon)	// if the player switched pokemon
 		{
 			auto next = m_player.begin() + m_nextPokemon;
 			if (!(*next)->isDead())
@@ -172,20 +176,23 @@ void Battle::keyReleasedHandler(const Event & event)
 
 void Battle::updateHpBar(Pokemon & pokemon, Sprite & bar)
 {
+	// update only the texture rect of the bar
 	bar.setTextureRect(pokemon.getHpBar().getTextureRect());
+	// update hp string
 	m_playerHP.setString(to_string(m_playerPokemon->getHp()) + "/" + to_string(m_playerPokemon->getMaxHp()));
 }
 
 bool Battle::printMessage(const string & msg)
 {
-	static bool msgPrinted = false;
+	static bool msgPrinted = false;		// flag if the message was printed
 	if (!msgPrinted)
 	{
+		// print message
 		m_msg = make_unique<Chat>(Resource::texture("battle_menu_bg"), m_view, msg, Color::White);
 		msgPrinted = true;
 		return false;
 	}
-	else if (msgPrinted && !m_msg)
+	else if (msgPrinted && !m_msg)	// if the message was printed and read already
 	{
 		msgPrinted = false;
 		return true;
@@ -197,12 +204,12 @@ int Battle::getFirstAlivePokemon(Trainer & trainer)
 {
 	int index = 0;
 	auto pokemon = (*(trainer.cbegin() + index));
-	while (pokemon->isDead())
+	while (pokemon->isDead())	// iterate through the trainer's pokemons untill finding 1 that isn't dead
 	{
 		++index;
 		pokemon = (*(trainer.cbegin() + index));
 	}
-	if (trainer.cbegin() + index == trainer.cend())
+	if (trainer.cbegin() + index == trainer.cend())	// if all pokemons are dead return -1
 		return -1;
 	else
 		return index;
@@ -210,8 +217,9 @@ int Battle::getFirstAlivePokemon(Trainer & trainer)
 
 void Battle::choosePokemon(bool isPlayer, int index)
 {
-	if (isPlayer)
+	if (isPlayer)	// choose pokemon for player
 	{
+		// choose pokemon at index and initialize all its new stats
 		m_playerPokemon = *(m_player.begin() + index);
 		m_playerPokemon->setTexture("back");
 		m_playerPokemon->setOrigin(BOTTOM_MIDDLE);
@@ -222,8 +230,9 @@ void Battle::choosePokemon(bool isPlayer, int index)
 		m_playerLevel.setString("Lv" + to_string(m_playerPokemon->getLevel()));
 		m_playerHP.setString(to_string(m_playerPokemon->getHp()) + "/" + to_string(m_playerPokemon->getMaxHp()));
 	}
-	else
+	else			// choose pokemon for enemy
 	{
+		// choose pokemon at index and initialize all its new stats
 		m_enemyPokemon = *(m_enemy->begin() + index);
 		m_enemyPokemon->setTexture("front");
 		m_enemyPokemon->setOrigin(BOTTOM_MIDDLE);
@@ -236,40 +245,44 @@ void Battle::choosePokemon(bool isPlayer, int index)
 
 void Battle::playTurns(RenderWindow & window)
 {
+	// check that player / enemy isn't dead
 	playerDeadHandler();
 	enemyDeadHandler();
 	if (m_playerUsedAbility)	// if an ability was used
 	{
-		if (m_playerTurnExec && m_enemyTurnExec)
+		if (m_playerTurnExec && m_enemyTurnExec)	// when both turns executed
 		{
-			m_enemyUsedAbility = m_enemyPokemon->getRandAbility();
+			m_enemyUsedAbility = m_enemyPokemon->getRandAbility();	// get new enemy ability
 
 			if (m_playerUsedAbility->getSpeed() > m_enemyUsedAbility->getSpeed())	// player ability faster than enemy
 				m_isPlayerTurn = true;
 			else if (m_enemyUsedAbility->getSpeed() > m_playerUsedAbility->getSpeed())	// enemy ability faster than player
 				m_isPlayerTurn = false;
-			else
+			else		// both abilities has the same speed
 			{
-				bool random = rand() % 2;
+				bool random = rand() % 2;	// give the turn to a random player
 				m_isPlayerTurn = random;
 			}
 
-			m_playerTurnExec = m_enemyTurnExec = false;
+			m_playerTurnExec = m_enemyTurnExec = false;		// reset turns
 		}
 		if (m_isPlayerTurn)
 			execPlayerTurn(window);
 		else
 			execEnemyTurn(window);
-		if (m_playerTurnExec && m_enemyTurnExec)
-			m_playerUsedAbility = m_enemyUsedAbility = nullptr;
+		if (m_playerTurnExec && m_enemyTurnExec)	// when both turns executed
+			m_playerUsedAbility = m_enemyUsedAbility = nullptr;	// reset used abilities
 	}
 }
 
 void Battle::execPlayerTurn(RenderWindow & window)
 {
+	// draw the ability
 	m_playerUsedAbility->setOrigin(BOTTOM_MIDDLE);
 	m_playerUsedAbility->setPosition(m_enemyPokemon->getPosition());
 	m_playerUsedAbility->draw(window);
+
+	// print message for the used ability
 	if (printMessage(m_playerPokemon->getName() + " used " + m_playerUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_playerPokemon->getLevel()) / float(m_enemyPokemon->getLevel());
@@ -282,9 +295,12 @@ void Battle::execPlayerTurn(RenderWindow & window)
 
 void Battle::execEnemyTurn(RenderWindow & window)
 {
+	// draw the ability
 	m_enemyUsedAbility->setOrigin(BOTTOM_MIDDLE);
 	m_enemyUsedAbility->setPosition(m_playerPokemon->getPosition());
 	m_enemyUsedAbility->draw(window);
+
+	// print message for the used ability
 	if (printMessage("Enemy " + m_enemyPokemon->getName() + " used " + m_enemyUsedAbility->getName()))
 	{
 		float lvlDiff = float(m_enemyPokemon->getLevel()) / float(m_playerPokemon->getLevel());
@@ -303,6 +319,8 @@ void Battle::playerDeadHandler()
 		{
 			m_playerTurnExec = m_enemyTurnExec = true;
 			m_playerUsedAbility = nullptr;
+
+			// prints a message to the user if he want to use another pokemon
 			if (!m_subScreen && printMessage(m_playerPokemon->getName() + " fainted! use next Pokemon?"))
 			{
 				auto boolMenu = make_unique<Menu>(Resource::texture("boolean_menu"), Vector2f(1.f, 2.f), false);
@@ -327,13 +345,13 @@ void Battle::enemyDeadHandler()
 	{
 		m_playerTurnExec = m_enemyTurnExec = true;
 		m_playerUsedAbility = nullptr;
-		if (!m_expAdded)
+		if (!m_expAdded)	// add exp when the enemy is dead
 			addExp();
 		else
 		{
 			if (m_enemy)	// if fighting vs trainer
 			{
-				if (!m_enemy->isDefeated())
+				if (!m_enemy->isDefeated())	// the enemy still has alive pokemons
 				{
 					++m_enemyCurrPokemon;
 					choosePokemon(false, m_enemyCurrPokemon);
@@ -345,7 +363,7 @@ void Battle::enemyDeadHandler()
 						m_active = false;
 				}
 			}
-			else			// if fighting vs wild pokemon
+			else		// if fighting vs wild pokemon
 			{
 				if (printMessage("Wild " + m_enemyPokemon->getName() + " fainted!"))
 					m_active = false;
@@ -356,8 +374,10 @@ void Battle::enemyDeadHandler()
 
 void Battle::addExp()
 {
+	// add exp based on the difference between the levels of the pokemons
 	float lvlDiff = float(m_enemyPokemon->getLevel()) / float(m_playerPokemon->getLevel());
 	int amount = int(BASE_EXP * lvlDiff);
+	// print message that exp was added
 	if (printMessage(m_playerPokemon->getName() + " gained " + to_string(amount) + " EXP!"))
 	{
 		m_playerPokemon->addExp(amount);
@@ -368,6 +388,7 @@ void Battle::addExp()
 
 void Battle::updateExpBar()
 {
+	// updates only the texture rect of the exp bar
 	m_expBar.setTextureRect(m_playerPokemon->getExpBar().getTextureRect());
 	m_playerLevel.setString("Lv" + to_string(m_playerPokemon->getLevel()));
 	updateHpBar(*m_playerPokemon, m_playerHpBar);

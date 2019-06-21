@@ -18,7 +18,6 @@ public:
 
 private:
 	sf::View m_view;
-	sf::Sprite m_backGround;
 	Menu m_menu;
 	Player& m_player;
 	unique_ptr<Screen> m_subScreen;

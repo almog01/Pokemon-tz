@@ -13,16 +13,16 @@ using sf::Keyboard;
 using sf::Clock;
 using sf::Time;
 
-const int WILD_RANDOMNESS = 120;
-const int UPS = 60;			// updates per second
+const int WILD_RANDOMNESS = 120;	// randomness for encountering wild pokemon
+const int UPS = 60;		// updates per second
 
 GameManager::GameManager() 
 	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
-	createWindow();
-	initPlayer();
-	startMenuScene();
-	m_music = Resource::music("background");
+	createWindow();		// create the main window
+	initPlayer();		// initialize player
+	startMenuScene();	// open the start menu screen
+	m_music = Resource::music("background");	// initialize music
 }
 
 
@@ -32,28 +32,31 @@ GameManager::~GameManager()
 
 void GameManager::play()
 {
+	// main game clock to count seconds between frames
 	Clock clock;
 	Time accumulator = Time::Zero;
 	Time ups = sf::seconds(1.f / UPS);
 
 	while (m_window.isOpen())	// main window loop
 	{
-		handleEvents();		// handle each events
+		handleEvents();
+		m_window.clear();
 
-		m_window.clear();	// clear the main window
-
-		while (accumulator > ups) {
+		// we want to call update function 60 times per second
+		while (accumulator > ups)
+		{
 			accumulator -= ups;
 			update();
 		}
 		draw();				// clear, draw and display each object on the main window
-		m_window.display();	// display the main window after all has been drawn
+		m_window.display();
 		accumulator += clock.restart();
 	}
 }
 
 void GameManager::wildPokemonBattle()
 {
+	// randomly encounter wild pokemon while in grass
 	int random = rand() % WILD_RANDOMNESS;
 	if (random == 0)
 	{
@@ -64,8 +67,8 @@ void GameManager::wildPokemonBattle()
 
 void GameManager::createWindow()
 {
-	m_window.create(VideoMode(1024, 600), "Pokemon-tz", sf::Style::Close | sf::Style::Resize);	// create fullscreen window
-	//m_window.create(VideoMode(), "Pokemon-tz", sf::Style::Fullscreen);	// create fullscreen window
+	// create main window, main view, and initialize first map to home
+	m_window.create(VideoMode(), "Pokemon-tz", sf::Style::Fullscreen);
 	m_view.setSize(float(VideoMode::getDesktopMode().width / 2.8f), float(VideoMode::getDesktopMode().height / 2.8f));
 	m_map = Factory::map("home");
 }
@@ -77,6 +80,7 @@ void GameManager::startMenuScene()
 
 void GameManager::initPlayer()
 {
+	// initialize player starting position and pokemons
 	m_player.setPosition(Vector2f(134.f, 42.f));
 	m_player.setMap(m_map);
 	m_view.setCenter(m_player.getPosition());
@@ -91,9 +95,10 @@ void GameManager::initPlayer()
 
 void GameManager::draw()
 {
+	// draw everything
 	m_map->draw(m_window);
 	m_player.draw(m_window);
-	if (m_screen)
+	if (m_screen)	// draw sub-screen only if there is 1 open
 		m_screen->draw(m_window);
 }
 
@@ -104,10 +109,10 @@ void GameManager::handleEvents()
 	{
 		switch (event.type)
 		{
-		case Event::Closed:		// event of windows closed
+		case Event::Closed:
 			m_window.close();
 			break;
-		case Event::KeyReleased:	// event of key released
+		case Event::KeyReleased:
 			keyReleasedHandler(event);
 			break;
 		}
@@ -118,12 +123,12 @@ void GameManager::keyReleasedHandler(const Event & event)
 {
 	if (m_screen)
 	{
-		if (event.key.code == Keyboard::Escape)
+		if (event.key.code == Keyboard::Escape)	// escape pressed while there is open screen
 		{
-			m_window.close();	// close the game
+			m_window.close();
 			return;
 		}
-		else if (m_menuActive && event.key.code == Keyboard::Enter)
+		else if (m_menuActive && event.key.code == Keyboard::Enter)	// enter key also closes the menu
 		{
 			m_menuActive = false;
 			m_screen.reset();
@@ -136,7 +141,7 @@ void GameManager::keyReleasedHandler(const Event & event)
 		switch (event.key.code)
 		{
 		case Keyboard::Escape:	// escape pressed
-			m_window.close();	// close the game
+			m_window.close();
 			break;
 		case Keyboard::Enter:	// enter pressed
 			openMenu();
@@ -152,16 +157,17 @@ void GameManager::update()
 {
 	if (m_screen)
 	{
-		if (!m_screen->isActive())
+		if (!m_screen->isActive())	// when a screen finishes, we deletes it
 			m_screen.reset();
 	}
 	else
 	{
+		// player and map
 		m_player.update(*this);
 		m_map->checkCollision(m_player);
-		if (m_map->getName() != m_player.getMap())
+		if (m_map->getName() != m_player.getMap())	// when the player switches map, we update to the new map
 			updateMap(m_player.getMap());
-		// Update view
+		// update view
 		m_view.setCenter(m_player.getPosition());
 		m_window.setView(m_view);
 	}
@@ -176,18 +182,19 @@ void GameManager::updateMap(const string & name)
 void GameManager::openChat()
 {
 	NPC* npc = nullptr;
-	if (m_map->tryChat(m_player.getPov(), npc))
+	if (m_map->tryChat(m_player.getPov(), npc))		// check in map if there is close npc to chat with
 	{
 		TrainerNPC* trainer = dynamic_cast<TrainerNPC*>(npc);
-		if (trainer)
+		if (trainer)	// if the npc is a trainer, start a battle with him
 			battleScene(*trainer);
-		else
+		else			// if the npc is normal, just chat
 			npc->startChat(m_screen, m_window.getView());
 	}
 }
 
 void GameManager::openMenu()
 {
+	// create the menu using command design pattern
 	auto menu = make_unique<Menu>(Resource::texture("menu"), Vector2f(1, 3));
 	int temp;
 	menu->addCommand("POKEMON", make_unique<PokemonListCommand>(m_screen, m_player, temp));
@@ -201,7 +208,7 @@ void GameManager::openMenu()
 
 void GameManager::battleScene(Trainer & trainer)
 {
-	if (!m_player.isDefeated() && !trainer.isDefeated())
+	if (!m_player.isDefeated() && !trainer.isDefeated())	// validate that both trainers still has alive pokemons
 	{
 		m_music->stop();
 		m_screen = make_unique<Battle>(m_player, trainer, m_music);
@@ -210,7 +217,7 @@ void GameManager::battleScene(Trainer & trainer)
 
 void GameManager::battleScene(Pokemon & pokemon)
 {
-	if (!m_player.isDefeated())
+	if (!m_player.isDefeated())		// validate the player has alive pokemons
 	{
 		m_music->stop();
 		m_screen = make_unique<Battle>(m_player, pokemon, m_music);

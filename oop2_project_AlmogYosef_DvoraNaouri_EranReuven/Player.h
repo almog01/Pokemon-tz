@@ -18,6 +18,7 @@ public:
 	Player(const Player&) = delete;
 	Player& operator=(const Player&) = delete;
 
+	// updates the player
 	void update(GameManager & gm);
 	
 	// Getters
@@ -34,9 +35,9 @@ public:
 	virtual void handleCollision(Door & door) override;
 
 private:
-	Player();
+	Player();	// c-tor
 
-	Animation m_animation;
+	Animation m_animation;	// animation of the player
 	string m_map;			// current map
 	RectangleShape m_pov;	// point of view
 };

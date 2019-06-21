@@ -1,7 +1,7 @@
 #include "Resource.h"
 #include <Windows.h>
 
-
+// initialize static memebers
 unordered_map<string, Texture> Resource::m_textures;
 unordered_map<string, Image> Resource::m_images;
 unordered_map<string, shared_ptr<Music>> Resource::m_musics;
