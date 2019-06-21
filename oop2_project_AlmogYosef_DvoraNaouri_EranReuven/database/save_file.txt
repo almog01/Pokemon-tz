@@ -1,8 +1,8 @@
-viridian
-490.5 122.5
+route1
+190 37.5
 Pikachu 141 0 5 27
-Mewtwo 171 171 5 36
-Mew 168 168 6 81
-Charizard 168 168 6 71
+Mewtwo 171 0 5 36
+Mew 182 0 8 79
+Charizard 189 12 9 43
 Blastoise 185 0 7 42
-Venusaur 171 171 5 54
+Venusaur 178 0 6 90

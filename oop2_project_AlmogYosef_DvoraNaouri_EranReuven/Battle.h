@@ -13,19 +13,16 @@ using sf::Text;
 class Battle : public Screen
 {
 public:
-	Battle(Player & player, Trainer & enemy, int battleType = 1);
-	Battle(Player & player, Pokemon & wildPokemon, int battleType = 1);
+	Battle(Player & player, Trainer & enemy, shared_ptr<Music> music);
+	Battle(Player & player, Pokemon & wildPokemon, shared_ptr<Music> music);
 	~Battle();
 
 	// Inherited via Screen
 	virtual void draw(RenderWindow & window) override;
 	virtual void keyReleasedHandler(const Event & event) override;
 	
-	void battleArenaLoader(int battleType);
-
-
 private:
-	void initBattle(int battleType);
+	void initBattle();
 	void updateHpBar(Pokemon & pokemon, Sprite & bar);
 	bool printMessage(const string & msg);
 	int getFirstAlivePokemon(Trainer & trainer);
@@ -38,6 +35,7 @@ private:
 	void addExp();
 	void updateExpBar();
 
+	shared_ptr<Music> m_music;
 	sf::View m_view;
 	Sprite m_menuBg;		// menu background
 	Sprite m_playerStatbar;	// player statbar

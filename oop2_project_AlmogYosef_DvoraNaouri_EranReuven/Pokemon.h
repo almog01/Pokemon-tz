@@ -41,12 +41,6 @@ public:
 	void addAbility(Ability* x) { m_abilities.push_back(x); }
 	void addExp(int amount);
 
-	// Inherited via Character
-	virtual void handleCollision(Collider & collider) override;
-	virtual void handleCollision(Player & player) override;
-	virtual void handleCollision(NPC & npc) override;
-	virtual void handleCollision(Door & door) override;
-
 private:
 	//pokemon name
 	string m_name;
@@ -67,5 +61,11 @@ private:
 
 	//pokemon element
 	Element m_element;
+
+	// Inherited via Character
+	virtual void handleCollision(Collider & collider) override;
+	virtual void handleCollision(Player & player) override;
+	virtual void handleCollision(NPC & npc) override;
+	virtual void handleCollision(Door & door) override;
 };
 

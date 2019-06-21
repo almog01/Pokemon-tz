@@ -1,7 +1,7 @@
 #include "Ability.h"
 #include "Pokemon.h"
 
-const int ELEMENT_BONUS = 25;
+const int ELEMENT_BONUS = 15;
 
 Ability::Ability(const string & name, const string & element, int damage, int speed)
 	: m_sprite(Resource::texture(element + "_ability")), m_element(stringToElement(element)), m_damage(damage), m_speed(speed)
@@ -43,6 +43,7 @@ void Ability::use(shared_ptr<Pokemon> enemy, float lvlDiff)
 {
 	Element enemyElement = enemy->getElement();
 	int finalDamage = int(lvlDiff * m_damage) + elementAdvantage(enemyElement);
+	finalDamage = (finalDamage <= 0) ? 5 : finalDamage;
 	enemy->setHp(enemy->getHp() - finalDamage);
 }
 

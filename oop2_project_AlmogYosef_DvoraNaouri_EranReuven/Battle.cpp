@@ -12,13 +12,13 @@ using std::make_unique;
 const unsigned TEXT_SIZE = 14U;
 const float BASE_EXP = 85;
 
-Battle::Battle(Player & player, Trainer & enemy, int battleType)
-	: m_menu(Resource::texture("battle_menu_frame"), Vector2f(2.f, 2.f), false), m_player(player), m_enemy(&enemy),
+Battle::Battle(Player & player, Trainer & enemy, shared_ptr<Music> music)
+	: m_menu(Resource::texture("battle_menu_frame"), Vector2f(2.f, 2.f), false), m_player(player), m_enemy(&enemy), m_music(music),
 	m_playerName("", Resource::font, TEXT_SIZE), m_playerLevel("", Resource::font, TEXT_SIZE), m_playerHP("", Resource::font, TEXT_SIZE),
 	m_enemyName("", Resource::font, TEXT_SIZE), m_enemyLevel("", Resource::font, TEXT_SIZE)
 {
 	// initialize battle screen
-	initBattle(battleType);
+	initBattle();
 	// choose enemy pokemon
 	m_enemyCurrPokemon = getFirstAlivePokemon(enemy);
 	if (m_enemyCurrPokemon != -1)
@@ -32,13 +32,13 @@ Battle::Battle(Player & player, Trainer & enemy, int battleType)
 	m_enemyLevel.setPosition(m_enemyStatbar.getPosition() + Vector2f(66.f, -1.f));
 }
 
-Battle::Battle(Player & player, Pokemon & wildPokemon, int battleType)
-	: m_menu(Resource::texture("battle_menu_frame"), Vector2f(2.f, 2.f), false), m_player(player), m_enemyPokemon(make_shared<Pokemon>(wildPokemon)),
+Battle::Battle(Player & player, Pokemon & wildPokemon, shared_ptr<Music> music)
+	: m_menu(Resource::texture("battle_menu_frame"), Vector2f(2.f, 2.f), false), m_player(player), m_enemyPokemon(make_shared<Pokemon>(wildPokemon)), m_music(music),
 	m_playerName("", Resource::font, TEXT_SIZE), m_playerLevel("", Resource::font, TEXT_SIZE), m_playerHP("", Resource::font, TEXT_SIZE),
 	m_enemyName("", Resource::font, TEXT_SIZE), m_enemyLevel("", Resource::font, TEXT_SIZE)
 {
 	// initialize battle screen
-	initBattle(battleType);
+	initBattle();
 	// initialize wild pokemon stats
 	m_enemyPokemon = make_shared<Pokemon>(wildPokemon);
 	m_enemyPokemon->setTexture("front");
@@ -56,13 +56,16 @@ Battle::Battle(Player & player, Pokemon & wildPokemon, int battleType)
 
 Battle::~Battle()
 {
+	m_music->stop();
+	m_music = Resource::music("background");
+	m_music->play();
 }
 
-void Battle::initBattle(int battleType)
+void Battle::initBattle()
 {
 	// initialize battle
 	m_screen.setTexture(Resource::texture("battle"));
-	battleArenaLoader(battleType);
+	m_view = sf::View(sf::FloatRect(2.f, 22.f, 240.f, 160.f));
 	// initialize menu background
 	m_menuBg.setTexture(Resource::texture("battle_menu_bg"), true);
 	m_menuBg.setOrigin(m_menuBg.getGlobalBounds().width, m_menuBg.getGlobalBounds().height);
@@ -100,6 +103,8 @@ void Battle::initBattle(int battleType)
 	m_playerLevel.setPosition(m_playerStatbar.getPosition() + Vector2f(75.f, -1.f));
 	m_playerHP.setFillColor(Color::Black);
 	m_playerHP.setPosition(m_playerStatbar.getPosition() + Vector2f(62.f, 17.f));
+	m_music = Resource::music("battle");
+	m_music->play();
 }
 
 void Battle::draw(RenderWindow & window)
@@ -163,16 +168,6 @@ void Battle::keyReleasedHandler(const Event & event)
 	}
 	else
 		m_menu.keyReleasedHandler(event);
-}
-
-void Battle::battleArenaLoader(int battleType)
-{
-	switch (battleType)
-	{
-	case 1:
-		m_view = sf::View(sf::FloatRect(2.f, 22.f, 240.f, 160.f));
-		break;
-	}
 }
 
 void Battle::updateHpBar(Pokemon & pokemon, Sprite & bar)

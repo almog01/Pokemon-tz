@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio/Music.hpp>
 #include "Resource.h"
 #include "Factory.h"
 #include "Map.h"
@@ -14,10 +13,10 @@
 
 using std::string;
 using std::unique_ptr;
+using std::shared_ptr;
 using sf::RenderWindow;
 using sf::View;
 using sf::Event;
-using sf::Music;
 
 class GameManager
 {
@@ -37,7 +36,7 @@ private:
 	void startMenuScene();
 
 	// Initializers
-	void initCharacters();
+	void initPlayer();
 
 	// Draws the whole game objects on the window, and than displays it
 	void draw();
@@ -54,8 +53,8 @@ private:
 	void openChat();
 	void openMenu();
 
-	void battleScene(Trainer & trainer, int battleArena = 1);
-	void battleScene(Pokemon & pokemon, int battleArena = 1);
+	void battleScene(Trainer & trainer);
+	void battleScene(Pokemon & pokemon);
 
 	// Members:
 	Resource & m_resource;		// resource instance to load the files
@@ -66,7 +65,6 @@ private:
 	Player & m_player;			// the player
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
-	bool m_start = true;
-	Music m_music;
+	shared_ptr<Music> m_music;
 };
 

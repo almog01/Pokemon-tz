@@ -4,6 +4,7 @@
 
 unordered_map<string, Texture> Resource::m_textures;
 unordered_map<string, Image> Resource::m_images;
+unordered_map<string, shared_ptr<Music>> Resource::m_musics;
 Font Resource::font;
 
 Resource::Resource()
@@ -11,6 +12,11 @@ Resource::Resource()
 	// game font
 	loadFont(font, "resource/font/pokemon_fire_red.ttf");
 	
+	// music
+	loadMusic("startmenu", "resource/music/startmenu.ogg");
+	loadMusic("background", "resource/music/background.ogg");
+	loadMusic("battle", "resource/music/battle.ogg");
+
 	// start menu
 	loadTexture("start_menu_bg", "resource/img/startmenu/pokemon-tz.png");
 	loadTexture("main_menu", "resource/img/startmenu/MainMenu.png");
@@ -156,6 +162,11 @@ const Image & Resource::image(const string & key)
 	return m_images.at(key);
 }
 
+const shared_ptr<Music> Resource::music(const string & key)
+{
+	return m_musics.at(key);
+}
+
 void Resource::loadTexture(const string & key, const string & path)
 {
 	Texture texture;	// create new texture
@@ -165,6 +176,18 @@ void Resource::loadTexture(const string & key, const string & path)
 		exit(EXIT_FAILURE);
 	}
 	m_textures[key] = texture;	// add the texture to the unordered map
+}
+
+void Resource::loadMusic(const string & key, const string & path)
+{
+	shared_ptr<Music> music = std::make_shared<Music>();	// create new music
+	if (!music->openFromFile(path))	// try load the music
+	{
+		MessageBoxA(NULL, "Error loading music", "Error", MB_OK | MB_ICONEXCLAMATION);	// print error message
+		exit(EXIT_FAILURE);
+	}
+	music->setLoop(true);
+	m_musics[key] = std::move(music);	// add the music to the unordered map
 }
 
 void Resource::loadImage(const string & key, const string & path)

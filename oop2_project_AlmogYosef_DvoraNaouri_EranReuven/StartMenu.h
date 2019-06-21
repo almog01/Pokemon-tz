@@ -4,11 +4,12 @@
 #include "Player.h"
 
 using std::unique_ptr;
+using std::shared_ptr;
 
 class StartMenu : public Screen
 {
 public:
-	StartMenu(Player& player);
+	StartMenu(Player& player, shared_ptr<Music> m_music);
 	~StartMenu();
 
 	// Inherited via Screen
@@ -21,5 +22,6 @@ private:
 	Menu m_menu;
 	Player& m_player;
 	unique_ptr<Screen> m_subScreen;
+	shared_ptr<Music> m_music;
 };
 

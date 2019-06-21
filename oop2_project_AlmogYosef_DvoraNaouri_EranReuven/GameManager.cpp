@@ -19,15 +19,10 @@ const int UPS = 60;			// updates per second
 GameManager::GameManager() 
 	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
-	m_music.openFromFile("resource/music/background.mp3");
-	m_music.setLoop(true);
-	m_music.play();
-	m_player.addPokemon(Factory::pokemon("pikachu", 5));
-	m_player.addPokemon(Factory::pokemon("mewtwo", 5));
-	m_player.addPokemon(Factory::pokemon("mew", 5));
-	m_player.addPokemon(Factory::pokemon("charizard", 5));
-	m_player.addPokemon(Factory::pokemon("blastoise", 5));
-	m_player.addPokemon(Factory::pokemon("venusaur", 5));
+	createWindow();
+	initPlayer();
+	startMenuScene();
+	m_music = Resource::music("background");
 }
 
 
@@ -37,18 +32,12 @@ GameManager::~GameManager()
 
 void GameManager::play()
 {
-	createWindow();
-	initCharacters();
-
 	Clock clock;
 	Time accumulator = Time::Zero;
 	Time ups = sf::seconds(1.f / UPS);
 
 	while (m_window.isOpen())	// main window loop
 	{
-		if (m_start)
-			startMenuScene();
-
 		handleEvents();		// handle each events
 
 		m_window.clear();	// clear the main window
@@ -83,16 +72,21 @@ void GameManager::createWindow()
 
 void GameManager::startMenuScene()
 {
-	m_screen = make_unique<StartMenu>(m_player);
-	m_start = false;
+	m_screen = make_unique<StartMenu>(m_player, m_music);
 }
 
-void GameManager::initCharacters()
+void GameManager::initPlayer()
 {
 	m_player.setPosition(Vector2f(134.f, 42.f));
 	m_player.setMap(m_map);
 	m_view.setCenter(m_player.getPosition());
 	m_window.setView(m_view);
+	m_player.addPokemon(Factory::pokemon("pikachu", 5));
+	m_player.addPokemon(Factory::pokemon("mewtwo", 5));
+	m_player.addPokemon(Factory::pokemon("mew", 5));
+	m_player.addPokemon(Factory::pokemon("charizard", 5));
+	m_player.addPokemon(Factory::pokemon("blastoise", 5));
+	m_player.addPokemon(Factory::pokemon("venusaur", 5));
 }
 
 void GameManager::draw()
@@ -205,14 +199,20 @@ void GameManager::openMenu()
 	m_screen = std::move(menu);
 }
 
-void GameManager::battleScene(Trainer & trainer, int battleArena)
+void GameManager::battleScene(Trainer & trainer)
 {
 	if (!m_player.isDefeated() && !trainer.isDefeated())
-		m_screen = make_unique<Battle>(m_player, trainer, battleArena);
+	{
+		m_music->stop();
+		m_screen = make_unique<Battle>(m_player, trainer, m_music);
+	}
 }
 
-void GameManager::battleScene(Pokemon & pokemon, int battleArena)
+void GameManager::battleScene(Pokemon & pokemon)
 {
 	if (!m_player.isDefeated())
-		m_screen = make_unique<Battle>(m_player, pokemon, battleArena);
+	{
+		m_music->stop();
+		m_screen = make_unique<Battle>(m_player, pokemon, m_music);
+	}
 }

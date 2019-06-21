@@ -2,6 +2,7 @@
 #include "Command.h"
 #include "Menu.h"
 #include "StartMenu.h"
+#include "GameManager.h"
 
 class StartCommand :
 	public Command
