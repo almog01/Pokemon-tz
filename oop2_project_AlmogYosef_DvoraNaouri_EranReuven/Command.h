@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Command
+class Command //main command class, abstract class
 {
 public:
-	Command();
-	virtual ~Command();
+	Command() {}; //constructor
+	virtual ~Command() {}; //virtual destructor for polymorph
 
-	virtual void execute() = 0;
+	virtual void execute() = 0; //abstract virtual execute class
 };
 

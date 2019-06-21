@@ -173,9 +173,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SaveCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
