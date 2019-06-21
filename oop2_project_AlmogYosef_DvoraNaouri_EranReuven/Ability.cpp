@@ -1,12 +1,15 @@
 #include "Ability.h"
 #include "Pokemon.h"
 
+//constant for element advantage
 const int ELEMENT_BONUS = 15;
 
+//constructor init the sprite, element, damage, speed
 Ability::Ability(const string & name, const string & element, int damage, int speed)
 	: m_sprite(Resource::texture(element + "_ability")), m_element(stringToElement(element)), m_damage(damage), m_speed(speed)
 {
-	m_name = name;
+	m_name = name; //name member update
+
 	// find and replace '_' character with ' ' in the ability name
 	string toReplace("_");
 	size_t pos = m_name.find(toReplace);
@@ -15,10 +18,12 @@ Ability::Ability(const string & name, const string & element, int damage, int sp
 }
 
 
-Ability::~Ability()
+Ability::~Ability() //destructor
 {
 }
 
+/*Function that gets a string type and convert it to
+enum elemets type and return the enum type*/
 Element Ability::stringToElement(const string & x)
 {
 	if (x == "ELECTRIC")
@@ -39,18 +44,19 @@ Element Ability::stringToElement(const string & x)
 		return NORMAL;
 }
 
+//ability use function, when using ability
 void Ability::use(shared_ptr<Pokemon> enemy, float lvlDiff)
 {
-	Element enemyElement = enemy->getElement();
-	int finalDamage = int(lvlDiff * m_damage) + elementAdvantage(enemyElement);
+	Element enemyElement = enemy->getElement(); //get the enemy element
+	int finalDamage = int(lvlDiff * m_damage) + elementAdvantage(enemyElement); //calculate damage
 	finalDamage = (finalDamage <= 0) ? 5 : finalDamage;
-	enemy->setHp(enemy->getHp() - finalDamage);
+	enemy->setHp(enemy->getHp() - finalDamage); //updating hp after damage
 }
 
 int Ability::elementAdvantage(Element enemyElement) const
 {
-	switch (m_element)
-	{
+	switch (m_element) //cases between abilities to say if theres advantage
+	{				   //of element over other element
 	case ELECTRIC:
 		switch (enemyElement)
 		{
@@ -149,7 +155,7 @@ int Ability::elementAdvantage(Element enemyElement) const
 	return 0;
 }
 
-void Ability::draw(sf::RenderWindow &window)
+void Ability::draw(sf::RenderWindow &window) //draw function
 {
 	window.draw(m_sprite);
 }

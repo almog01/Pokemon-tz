@@ -26,11 +26,11 @@ private:
 
 	View m_view; //view member to set the right view for that screen
 	bool m_inBattle; //in battle boolian.
-	vector<Sprite> m_frames;
-	vector<Sprite> m_sprites;
-	vector<Text> m_texts;
-	int m_selected;
-	unique_ptr<Screen> m_menu = nullptr;
-	int & m_nextPokemon;
+	vector<Sprite> m_frames; //m_frames vector for frame the selection
+	vector<Sprite> m_sprites; //sprites vector for the pokemon presents
+	vector<Text> m_texts; //m_texts vector to hold the texts
+	int m_selected; //will hold the selected pokemon index
+	unique_ptr<Screen> m_menu = nullptr; //subscreen for the menu
+	int & m_nextPokemon; //next pokemon index reference
 };
 

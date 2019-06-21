@@ -8,14 +8,14 @@ using std::vector;
 using std::unique_ptr;
 using sf::Sprite;
 
-class Pokemon : public Character
+class Pokemon : public Character //Inherit from character
 {
 public:
-	Pokemon(const string & name, int level = 2);
-	~Pokemon();
+	Pokemon(const string & name, int level = 2); //pokemon constructor
+	~Pokemon(); //destructor
 
 	//set Texture for present sprite
-	void setTexture(const string & type);
+	void setTexture(const string & type); 
 
 	//functions to set and get pokemon stats, elements
 	Pokemon& setLevel(int level);
@@ -33,9 +33,11 @@ public:
 	Ability* getAbility(int index) const;
 	Ability* getRandAbility() const;
 	string getName() const { return m_name; }
+
+	//functions to get pokemon icon, set origins
 	const Texture & getIcon() { return m_icon; }
 	void setOrigin(SPOT spot) { Utils::setOrigin(m_sprite, spot); }
-	bool isDead() const { return m_hp == 0; }
+	bool isDead() const { return m_hp == 0; } //check if the pokemon is defeated
 
 	//add functions
 	void addAbility(Ability* x) { m_abilities.push_back(x); }
@@ -62,7 +64,7 @@ private:
 	//pokemon element
 	Element m_element;
 
-	// Inherited via Character
+	// Inherited via Character for coliders
 	virtual void handleCollision(Collider & collider) override;
 	virtual void handleCollision(Player & player) override;
 	virtual void handleCollision(NPC & npc) override;
