@@ -27,7 +27,6 @@ public:
 	virtual void handleCollision(Collider & collider) = 0;
 	virtual void handleCollision(Player & player) = 0;
 	virtual void handleCollision(NPC & npc) = 0;
-	virtual void handleCollision(Pokemon & pokemon) = 0;
 	virtual void handleCollision(Door & door) = 0;
 };
 

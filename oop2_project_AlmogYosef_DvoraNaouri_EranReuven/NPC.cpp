@@ -28,10 +28,6 @@ void NPC::handleCollision(NPC & npc)
 {
 }
 
-void NPC::handleCollision(Pokemon & pokemon)
-{
-}
-
 void NPC::handleCollision(Door & door)
 {
 }

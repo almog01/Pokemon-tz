@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/Music.hpp>
 #include "Resource.h"
 #include "Factory.h"
 #include "Map.h"
@@ -12,10 +13,11 @@
 #include <memory>
 
 using std::string;
+using std::unique_ptr;
 using sf::RenderWindow;
 using sf::View;
 using sf::Event;
-using std::unique_ptr;
+using sf::Music;
 
 class GameManager
 {
@@ -65,5 +67,6 @@ private:
 	unique_ptr<Screen> m_screen;
 	bool m_menuActive;			// menu active flag
 	bool m_start = true;
+	Music m_music;
 };
 

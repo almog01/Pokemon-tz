@@ -31,7 +31,6 @@ public:
 	virtual void handleCollision(Collider & collider) override;
 	virtual void handleCollision(Player & player) override;
 	virtual void handleCollision(NPC & npc) override;
-	virtual void handleCollision(Pokemon & pokemon) override;
 	virtual void handleCollision(Door & door) override;
 
 private:

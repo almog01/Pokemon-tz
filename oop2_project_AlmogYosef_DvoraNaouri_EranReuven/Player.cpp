@@ -87,10 +87,6 @@ void Player::handleCollision(NPC & npc)
 	stop();
 }
 
-void Player::handleCollision(Pokemon & pokemon)
-{
-}
-
 void Player::handleCollision(Door & door)
 {
 	m_map = door.getDestination();

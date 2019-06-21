@@ -19,6 +19,9 @@ const int UPS = 60;			// updates per second
 GameManager::GameManager() 
 	: m_resource(Resource::instance()), m_factory(Factory::instance()), m_player(Player::instance()), m_screen(nullptr), m_menuActive(false)
 {
+	m_music.openFromFile("resource/music/background.mp3");
+	m_music.setLoop(true);
+	m_music.play();
 	m_player.addPokemon(Factory::pokemon("pikachu", 5));
 	m_player.addPokemon(Factory::pokemon("mewtwo", 5));
 	m_player.addPokemon(Factory::pokemon("mew", 5));
